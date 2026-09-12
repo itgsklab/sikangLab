@@ -60,5 +60,7 @@
       menu.setAttribute('aria-expanded',String(open));
     });
   </script>
+  {{ $articleStats := resources.Get "js/article-stats.js" | minify | fingerprint }}
+  <script src="{{ $articleStats.RelPermalink }}" defer></script>
 </body>
 </html>

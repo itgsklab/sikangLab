@@ -47,5 +47,7 @@
     document.querySelector('.theme-button')?.addEventListener('click',()=>{root.classList.toggle('dark');localStorage.setItem('color-mode',root.classList.contains('dark')?'dark':'light')});
     const menu=document.querySelector('.menu-button');menu?.addEventListener('click',()=>{const open=document.body.classList.toggle('menu-open');menu.setAttribute('aria-expanded',String(open))});
   </script>
+  {{ $articleStats := resources.Get "js/article-stats.js" | minify | fingerprint }}
+  <script src="{{ $articleStats.RelPermalink }}" defer></script>
 </body>
 </html>

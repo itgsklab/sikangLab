@@ -8,7 +8,7 @@
         <header class="reference-header">
           <nav class="reference-breadcrumb" aria-label="面包屑导航"><a href="{{ "blog/" | relLangURL }}">知识</a><span>/</span><a href="{{ "experience/" | relLangURL }}">AI 工具</a><span>/</span></nav>
           <h1>{{ .Title }}</h1>
-          <div class="reference-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟</span><b>·</b><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问来源 ↗</a><b>·</b><a href="https://github.com/itgsklab/sikangLab/edit/main/content/stack/work.md" target="_blank" rel="noopener">编辑内容 ↗</a></div>
+          <div class="reference-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟</span><b>·</b>{{ partial "article-stats.html" . }}<b>·</b><a href="https://github.com/itgsklab/sikangLab/edit/main/content/stack/work.md" target="_blank" rel="noopener">编辑内容 ↗</a></div>
           <div class="reference-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
           <section class="reference-author">
             {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="郭同学在coding">{{ end }}

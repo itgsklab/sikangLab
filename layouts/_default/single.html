@@ -4,7 +4,7 @@
   <header class="article-header">
     <div class="card-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
     <h1>{{ .Title }}</h1>
-    <p class="article-meta">{{ .Date.Format "2006年01月02日" }} · {{ .ReadingTime }} 分钟阅读</p>
+    <div class="article-meta article-meta-interactive"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟阅读</span><b>·</b>{{ partial "article-stats.html" . }}</div>
   </header>
   <div class="article-content">{{ .Content }}</div>
 </article>
