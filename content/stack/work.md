@@ -1,5 +1,5 @@
 ---
-title: 我发现了一个给 AI“找技能”的网站：SkillsMP 是什么？
+title: SkillsMP：给 AI 找技能的网站
 type: landing
 article: true
 index: '04'

@@ -2,28 +2,21 @@
 {{ if and (eq .Section "stack") .Params.article }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}
   <div class="reading-progress" aria-hidden="true"><i></i></div>
-  <article class="reading-page">
-    <header class="reading-hero">
-      <div class="wrap reading-hero-inner">
-        <nav class="reading-breadcrumb" aria-label="面包屑导航"><a href="{{ site.Home.RelPermalink }}">首页</a><span>/</span><a href="{{ "experience/" | relLangURL }}">技术栈</a><span>/</span><span>AI 工具</span></nav>
-        <p class="eyebrow">{{ .Params.eyebrow }} · FIELD NOTES</p>
-        <h1>{{ .Title }}</h1>
-        <p class="reading-summary">{{ .Params.summary }}</p>
-        <div class="reading-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time><span>·</span><span>{{ .ReadingTime }} 分钟阅读</span><span>·</span><a href="https://github.com/itgsklab/sikangLab/edit/main/content/stack/work.md" target="_blank" rel="noopener">编辑本文 ↗</a></div>
-        <div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
-      </div>
-    </header>
+  <article class="reference-article article-wide">
+    <div class="reference-layout">
+      <div class="reference-main">
+        <header class="reference-header">
+          <nav class="reference-breadcrumb" aria-label="面包屑导航"><a href="{{ "blog/" | relLangURL }}">知识</a><span>/</span><a href="{{ "experience/" | relLangURL }}">AI 工具</a><span>/</span></nav>
+          <h1>{{ .Title }}</h1>
+          <div class="reference-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟</span><b>·</b><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问来源 ↗</a><b>·</b><a href="https://github.com/itgsklab/sikangLab/edit/main/content/stack/work.md" target="_blank" rel="noopener">编辑内容 ↗</a></div>
+          <div class="reference-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
+          <section class="reference-author">
+            {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="郭同学在coding">{{ end }}
+            <div><small>作者</small><strong>郭同学在coding</strong><p>AI Agent · 全栈开发</p><nav aria-label="作者链接"><a href="https://github.com/itgsklab" target="_blank" rel="noopener">GitHub</a><a href="https://x.com/TheOrange991105" target="_blank" rel="noopener">X</a><a href="mailto:guosikang115@163.com">Email</a></nav></div>
+          </section>
+        </header>
+        <aside class="reference-toc reference-toc-mobile"><p class="eyebrow">本文目录</p>{{ .TableOfContents }}</aside>
 
-    <div class="reading-layout wrap">
-      <aside class="reading-sidebar">
-        <section class="reading-author">
-          {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="郭同学在coding">{{ end }}
-          <div><small>作者</small><strong>郭同学在coding</strong><p>AI Agent · 全栈开发</p></div>
-        </section>
-        <section class="reading-toc"><p class="eyebrow">ON THIS PAGE</p>{{ .TableOfContents }}</section>
-      </aside>
-
-      <div class="reading-main">
         <div class="article-content">{{ .Content }}</div>
         <aside class="article-callout"><span>继续探索</span><div><strong>把方法变成可复用的 AI 能力</strong><p>从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问 SkillsMP ↗</a></aside>
 
@@ -37,12 +30,13 @@
 
         <nav class="reading-footer-nav" aria-label="文章导航"><a href="{{ "experience/" | relLangURL }}"><small>返回栏目</small><strong>← 技术栈总览</strong></a><a href="{{ "blog/" | relLangURL }}"><small>更多内容</small><strong>全部文章 →</strong></a></nav>
       </div>
+      <aside class="reference-toc reference-toc-desktop"><p class="eyebrow">本文目录</p>{{ .TableOfContents }}</aside>
     </div>
   </article>
   <script>
     (()=>{
       const bar=document.querySelector('.reading-progress i');
-      const links=[...document.querySelectorAll('.reading-toc a')];
+      const links=[...document.querySelectorAll('.reference-toc a')];
       const headings=links.map(link=>document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
       const update=()=>{
         const max=document.documentElement.scrollHeight-innerHeight;
