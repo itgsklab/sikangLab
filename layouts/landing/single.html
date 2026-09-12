@@ -1,5 +1,60 @@
 {{ define "main" }}
-{{ if eq .Section "stack" }}
+{{ if and (eq .Section "stack") .Params.article }}
+  {{ $avatar := resources.Get "media/authors/me.jpg" }}
+  <div class="reading-progress" aria-hidden="true"><i></i></div>
+  <article class="reading-page">
+    <header class="reading-hero">
+      <div class="wrap reading-hero-inner">
+        <nav class="reading-breadcrumb" aria-label="面包屑导航"><a href="{{ site.Home.RelPermalink }}">首页</a><span>/</span><a href="{{ "experience/" | relLangURL }}">技术栈</a><span>/</span><span>AI 工具</span></nav>
+        <p class="eyebrow">{{ .Params.eyebrow }} · FIELD NOTES</p>
+        <h1>{{ .Title }}</h1>
+        <p class="reading-summary">{{ .Params.summary }}</p>
+        <div class="reading-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time><span>·</span><span>{{ .ReadingTime }} 分钟阅读</span><span>·</span><a href="https://github.com/itgsklab/sikangLab/edit/main/content/stack/work.md" target="_blank" rel="noopener">编辑本文 ↗</a></div>
+        <div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
+      </div>
+    </header>
+
+    <div class="reading-layout wrap">
+      <aside class="reading-sidebar">
+        <section class="reading-author">
+          {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="郭同学在coding">{{ end }}
+          <div><small>作者</small><strong>郭同学在coding</strong><p>AI Agent · 全栈开发</p></div>
+        </section>
+        <section class="reading-toc"><p class="eyebrow">ON THIS PAGE</p>{{ .TableOfContents }}</section>
+      </aside>
+
+      <div class="reading-main">
+        <div class="article-content">{{ .Content }}</div>
+        <aside class="article-callout"><span>继续探索</span><div><strong>把方法变成可复用的 AI 能力</strong><p>从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问 SkillsMP ↗</a></aside>
+
+        <section class="related-reading">
+          <div class="related-heading"><p class="eyebrow">KEEP EXPLORING</p><h2>继续阅读</h2></div>
+          <div class="related-grid">
+            <a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>
+            <a href="{{ "blog/welcome/" | relLangURL }}"><span>ABOUT THIS LAB</span><strong>欢迎来到我的技术积累站</strong><p>了解 Sikang Lab 的技术栈和后续内容方向。</p></a>
+          </div>
+        </section>
+
+        <nav class="reading-footer-nav" aria-label="文章导航"><a href="{{ "experience/" | relLangURL }}"><small>返回栏目</small><strong>← 技术栈总览</strong></a><a href="{{ "blog/" | relLangURL }}"><small>更多内容</small><strong>全部文章 →</strong></a></nav>
+      </div>
+    </div>
+  </article>
+  <script>
+    (()=>{
+      const bar=document.querySelector('.reading-progress i');
+      const links=[...document.querySelectorAll('.reading-toc a')];
+      const headings=links.map(link=>document.getElementById(decodeURIComponent(link.hash.slice(1)))).filter(Boolean);
+      const update=()=>{
+        const max=document.documentElement.scrollHeight-innerHeight;
+        if(bar)bar.style.transform=`scaleX(${max>0?scrollY/max:0})`;
+        let current=headings[0];
+        headings.forEach(heading=>{if(heading.getBoundingClientRect().top<180)current=heading});
+        links.forEach(link=>link.classList.toggle('active',current&&decodeURIComponent(link.hash.slice(1))===current.id));
+      };
+      addEventListener('scroll',update,{passive:true});update();
+    })();
+  </script>
+{{ else if eq .Section "stack" }}
   <article class="stack-detail wrap-narrow">
     <a class="back-link" href="{{ "experience/" | relLangURL }}">← 返回技术栈总览</a>
     <header class="stack-detail-header"><p class="eyebrow">{{ .Params.eyebrow }}</p><p class="stack-index">{{ .Params.index }}</p><h1>{{ .Title }}</h1><p>{{ .Params.summary }}</p><div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div></header>
@@ -8,10 +63,10 @@
 {{ else if eq .File.BaseFileName "experience" }}
   <header class="page-hero wrap page-hero-compact"><p class="eyebrow">TOOLBOX & EXPERIENCE</p><p>沉淀、分享、成长，让自己和他人都能有所收获！</p></header>
   <section class="tech-sections wrap">
-    <article id="java" class="tech-section"><div class="tech-cover cover-java"><span>01</span></div><div class="tech-body"><p class="eyebrow">BACKEND</p><h2>Java</h2><p>关注 Java 后端开发、面向对象设计、JVM 以及可维护的工程结构。</p><div class="tech-tags"><span>Java</span><span>Spring</span><span>JVM</span></div></div></article>
-    <article id="python" class="tech-section"><div class="tech-cover cover-python"><span>02</span></div><div class="tech-body"><p class="eyebrow">AUTOMATION</p><h2>Python</h2><p>使用 Python 进行工具开发、数据处理、自动化脚本和快速原型验证。</p><div class="tech-tags"><span>Python</span><span>FastAPI</span><span>Automation</span></div></div></article>
-    <article id="agent" class="tech-section"><div class="tech-cover cover-agent"><span>03</span></div><div class="tech-body"><p class="eyebrow">AI ENGINEERING</p><h2>Agent</h2><p>探索 AI Agent、工具调用、上下文编排以及 AI 辅助开发在工程中的应用。</p><div class="tech-tags"><span>LLM</span><span>RAG</span><span>Tool Use</span></div></div></article>
-    <article id="work" class="tech-section"><div class="tech-cover cover-work"><span>04</span></div><div class="tech-body"><p class="eyebrow">KNOWLEDGE</p><h2>工作沉淀</h2><p>记录项目中的技术选型、问题排查、协作方式与工程复盘。</p><div class="tech-tags"><span>工程实践</span><span>问题排查</span><span>CI/CD</span></div></div></article>
+    <a id="java" class="tech-section" href="{{ "stack/java/" | relLangURL }}"><div class="tech-cover cover-java"><span>01</span></div><div class="tech-body"><p class="eyebrow">BACKEND</p><h2>Java</h2><p>关注 Java 后端开发、面向对象设计、JVM 以及可维护的工程结构。</p><div class="tech-tags"><span>Java</span><span>Spring</span><span>JVM</span></div></div></a>
+    <a id="python" class="tech-section" href="{{ "stack/python/" | relLangURL }}"><div class="tech-cover cover-python"><span>02</span></div><div class="tech-body"><p class="eyebrow">AUTOMATION</p><h2>Python</h2><p>使用 Python 进行工具开发、数据处理、自动化脚本和快速原型验证。</p><div class="tech-tags"><span>Python</span><span>FastAPI</span><span>Automation</span></div></div></a>
+    <a id="agent" class="tech-section" href="{{ "stack/agent/" | relLangURL }}"><div class="tech-cover cover-agent"><span>03</span></div><div class="tech-body"><p class="eyebrow">AI ENGINEERING</p><h2>Agent</h2><p>探索 AI Agent、工具调用、上下文编排以及 AI 辅助开发在工程中的应用。</p><div class="tech-tags"><span>LLM</span><span>RAG</span><span>Tool Use</span></div></div></a>
+    <a id="work" class="tech-section" href="{{ "stack/work/" | relLangURL }}"><div class="tech-cover cover-work"><span>04</span></div><div class="tech-body"><p class="eyebrow">AI TOOLS</p><h2>SkillsMP 科普</h2><p>从普通用户视角认识 Agent Skills，以及这个开放的 AI 技能生态地图。</p><div class="tech-tags"><span>Agent Skills</span><span>AI 工具</span><span>科普</span></div></div></a>
   </section>
 {{ else if eq .File.BaseFileName "thanks" }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}

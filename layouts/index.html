@@ -26,8 +26,9 @@
     <a href="{{ "blog/" | relLangURL }}">查看全部 →</a>
   </div>
   <div class="card-grid">
+    {{ with site.GetPage "/stack/work" }}{{ partial "article-card.html" . }}{{ end }}
     {{ $posts := where site.RegularPages "Section" "blog" }}
-    {{ range first 6 $posts.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
+    {{ range first 5 $posts.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
   </div>
 </section>
 {{ end }}

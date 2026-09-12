@@ -1,11 +1,14 @@
 ---
 title: 我发现了一个给 AI“找技能”的网站：SkillsMP 是什么？
 type: landing
+article: true
 index: '04'
 eyebrow: AI TOOLS
 summary: 从普通用户的视角，认识 Agent Skills，以及 SkillsMP 这个开放的 AI 技能生态地图。
 tags: [Agent Skills, AI 工具, SkillsMP, 科普]
 date: 2026-09-12
+authors:
+  - me
 ---
 
 最近，我在使用 AI 工具时发现了一个挺有意思的网站——[SkillsMP](https://skillsmp.com/zh)。
