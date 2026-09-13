@@ -1,0 +1,21 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "网站页面截图" -}}
+{{- $caption := .Get "caption" -}}
+{{- $href := .Get "href" -}}
+{{- $label := .Get "label" | default "skillsmp.com" -}}
+{{- $loading := .Get "loading" | default "lazy" -}}
+{{- with resources.Get $src -}}
+<figure class="article-site-preview">
+  <div class="mac-browser-window">
+    <div class="mac-browser-toolbar" aria-hidden="true">
+      <span class="mac-browser-lights"><i></i><i></i><i></i></span>
+      <span class="mac-browser-address">{{ $label }}</span>
+      <span class="mac-browser-spacer"></span>
+    </div>
+    {{- if $href }}<a href="{{ $href }}" target="_blank" rel="noopener" aria-label="打开截图对应页面：{{ $label }}">{{ end -}}
+      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async">
+    {{- if $href }}</a>{{ end -}}
+  </div>
+  {{- with $caption }}<figcaption>{{ . }}</figcaption>{{ end -}}
+</figure>
+{{- end -}}

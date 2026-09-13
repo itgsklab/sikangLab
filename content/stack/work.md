@@ -15,6 +15,8 @@ authors:
 
 第一次看到“Skills Marketplace”这个名字，我以为它是一个类似手机应用商店的平台：找到喜欢的技能，点击一下就能安装。实际体验之后，我发现它更像一张开放的“AI 技能生态地图”——它把散落在 GitHub 上的 Agent Skills 收集起来，让我们可以集中搜索、浏览和参考。
 
+{{< site-shot src="media/skillsmp-article/01-skillsmp-home-20260913.jpg" alt="SkillsMP 中文首页，展示 Agent Skills Marketplace、搜索框和领域入口" caption="我第一次打开 SkillsMP 时看到的中文首页：可以直接搜索，也可以从教育、市场营销、代码审查等领域开始探索。" href="https://skillsmp.com/zh" label="skillsmp.com/zh" loading="eager" >}}
+
 ## 先说清楚：什么是 Agent Skill？
 
 我们平时使用 AI，通常会直接向它提问。例如：“帮我写一篇文章”“检查一下这段代码”或者“分析这份数据”。
@@ -39,6 +41,8 @@ Agent Skill 可以简单理解为一份写给 AI 的“工作说明书”。它�
 
 SkillsMP 做的事情，就是把公开的 `SKILL.md` 文件收集和整理起来。截至我浏览网站时，首页显示已经收录了超过 320 万个相关文件。用户可以通过关键词、用途、创作者和职业领域等方式进行查找。[SkillsMP 首页](https://skillsmp.com/zh)还提供了教育、市场营销、代码审查等搜索入口，并按照开发、商业、工具、测试与安全等类别整理内容。
 
+{{< site-shot src="media/skillsmp-article/02-skillsmp-search-20260913.jpg" alt="SkillsMP 搜索 frontend design 后的筛选栏和结果列表" caption="以 frontend design 为例，结果页会同时展示筛选条件、来源仓库、更新时间和 GitHub 星标，方便我快速比较不同实例。" href="https://skillsmp.com/zh/search?q=frontend%20design" label="skillsmp.com/zh/search" >}}
+
 我也可以从职业角度寻找灵感。网站基于职业分类建立了数百个细分入口，让我看到不同领域的人正在尝试把哪些经验交给 AI。例如，程序员可能会制作代码审查 Skill，设计师可能会整理界面设计规范，营销人员则可能把市场调研、内容策划和活动复盘写成标准流程。
 
 对我来说，它最有价值的地方不只是“下载一个现成技能”，而是让我看到：原来这些事情也可以整理成 AI 能够执行的流程。
@@ -48,6 +52,8 @@ SkillsMP 做的事情，就是把公开的 `SKILL.md` 文件收集和整理起�
 我的使用方法很简单。
 
 假设我希望 AI 更好地帮我制作网页，就可以搜索“frontend design”或“UI/UX”。打开一个 Skill 后，我能够查看它来自哪个 GitHub 仓库、由谁维护、最近是否更新，以及 `SKILL.md` 中写了什么。有些页面还会展示配套文件，并提供安装提示或下载方式。
+
+{{< site-shot src="media/skillsmp-article/03-skillsmp-detail-20260913.jpg" alt="SkillsMP 的 frontend-design Skill 详情页，展示来源、更新时间和安装方式" caption="进入具体 Skill 后，我会先看仓库来源、最近活动、星标和安装说明，再决定它是否值得继续研究。" href="https://skillsmp.com/zh/creators/anthropics/skills/skills-frontend-design" label="skillsmp.com/zh/creators/anthropics/skills" >}}
 
 我一般会重点观察四个方面：
 
