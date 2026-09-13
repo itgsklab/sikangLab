@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{ if and (eq .Section "stack") .Params.article }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}
+  {{ $skillsmpPreview := resources.Get "media/skillsmp-homepage.jpg" }}
   <div class="reading-progress" aria-hidden="true"><i></i></div>
   <article class="reference-article article-wide">
     <div class="reference-layout">
@@ -17,7 +18,15 @@
         </header>
         <aside class="reference-toc reference-toc-mobile"><p class="eyebrow">本文目录</p>{{ .TableOfContents }}</aside>
 
-        <div class="article-content">{{ .Content }}</div>
+        <div class="article-content">
+          {{ with $skillsmpPreview }}
+            <figure class="article-site-preview">
+              <a href="https://skillsmp.com/zh" target="_blank" rel="noopener"><img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="SkillsMP 中文首页截图" decoding="async"></a>
+              <figcaption>SkillsMP 中文首页：可以搜索、浏览和比较公开的 Agent Skills。截图于 2026 年 9 月。</figcaption>
+            </figure>
+          {{ end }}
+          {{ .Content }}
+        </div>
         <aside class="article-callout"><span>继续探索</span><div><strong>把方法变成可复用的 AI 能力</strong><p>从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问 SkillsMP ↗</a></aside>
 
         <section class="related-reading">
