@@ -1,0 +1,12 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "文章配图" -}}
+{{- $caption := .Get "caption" -}}
+{{- $href := .Get "href" -}}
+{{- with resources.Get $src -}}
+<figure class="article-inline-figure">
+  {{- if $href }}<a href="{{ $href }}" target="_blank" rel="noopener" aria-label="查看配图来源">{{ end -}}
+    <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+  {{- if $href }}</a>{{ end -}}
+  {{- with $caption }}<figcaption>{{ . }}</figcaption>{{ end -}}
+</figure>
+{{- end -}}

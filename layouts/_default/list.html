@@ -6,7 +6,7 @@
 </header>
 <section class="content-section wrap compact-top">
   <div class="card-grid">
-    {{ if eq .Section "blog" }}{{ with site.GetPage "/stack/work" }}{{ partial "article-card.html" . }}{{ end }}{{ end }}
+    {{ if eq .Section "blog" }}{{ with site.GetPage "/stack/agent-xiaolinnote" }}{{ partial "article-card.html" . }}{{ end }}{{ with site.GetPage "/stack/work" }}{{ partial "article-card.html" . }}{{ end }}{{ end }}
     {{ range .Pages.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
   </div>
 </section>

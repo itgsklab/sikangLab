@@ -6,9 +6,9 @@
     <div class="reference-layout">
       <div class="reference-main">
         <header class="reference-header">
-          <nav class="reference-breadcrumb" aria-label="面包屑导航"><a href="{{ "blog/" | relLangURL }}">知识</a><span>/</span><a href="{{ "experience/" | relLangURL }}">AI 工具</a><span>/</span></nav>
+          <nav class="reference-breadcrumb" aria-label="面包屑导航">{{ if eq .Params.article_parent "agent" }}<a href="{{ "experience/" | relLangURL }}">技术栈</a><span>/</span><a href="{{ "stack/agent/" | relLangURL }}">Agent</a><span>/</span>{{ else }}<a href="{{ "blog/" | relLangURL }}">知识</a><span>/</span><a href="{{ "experience/" | relLangURL }}">AI 工具</a><span>/</span>{{ end }}</nav>
           <h1>{{ .Title }}</h1>
-          <div class="reference-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟</span><b>·</b>{{ partial "article-stats.html" . }}<b>·</b><a href="https://github.com/itgsklab/sikangLab/edit/main/content/stack/work.md" target="_blank" rel="noopener">编辑内容 ↗</a></div>
+          <div class="reference-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟</span><b>·</b>{{ partial "article-stats.html" . }}<b>·</b><a href="https://github.com/itgsklab/sikangLab/edit/main/content/{{ .File.Path }}" target="_blank" rel="noopener">编辑内容 ↗</a></div>
           <div class="reference-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
           <section class="reference-author">
             {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="郭同学在coding">{{ end }}
@@ -18,17 +18,21 @@
         <aside class="reference-toc reference-toc-mobile"><p class="eyebrow">本文目录</p>{{ .TableOfContents }}</aside>
 
         <div class="article-content">{{ .Content }}</div>
+        {{ if eq .Params.article_parent "agent" }}
+        <aside class="article-callout"><span>继续探索</span><div><strong>挑一道问题，试着先自己回答</strong><p>从 Agent 或 RAG 专题开始，读完后再用自己的话解释一次。</p></div><a href="https://xiaolinnote.com/ai/" target="_blank" rel="noopener">访问小林面试笔记 ↗</a></aside>
+        {{ else }}
         <aside class="article-callout"><span>继续探索</span><div><strong>把方法变成可复用的 AI 能力</strong><p>从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问 SkillsMP ↗</a></aside>
+        {{ end }}
 
         <section class="related-reading">
           <div class="related-heading"><p class="eyebrow">KEEP EXPLORING</p><h2>继续阅读</h2></div>
           <div class="related-grid">
-            <a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>
+            {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>再认识一个值得探索的 AI 工具与技能目录。</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>{{ end }}
             <a href="{{ "blog/welcome/" | relLangURL }}"><span>ABOUT THIS LAB</span><strong>欢迎来到我的技术积累站</strong><p>了解 Sikang Lab 的技术栈和后续内容方向。</p></a>
           </div>
         </section>
 
-        <nav class="reading-footer-nav" aria-label="文章导航"><a href="{{ "experience/" | relLangURL }}"><small>返回栏目</small><strong>← 技术栈总览</strong></a><a href="{{ "blog/" | relLangURL }}"><small>更多内容</small><strong>全部文章 →</strong></a></nav>
+        <nav class="reading-footer-nav" aria-label="文章导航"><a href="{{ if eq .Params.article_parent "agent" }}{{ "stack/agent/" | relLangURL }}{{ else }}{{ "experience/" | relLangURL }}{{ end }}"><small>返回栏目</small><strong>← {{ if eq .Params.article_parent "agent" }}Agent{{ else }}技术栈总览{{ end }}</strong></a><a href="{{ "blog/" | relLangURL }}"><small>更多内容</small><strong>全部文章 →</strong></a></nav>
       </div>
       <aside class="reference-toc reference-toc-desktop"><p class="eyebrow">本文目录</p>{{ .TableOfContents }}</aside>
     </div>
