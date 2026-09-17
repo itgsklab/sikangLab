@@ -57,13 +57,15 @@
 {{ else if eq .Section "stack" }}
   <article class="stack-detail wrap-narrow" aria-label="{{ .Title }}">
     <a class="back-link" href="{{ "experience/" | relLangURL }}">← 返回技术栈总览</a>
-    <div class="stack-detail-content article-content">{{ .Content }}</div>
-    {{ if eq .File.BaseFileName "work" }}
-    <section class="work-article-grid" aria-label="个人沉淀文章列表">
-      {{ range slice "/stack/skillsmp" "/stack/llm-master" }}{{ with site.GetPage . }}
+    {{ $articles := where (where site.RegularPages "Section" "stack") "Params.article_parent" .File.BaseFileName }}
+    {{ if $articles }}
+    <section class="work-article-grid" aria-label="{{ .Title }}文章列表">
+      {{ range $articles.ByDate.Reverse }}
       <a class="work-article-card" href="{{ .RelPermalink }}"><span class="eyebrow">{{ .Params.eyebrow }}</span><h2>{{ .Title }}</h2><p>{{ .Params.summary }}</p><div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div><span class="work-article-open">阅读文章 →</span></a>
-      {{ end }}{{ end }}
+      {{ end }}
     </section>
+    {{ else }}
+    <div class="stack-detail-content article-content">{{ .Content }}</div>
     {{ end }}
   </article>
 {{ else if eq .File.BaseFileName "experience" }}
