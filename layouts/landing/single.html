@@ -56,7 +56,6 @@
   </script>
 {{ else if eq .Section "stack" }}
   <article class="stack-detail wrap-narrow" aria-label="{{ .Title }}">
-    <a class="back-link" href="{{ "experience/" | relLangURL }}">← 返回技术栈总览</a>
     {{ $articles := where (where site.RegularPages "Section" "stack") "Params.article_parent" .File.BaseFileName }}
     {{ if $articles }}
     <section class="work-article-grid" aria-label="{{ .Title }}文章列表">
