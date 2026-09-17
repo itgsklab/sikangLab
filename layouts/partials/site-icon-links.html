@@ -1,0 +1,7 @@
+{{- with resources.Get "media/site-icon.png" -}}
+  {{- $portrait := .Crop "950x950 Top" -}}
+  {{- $favicon := $portrait.Resize "64x64" -}}
+  {{- $appleTouchIcon := $portrait.Resize "180x180" -}}
+  <link rel="icon" type="image/png" sizes="64x64" href="{{ $favicon.RelPermalink }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon.RelPermalink }}">
+{{- end -}}
