@@ -20,7 +20,7 @@
         <div class="article-content">{{ .Content }}</div>
         {{ if eq .Params.article_parent "agent" }}
         <aside class="article-callout"><span>继续探索</span><div><strong>挑一道问题，试着先自己回答</strong><p>从 Agent 或 RAG 专题开始，读完后再用自己的话解释一次。</p></div><a href="https://xiaolinnote.com/ai/" target="_blank" rel="noopener">访问小林面试笔记 ↗</a></aside>
-        {{ else if eq .Params.article_parent "work" }}
+        {{ else if eq .File.BaseFileName "llm-master" }}
         <aside class="article-callout"><span>继续探索</span><div><strong>沿着路线动手验证</strong><p>从一个最小 AI 应用开始，再逐步加入检索、工具与评估。</p></div><a href="https://github.com/youngyangyang04/llm-master" target="_blank" rel="noopener">访问 LLM-Master ↗</a></aside>
         {{ else }}
         <aside class="article-callout"><span>继续探索</span><div><strong>把方法变成可复用的 AI 能力</strong><p>从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问 SkillsMP ↗</a></aside>
@@ -29,7 +29,7 @@
         <section class="related-reading">
           <div class="related-heading"><p class="eyebrow">KEEP EXPLORING</p><h2>继续阅读</h2></div>
           <div class="related-grid">
-            {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>再认识一个值得探索的 AI 工具与技能目录。</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>{{ end }}
+            {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>再认识一个值得探索的 AI 工具与技能目录。</p></a>{{ else if eq .File.BaseFileName "llm-master" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>看看可复用的 Agent Skill 如何组织。</p></a>{{ else if eq .File.BaseFileName "skillsmp" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>读懂模型调用、RAG、Agent 与生产工程。</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>{{ end }}
             <a href="{{ "blog/welcome/" | relLangURL }}"><span>ABOUT THIS LAB</span><strong>欢迎来到我的技术积累站</strong><p>了解 Sikang Lab 的技术栈和后续内容方向。</p></a>
           </div>
         </section>
@@ -59,6 +59,13 @@
     <a class="back-link" href="{{ "experience/" | relLangURL }}">← 返回技术栈总览</a>
     <header class="stack-detail-header"><p class="eyebrow">{{ .Params.eyebrow }}</p><p class="stack-index">{{ .Params.index }}</p><h1>{{ .Title }}</h1><p>{{ .Params.summary }}</p><div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div></header>
     <div class="stack-detail-content article-content">{{ .Content }}</div>
+    {{ if eq .File.BaseFileName "work" }}
+    <section class="work-article-grid" aria-label="个人沉淀文章列表">
+      {{ range slice "/stack/skillsmp" "/stack/llm-master" }}{{ with site.GetPage . }}
+      <a class="work-article-card" href="{{ .RelPermalink }}"><span class="eyebrow">{{ .Params.eyebrow }}</span><h2>{{ .Title }}</h2><p>{{ .Params.summary }}</p><div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div><span class="work-article-open">阅读文章 →</span></a>
+      {{ end }}{{ end }}
+    </section>
+    {{ end }}
   </article>
 {{ else if eq .File.BaseFileName "experience" }}
   <header class="page-hero wrap page-hero-compact"><p class="eyebrow">TOOLBOX & EXPERIENCE</p><p>沉淀、分享、成长，让自己和他人都能有所收获！</p></header>
@@ -66,7 +73,7 @@
     <a id="java" class="tech-section" href="{{ "stack/java/" | relLangURL }}"><div class="tech-cover cover-java"><span>01</span></div><div class="tech-body"><p class="eyebrow">BACKEND</p><h2>Java</h2><p>关注 Java 后端开发、面向对象设计、JVM 以及可维护的工程结构。</p><div class="tech-tags"><span>Java</span><span>Spring</span><span>JVM</span></div></div></a>
     <a id="python" class="tech-section" href="{{ "stack/python/" | relLangURL }}"><div class="tech-cover cover-python"><span>02</span></div><div class="tech-body"><p class="eyebrow">AUTOMATION</p><h2>Python</h2><p>使用 Python 进行工具开发、数据处理、自动化脚本和快速原型验证。</p><div class="tech-tags"><span>Python</span><span>FastAPI</span><span>Automation</span></div></div></a>
     <a id="agent" class="tech-section" href="{{ "stack/agent/" | relLangURL }}"><div class="tech-cover cover-agent"><span>03</span></div><div class="tech-body"><p class="eyebrow">AI ENGINEERING</p><h2>Agent</h2><p>探索 AI Agent、工具调用、上下文编排以及 AI 辅助开发在工程中的应用。</p><div class="tech-tags"><span>LLM</span><span>RAG</span><span>Tool Use</span></div></div></a>
-    <a id="work" class="tech-section" href="{{ "stack/work/" | relLangURL }}"><div class="tech-cover cover-work"><span>04</span></div><div class="tech-body"><p class="eyebrow">AI TOOLS</p><h2>个人沉淀</h2><p>从普通用户视角认识 Agent Skills，以及这个开放的 AI 技能生态地图。</p><div class="tech-tags"><span>Agent Skills</span><span>AI 工具</span><span>科普</span></div></div></a>
+    <a id="work" class="tech-section" href="{{ "stack/work/" | relLangURL }}"><div class="tech-cover cover-work"><span>04</span></div><div class="tech-body"><p class="eyebrow">NOTES & LEARNING</p><h2>个人沉淀</h2><p>记录 AI 工具、大模型应用与工程实践的学习笔记和科普文章。</p><div class="tech-tags"><span>大模型</span><span>AI 工具</span><span>学习笔记</span></div></div></a>
   </section>
 {{ else if eq .File.BaseFileName "thanks" }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}
