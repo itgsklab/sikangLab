@@ -32,7 +32,6 @@
           <div class="related-heading"><p class="eyebrow">KEEP EXPLORING</p><h2>继续阅读</h2></div>
           <div class="related-grid">
             {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>再认识一个值得探索的 AI 工具与技能目录。</p></a>{{ else if eq .File.BaseFileName "llm-master" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>看看可复用的 Agent Skill 如何组织。</p></a>{{ else if eq .File.BaseFileName "skillsmp" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>读懂模型调用、RAG、Agent 与生产工程。</p></a>{{ else if eq .File.BaseFileName "xiaolin-resume" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>继续阅读一篇技术学习路线科普。</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>{{ end }}
-            <a href="{{ "blog/welcome/" | relLangURL }}"><span>ABOUT THIS LAB</span><strong>欢迎来到我的技术积累站</strong><p>了解 Sikang Lab 的技术栈和后续内容方向。</p></a>
           </div>
         </section>
 
