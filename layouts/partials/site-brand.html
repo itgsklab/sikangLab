@@ -1,6 +1,6 @@
 <a class="site-brand" href="{{ site.Home.Permalink }}" aria-label="返回 Sikang Lab 首页">
-  {{- with resources.Get "media/site-icon.png" -}}
-    {{- $brandIcon := (.Crop "950x950 Top").Resize "96x96" -}}
+  {{- with resources.Get "media/site-icon-lab-v2.png" -}}
+    {{- $brandIcon := .Resize "96x96" -}}
     <img class="brand-avatar" src="{{ $brandIcon.RelPermalink }}" width="40" height="40" alt="" decoding="async">
   {{- end -}}
   <span>Sikang Lab</span>

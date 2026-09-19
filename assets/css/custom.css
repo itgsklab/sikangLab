@@ -52,8 +52,8 @@
 @media(max-width:650px){.about-toc{align-items:flex-start;flex-direction:column;gap:10px;margin:-42px 0 65px}.about-toc span{margin:0 0 4px}}
 .about-page>.about-author{margin-top:0}
 
-/* The supplied portrait is the site icon in every navigation layout. */
-.site-brand .brand-avatar{display:block;flex:none;width:40px;height:40px;object-fit:cover;border:2px solid #fff;border-radius:50%;background:#fff;box-shadow:0 8px 24px rgba(3,8,18,.18)}
+/* Sikang Lab brand mark in every navigation layout. */
+.site-brand .brand-avatar{display:block;flex:none;width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 8px 12px rgba(3,8,18,.24))}
 @media(max-width:800px){.site-brand .brand-avatar{width:36px;height:36px}}
 
 /* Refined primary navigation */
