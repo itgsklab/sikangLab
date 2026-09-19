@@ -22,6 +22,8 @@
         <aside class="article-callout"><span>继续探索</span><div><strong>挑一道问题，试着先自己回答</strong><p>从 Agent 或 RAG 专题开始，读完后再用自己的话解释一次。</p></div><a href="https://xiaolinnote.com/ai/" target="_blank" rel="noopener">访问小林面试笔记 ↗</a></aside>
         {{ else if eq .File.BaseFileName "llm-master" }}
         <aside class="article-callout"><span>继续探索</span><div><strong>沿着路线动手验证</strong><p>从一个最小 AI 应用开始，再逐步加入检索、工具与评估。</p></div><a href="https://github.com/youngyangyang04/llm-master" target="_blank" rel="noopener">访问 LLM-Master ↗</a></aside>
+        {{ else if eq .File.BaseFileName "xiaolin-resume" }}
+        <aside class="article-callout"><span>开始制作</span><div><strong>先选岗位，再选模板</strong><p>让模板服务于内容，不要用示例经历代替自己的真实经验。</p></div><a href="https://jianli.xiaolinnote.com/templates" target="_blank" rel="noopener">查看简历模板 ↗</a></aside>
         {{ else }}
         <aside class="article-callout"><span>继续探索</span><div><strong>把方法变成可复用的 AI 能力</strong><p>从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问 SkillsMP ↗</a></aside>
         {{ end }}
@@ -29,7 +31,7 @@
         <section class="related-reading">
           <div class="related-heading"><p class="eyebrow">KEEP EXPLORING</p><h2>继续阅读</h2></div>
           <div class="related-grid">
-            {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>再认识一个值得探索的 AI 工具与技能目录。</p></a>{{ else if eq .File.BaseFileName "llm-master" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>看看可复用的 Agent Skill 如何组织。</p></a>{{ else if eq .File.BaseFileName "skillsmp" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>读懂模型调用、RAG、Agent 与生产工程。</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>{{ end }}
+            {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>再认识一个值得探索的 AI 工具与技能目录。</p></a>{{ else if eq .File.BaseFileName "llm-master" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>看看可复用的 Agent Skill 如何组织。</p></a>{{ else if eq .File.BaseFileName "skillsmp" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>读懂模型调用、RAG、Agent 与生产工程。</p></a>{{ else if eq .File.BaseFileName "xiaolin-resume" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>继续阅读一篇技术学习路线科普。</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>{{ end }}
             <a href="{{ "blog/welcome/" | relLangURL }}"><span>ABOUT THIS LAB</span><strong>欢迎来到我的技术积累站</strong><p>了解 Sikang Lab 的技术栈和后续内容方向。</p></a>
           </div>
         </section>
