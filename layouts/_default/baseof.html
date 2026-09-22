@@ -63,6 +63,10 @@
       menu.setAttribute('aria-expanded',String(open));
     });
   </script>
+  {{ if .IsHome }}
+    {{ $orbitGlobe := resources.Get "js/orbit-globe.js" | minify | fingerprint }}
+    <script src="{{ $orbitGlobe.RelPermalink }}" defer></script>
+  {{ end }}
   {{ $articleStats := resources.Get "js/article-stats.js" | minify | fingerprint }}
   <script src="{{ $articleStats.RelPermalink }}" defer></script>
 </body>
