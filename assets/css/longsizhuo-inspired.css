@@ -97,6 +97,7 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-stats strong{font:800 27px Poppins,sans-serif}
 .ls-stats span{color:var(--muted);font-size:12px}
 .ls-focus-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:64px;scroll-margin-top:0}
+.ls-stack-grid{margin-top:0}
 .ls-home-topic-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:0}
 .ls-focus-grid a{position:relative;min-height:230px;padding:28px;border:1px solid rgba(32,199,183,.72);border-radius:16px;background:var(--ls-panel);box-shadow:0 14px 40px rgba(0,0,0,.09);transition:.25s}
 .ls-focus-grid a:hover{transform:translateY(-6px);border-color:var(--ls-purple-soft);box-shadow:var(--ls-shadow)}

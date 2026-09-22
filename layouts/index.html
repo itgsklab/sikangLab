@@ -52,8 +52,15 @@
       <div><strong>{{ len $projects }}</strong><span>{{ if $zh }}个人项目{{ else }}Personal Projects{{ end }}</span></div>
     </div>
   </div>
+</section>
 
-  <div id="stack" class="ls-focus-grid" aria-label="{{ if $zh }}技术方向{{ else }}Technical areas{{ end }}">
+<section id="stack" class="ls-section wrap">
+  <header class="ls-section-heading">
+    <p class="ls-kicker">TECHNICAL FOCUS</p>
+    <h2>{{ if $zh }}技术栈。{{ else }}Tech Stack.{{ end }}</h2>
+    <p>{{ if $zh }}围绕后端开发、自动化、AI Agent 与个人技术沉淀持续学习和实践。{{ else }}Ongoing learning and practice across backend development, automation, AI Agents, and personal technical notes.{{ end }}</p>
+  </header>
+  <div class="ls-focus-grid ls-stack-grid" aria-label="{{ if $zh }}技术方向{{ else }}Technical areas{{ end }}">
     <a href="{{ "stack/java/" | relLangURL }}"><span>01</span><h3>Java</h3><p>{{ if $zh }}后端开发、JVM 与可维护的工程结构。{{ else }}Backend development, the JVM, and maintainable architecture.{{ end }}</p></a>
     <a href="{{ "stack/python/" | relLangURL }}"><span>02</span><h3>Python</h3><p>{{ if $zh }}自动化、数据处理与快速原型验证。{{ else }}Automation, data processing, and rapid prototyping.{{ end }}</p></a>
     <a href="{{ "stack/agent/" | relLangURL }}"><span>03</span><h3>Agent</h3><p>{{ if $zh }}工具调用、上下文编排、RAG 与工程落地。{{ else }}Tool use, context orchestration, RAG, and production practice.{{ end }}</p></a>
