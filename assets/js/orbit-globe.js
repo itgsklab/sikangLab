@@ -8,7 +8,7 @@
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const TAU = Math.PI * 2;
-  const palette = ['#ffb58e', '#ffd6a0', '#67e8f9', '#c4b5fd'];
+  const palette = ['#ffb38f', '#ffd8b2', '#fff0de', '#78e6ea'];
   let width = 0;
   let height = 0;
   let dpr = 1;
@@ -109,38 +109,57 @@
   }
 
   const bands = [
-    { scaleX: 1.64, scaleY: 0.30, angle: -0.34, offset: -0.50, width: 18, speed: 0.00010, phase: 0.2 },
-    { scaleX: 1.55, scaleY: 0.25, angle: -0.16, offset: -0.30, width: 23, speed: -0.00008, phase: 1.1 },
-    { scaleX: 1.72, scaleY: 0.28, angle: 0.04, offset: -0.08, width: 15, speed: 0.00007, phase: 2.2 },
-    { scaleX: 1.66, scaleY: 0.25, angle: 0.17, offset: 0.17, width: 20, speed: -0.00009, phase: 3.4 },
-    { scaleX: 1.55, scaleY: 0.23, angle: 0.31, offset: 0.40, width: 17, speed: 0.00008, phase: 4.1 },
-    { scaleX: 1.42, scaleY: 0.18, angle: 0.42, offset: 0.57, width: 12, speed: -0.00006, phase: 5.2 }
+    { offset: -0.91, width: 20, wave: 0.080, tilt: -0.04, speed: 0.00030, phase: 0.2, frontStart: 0.20, frontEnd: 0.82 },
+    { offset: -0.68, width: 27, wave: 0.075, tilt: 0.05, speed: -0.00026, phase: 1.0, frontStart: 0.12, frontEnd: 0.90 },
+    { offset: -0.43, width: 25, wave: 0.095, tilt: -0.04, speed: 0.00024, phase: 2.0, frontStart: 0.20, frontEnd: 0.98 },
+    { offset: -0.17, width: 16, wave: 0.060, tilt: 0.07, speed: -0.00028, phase: 2.9, frontStart: 0.02, frontEnd: 0.72 },
+    { offset: 0.10, width: 22, wave: 0.085, tilt: -0.06, speed: 0.00025, phase: 3.8, frontStart: 0.15, frontEnd: 0.93 },
+    { offset: 0.36, width: 29, wave: 0.070, tilt: 0.05, speed: -0.00022, phase: 4.7, frontStart: 0.03, frontEnd: 0.79 },
+    { offset: 0.63, width: 32, wave: 0.090, tilt: -0.04, speed: 0.00027, phase: 5.4, frontStart: 0.12, frontEnd: 0.95 },
+    { offset: 0.86, width: 25, wave: 0.055, tilt: 0.04, speed: -0.00025, phase: 6.2, frontStart: 0.22, frontEnd: 0.84 }
   ];
 
-  function drawBand(band, centerX, centerY, radius, time, front) {
-    const wobble = Math.sin(time * band.speed + band.phase) * 0.055;
-    const angle = band.angle + wobble + pointer.x * 0.045;
-    const y = centerY + band.offset * radius + pointer.y * radius * 0.035;
-    const start = front ? 0 : Math.PI;
-    const end = front ? Math.PI : TAU;
-    ctx.save();
-    ctx.translate(centerX, y);
-    ctx.rotate(angle);
-    const gradient = ctx.createLinearGradient(-radius * 1.6, 0, radius * 1.6, 0);
-    gradient.addColorStop(0, '#315c9f');
-    gradient.addColorStop(0.48, '#706bb0');
-    gradient.addColorStop(1, '#efb2c8');
+  function traceBand(band, centerX, centerY, radius, time, start, end) {
+    const steps = 54;
+    const drift = Math.sin(time * band.speed * 0.72 + band.phase) * radius * 0.035;
     ctx.beginPath();
-    ctx.ellipse(0, 0, radius * band.scaleX, radius * band.scaleY, 0, start, end);
-    ctx.strokeStyle = gradient;
-    ctx.globalAlpha = front ? 0.92 : 0.5;
-    ctx.lineWidth = band.width * Math.max(0.68, radius / 285);
+    for (let index = 0; index <= steps; index += 1) {
+      const progress = index / steps;
+      const t = start + (end - start) * progress;
+      const x = centerX + (t * 2.72 - 1.36) * radius + drift;
+      const envelope = 0.35 + Math.sin(Math.PI * t) * 0.65;
+      const wave = Math.sin(t * TAU * 1.08 + band.phase + time * band.speed) * band.wave * radius * envelope;
+      const roughness = Math.sin(t * 31 + band.phase * 4 + time * 0.00016) * radius * 0.007;
+      const y = centerY + band.offset * radius + (x - centerX) * band.tilt + wave + roughness + pointer.y * radius * 0.025;
+      if (index === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+  }
+
+  function drawBand(band, centerX, centerY, radius, time, front) {
+    const start = front ? band.frontStart : 0;
+    const end = front ? band.frontEnd : 1;
+    const gradient = ctx.createLinearGradient(centerX - radius * 1.35, centerY, centerX + radius * 1.35, centerY);
+    const upper = band.offset < -0.1;
+    gradient.addColorStop(0, upper ? '#3f6399' : '#28538d');
+    gradient.addColorStop(0.48, upper ? '#81739b' : '#42669b');
+    gradient.addColorStop(1, upper ? '#efb4c8' : '#8e82aa');
+
+    ctx.save();
     ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowColor = upper ? 'rgba(231, 166, 194, .20)' : 'rgba(45, 91, 157, .24)';
+    ctx.shadowBlur = front ? 7 : 3;
+    traceBand(band, centerX, centerY, radius, time, start, end);
+    ctx.strokeStyle = gradient;
+    ctx.globalAlpha = front ? 0.96 : 0.42;
+    ctx.lineWidth = band.width * Math.max(0.72, radius / 285);
     ctx.stroke();
 
-    ctx.globalAlpha = front ? 0.18 : 0.08;
+    traceBand(band, centerX, centerY, radius, time, start, end);
+    ctx.globalAlpha = front ? 0.13 : 0.06;
     ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = Math.max(1, band.width * 0.08);
+    ctx.lineWidth = Math.max(1, band.width * 0.075);
     ctx.stroke();
     ctx.restore();
     ctx.globalAlpha = 1;
@@ -259,10 +278,10 @@
 
     pointer.x += (pointer.targetX - pointer.x) * 0.045;
     pointer.y += (pointer.targetY - pointer.y) * 0.045;
-    const radius = Math.min(width * 0.285, height * 0.36);
-    const centerX = width * 0.5 + pointer.x * radius * 0.055;
-    const centerY = height * 0.52 + pointer.y * radius * 0.04;
-    const rotation = -0.28 + time * 0.000045 + pointer.x * 0.16;
+    const radius = Math.min(width * 0.42, height * 0.39);
+    const centerX = width * 0.5 + pointer.x * radius * 0.045;
+    const centerY = height * 0.53 + pointer.y * radius * 0.035;
+    const rotation = -0.32 + time * 0.000065 + pointer.x * 0.14;
 
     bands.forEach((band) => drawBand(band, centerX, centerY, radius, time, false));
     drawGlobe(centerX, centerY, radius, rotation, time);
@@ -332,4 +351,17 @@
 
   resize();
   if (!observer) start();
+
+  const contactForm = document.querySelector('[data-contact-form]');
+  contactForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(contactForm);
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+    const recipient = contactForm.dataset.contactEmail;
+    const subject = encodeURIComponent(`来自 Sikang Lab 的留言：${name}`);
+    const body = encodeURIComponent(`姓名：${name}\n邮箱：${email}\n\n${message}`);
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+  });
 })();
