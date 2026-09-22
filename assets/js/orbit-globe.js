@@ -48,11 +48,13 @@ if (canvas && stage) {
     for (let index = 0; index < count; index += 1) {
       const star = document.createElement('i');
       const sizeRoll = random();
-      const size = sizeRoll > 0.94 ? 3.2 : sizeRoll > 0.72 ? 2.1 : 1.15;
-      const travelAngle = random() * Math.PI * 2;
-      const travelDistance = 10 + random() * (size > 2.5 ? 30 : 20);
+      const meteor = random() < 0.16;
+      const size = meteor ? 1.7 + random() * 1.3 : sizeRoll > 0.94 ? 3.2 : sizeRoll > 0.72 ? 2.1 : 1.15;
+      const travelAngle = (18 + random() * 24) * Math.PI / 180;
+      const travelDistance = meteor ? 360 + random() * 260 : 100 + random() * 140;
       const driftX = Math.cos(travelAngle) * travelDistance;
       const driftY = Math.sin(travelAngle) * travelDistance;
+      if (meteor) star.classList.add('is-meteor');
       star.style.setProperty('--star-x', `${(random() * 100).toFixed(2)}%`);
       star.style.setProperty('--star-y', `${(random() * 100).toFixed(2)}%`);
       star.style.setProperty('--star-size', `${size}px`);
@@ -61,10 +63,12 @@ if (canvas && stage) {
       star.style.setProperty('--star-start-y', `${(-driftY * 0.5).toFixed(2)}px`);
       star.style.setProperty('--star-end-x', `${(driftX * 0.5).toFixed(2)}px`);
       star.style.setProperty('--star-end-y', `${(driftY * 0.5).toFixed(2)}px`);
-      star.style.setProperty('--star-travel-duration', `${(13 + random() * 22).toFixed(2)}s`);
-      star.style.setProperty('--star-travel-delay', `${(-random() * 28).toFixed(2)}s`);
+      star.style.setProperty('--star-travel-duration', `${(meteor ? 2.5 + random() * 2.7 : 4.8 + random() * 4.2).toFixed(2)}s`);
+      star.style.setProperty('--star-travel-delay', `${(-random() * 12).toFixed(2)}s`);
       star.style.setProperty('--star-twinkle-duration', `${(2.4 + random() * 4.8).toFixed(2)}s`);
       star.style.setProperty('--star-twinkle-delay', `${(-random() * 7).toFixed(2)}s`);
+      star.style.setProperty('--star-trail-length', `${(32 + random() * 54).toFixed(2)}px`);
+      star.style.setProperty('--star-travel-angle', `${(travelAngle * 180 / Math.PI).toFixed(2)}deg`);
       fragment.appendChild(star);
     }
     starfield.replaceChildren(fragment);
