@@ -10,7 +10,11 @@
   const likedKey = `sikanglab:liked:${articlePath}`;
   const cacheKey = `sikanglab:likes:${articlePath}`;
   const apiRoot = 'https://gateway-us.umami.is/api';
-  const numberFormatter = new Intl.NumberFormat('zh-CN');
+  const isChinese = document.documentElement.lang.toLowerCase().startsWith('zh');
+  const copy = isChinese
+    ? { liked: '已点赞', like: '为本文点赞', unavailable: '浏览量暂时不可用' }
+    : { liked: 'Liked', like: 'Like this article', unavailable: 'View count is temporarily unavailable' };
+  const numberFormatter = new Intl.NumberFormat(isChinese ? 'zh-CN' : 'en-US');
 
   let liked = false;
   let likes = 0;
@@ -23,7 +27,7 @@
   const renderLikeState = () => {
     likeButton.classList.toggle('is-liked', liked);
     likeButton.setAttribute('aria-pressed', String(liked));
-    likeButton.title = liked ? '已点赞' : '为本文点赞';
+    likeButton.title = liked ? copy.liked : copy.like;
     if (labelNode) labelNode.textContent = liked ? 'Liked' : 'Like';
   };
 
@@ -70,7 +74,7 @@
     } catch (_) {
       if (viewsNode) {
         viewsNode.textContent = '—';
-        viewsNode.closest('.article-stat')?.setAttribute('title', '浏览量暂时不可用');
+        viewsNode.closest('.article-stat')?.setAttribute('title', copy.unavailable);
       }
     }
   };

@@ -19,9 +19,9 @@ hugoblox:
     # Schema.org type for structured data
     type: person # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: "技术积累 · 工程实践"
+    tagline: "Technical Notes · Engineering Practice"
     # Site meta description for search engines and social sharing
-    description: "Sikang 的技术积累站：记录编程知识、工程实践、项目作品与技术文章。"
+    description: "Sikang Lab — programming notes, engineering practice, and project journals."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
       twitter: "" # Twitter/X handle for Twitter Cards (without @)
@@ -90,7 +90,7 @@ hugoblox:
     search: true
     theme_toggle: true
     theme_picker: false
-    language_switcher: false
+    language_switcher: true
     # Call-to-action button
     cta:
       enable: false
@@ -104,7 +104,7 @@ hugoblox:
   footer:
     # Footer style variant
     style: minimal # minimal | columns | centered
-    language_switcher: false
+    language_switcher: true
     # Custom footer text (HTML supported)
     text: ""
 
@@ -114,7 +114,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   copyright:
     # Copyright notice - supports {year}, {name}, {license} placeholders
-    notice: "© {year} {name} · 保留所有权利"
+    notice: "© {year} {name} · All rights reserved"
     license:
       type: cc # cc | custom
       allow_derivatives: false
@@ -173,7 +173,7 @@ hugoblox:
   search:
     enable: true
     # Trending/suggested search terms
-    suggestions: ["技术文章", "项目", "技术栈"]
+    suggestions: ["articles", "projects", "tech stack"]
     # Quick action shortcuts in search modal
     quick_actions: []
 
@@ -239,7 +239,7 @@ hugoblox:
   # Regional formatting preferences
   # ────────────────────────────────────────────────────────────────────────────
   locale:
-    date_format: "2006年01月02日" # Go time format
+    date_format: "January 2, 2006" # Go time format
     time_format: "15:04"
     address_format: en-us
 

@@ -1,10 +1,10 @@
 {{ define "main" }}
 <article class="article-page wrap-narrow">
-  <a class="back-link" href="{{ .Parent.RelPermalink }}">← 返回{{ .Parent.Title }}</a>
+  <a class="back-link" href="{{ .Parent.RelPermalink }}">{{ i18n "back_to" }} {{ .Parent.Title }}</a>
   <header class="article-header">
     <div class="card-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
     <h1>{{ .Title }}</h1>
-    <div class="article-meta article-meta-interactive"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟阅读</span><b>·</b>{{ partial "article-stats.html" . }}</div>
+    <div class="article-meta article-meta-interactive"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ if eq site.Language.Lang "zh" }}{{ .Date.Format "2006年01月02日" }}{{ else }}{{ .Date.Format "January 2, 2006" }}{{ end }}</time><b>·</b><span>{{ .ReadingTime }} {{ i18n "minute_read" }}</span><b>·</b>{{ partial "article-stats.html" . }}</div>
   </header>
   <div class="article-content">{{ .Content }}</div>
 </article>

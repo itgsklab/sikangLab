@@ -176,7 +176,8 @@ contactForm?.addEventListener('submit', (event) => {
   const email = String(formData.get('email') || '').trim();
   const message = String(formData.get('message') || '').trim();
   const recipient = contactForm.dataset.contactEmail;
-  const subject = encodeURIComponent(`来自 Sikang Lab 的留言：${name}`);
-  const body = encodeURIComponent(`姓名：${name}\n邮箱：${email}\n\n${message}`);
+  const isChinese = document.documentElement.lang.toLowerCase().startsWith('zh');
+  const subject = encodeURIComponent(isChinese ? `来自 Sikang Lab 的留言：${name}` : `Message from Sikang Lab: ${name}`);
+  const body = encodeURIComponent(isChinese ? `姓名：${name}\n邮箱：${email}\n\n${message}` : `Name: ${name}\nEmail: ${email}\n\n${message}`);
   window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
 });

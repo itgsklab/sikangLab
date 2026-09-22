@@ -1,16 +1,1 @@
-# Navigation Links
-#   url 以 / 开头表示站内页面路径；weight 越小越靠前
-
-main:
-  - name: 我
-    url: about/
-    weight: 10
-  - name: 技术栈
-    url: experience/
-    weight: 20
-  - name: 项目
-    url: projects/
-    weight: 30
-  - name: 生活
-    url: life/
-    weight: 40
+# Language-specific navigation is configured in languages.yaml.

@@ -4,71 +4,77 @@
 {{ $brand := resources.Get "media/site-icon-lab-v2.png" }}
 {{ $articles := where site.RegularPages "Params.article" true }}
 {{ $projects := where site.RegularPages "Section" "projects" }}
+{{ $zh := eq site.Language.Lang "zh" }}
 
 <section class="ls-hero wrap" aria-labelledby="home-title">
   <div class="ls-hero-copy">
     <p class="ls-kicker">FULL-STACK · AI AGENT</p>
-    <h1 id="home-title">Hi, I'm <span>郭同学</span></h1>
-    <p class="ls-intro">一名关注实际落地的全栈开发者，主要学习与实践 Java、Python、Web 应用和 AI Agent。</p>
-    <div class="ls-contact-lines" aria-label="个人链接">
+    <h1 id="home-title">Hi, I'm <span>{{ if $zh }}郭同学{{ else }}Sikang{{ end }}</span></h1>
+    <p class="ls-intro">{{ if $zh }}一名关注实际落地的全栈开发者，主要学习与实践 Java、Python、Web 应用和 AI Agent。{{ else }}A full-stack developer focused on practical delivery, working with Java, Python, web applications, and AI Agents.{{ end }}</p>
+    <div class="ls-contact-lines" aria-label="{{ if $zh }}个人链接{{ else }}Personal links{{ end }}">
       <p><strong>Email:</strong> <a href="mailto:guosikang115@163.com">guosikang115@163.com</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/itgsklab" target="_blank" rel="noopener">github.com/itgsklab</a></p>
       <p><strong>Blog:</strong> <a href="{{ site.Home.Permalink }}">Sikang Lab</a></p>
       <p><strong>XHS:</strong> <a href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener">郭同学在coding</a></p>
     </div>
     <div class="ls-hero-actions">
-      <a class="ls-button ls-button-primary" href="#writing">最近文章</a>
-      <a class="ls-button" href="{{ "about/" | relLangURL }}">关于我</a>
+      <a class="ls-button ls-button-primary" href="#writing">{{ if $zh }}最近文章{{ else }}Recent Writing{{ end }}</a>
+      <a class="ls-button" href="{{ "about/" | relLangURL }}">{{ if $zh }}关于我{{ else }}About Me{{ end }}</a>
     </div>
   </div>
 
   <div class="ls-portrait-card">
-    {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ $author.name.display }}" decoding="async">{{ end }}
-    <span>Shanghai · China</span>
+    {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ if $zh }}郭思康{{ else }}{{ $author.name.display }}{{ end }}" decoding="async">{{ end }}
+    <span>{{ if $zh }}上海 · 中国{{ else }}Shanghai · China{{ end }}</span>
   </div>
 
-  <a class="ls-scroll-cue" href="#about" aria-label="向下浏览"><i></i></a>
+  <a class="ls-scroll-cue" href="#about" aria-label="{{ if $zh }}向下浏览{{ else }}Scroll down{{ end }}"><i></i></a>
 </section>
 
 <section id="about" class="ls-section wrap">
   <header class="ls-section-heading">
     <p class="ls-kicker">INTRODUCTION</p>
-    <h2>About Me.</h2>
+    <h2>{{ if $zh }}关于我。{{ else }}About Me.{{ end }}</h2>
   </header>
   <div class="ls-about-layout">
     <div class="ls-about-copy">
+      {{ if $zh }}
       <p>我更关注技术能否稳定地解决真实问题：代码是否容易维护，工具是否真正节省时间，方案离开演示环境后是否依然可靠。</p>
       <p>Sikang Lab 是我的个人工作台。我在这里记录技术原理、项目实践、踩坑过程和可以复用的结论。</p>
+      {{ else }}
+      <p>I care about whether technology solves real problems reliably: whether code remains maintainable, tools genuinely save time, and solutions still work beyond the demo.</p>
+      <p>Sikang Lab is my personal workbench for documenting technical principles, project practice, lessons learned, and reusable conclusions.</p>
+      {{ end }}
     </div>
-    <div class="ls-stats" aria-label="网站概览">
-      <div><strong>4</strong><span>技术方向</span></div>
-      <div><strong>{{ len $articles }}</strong><span>深度文章</span></div>
-      <div><strong>{{ len $projects }}</strong><span>个人项目</span></div>
+    <div class="ls-stats" aria-label="{{ if $zh }}网站概览{{ else }}Site overview{{ end }}">
+      <div><strong>4</strong><span>{{ if $zh }}技术方向{{ else }}Technical Areas{{ end }}</span></div>
+      <div><strong>{{ len $articles }}</strong><span>{{ if $zh }}深度文章{{ else }}In-depth Articles{{ end }}</span></div>
+      <div><strong>{{ len $projects }}</strong><span>{{ if $zh }}个人项目{{ else }}Personal Projects{{ end }}</span></div>
     </div>
   </div>
 
-  <div class="ls-focus-grid" aria-label="技术方向">
-    <a href="{{ "stack/java/" | relLangURL }}"><span>01</span><h3>Java</h3><p>后端开发、JVM 与可维护的工程结构。</p></a>
-    <a href="{{ "stack/python/" | relLangURL }}"><span>02</span><h3>Python</h3><p>自动化、数据处理与快速原型验证。</p></a>
-    <a href="{{ "stack/agent/" | relLangURL }}"><span>03</span><h3>Agent</h3><p>工具调用、上下文编排、RAG 与工程落地。</p></a>
-    <a href="{{ "stack/work/" | relLangURL }}"><span>04</span><h3>个人沉淀</h3><p>AI 工具、大模型应用与实践笔记。</p></a>
+  <div class="ls-focus-grid" aria-label="{{ if $zh }}技术方向{{ else }}Technical areas{{ end }}">
+    <a href="{{ "stack/java/" | relLangURL }}"><span>01</span><h3>Java</h3><p>{{ if $zh }}后端开发、JVM 与可维护的工程结构。{{ else }}Backend development, the JVM, and maintainable architecture.{{ end }}</p></a>
+    <a href="{{ "stack/python/" | relLangURL }}"><span>02</span><h3>Python</h3><p>{{ if $zh }}自动化、数据处理与快速原型验证。{{ else }}Automation, data processing, and rapid prototyping.{{ end }}</p></a>
+    <a href="{{ "stack/agent/" | relLangURL }}"><span>03</span><h3>Agent</h3><p>{{ if $zh }}工具调用、上下文编排、RAG 与工程落地。{{ else }}Tool use, context orchestration, RAG, and production practice.{{ end }}</p></a>
+    <a href="{{ "stack/work/" | relLangURL }}"><span>04</span><h3>{{ if $zh }}个人沉淀{{ else }}Personal Notes{{ end }}</h3><p>{{ if $zh }}AI 工具、大模型应用与实践笔记。{{ else }}AI tools, LLM applications, and practical notes.{{ end }}</p></a>
   </div>
 </section>
 
 <section id="projects" class="ls-section wrap">
   <header class="ls-section-heading">
     <p class="ls-kicker">MY WORK</p>
-    <h2>Projects.</h2>
-    <p>把学习过程变成可以持续维护、公开访问和反复验证的作品。</p>
+    <h2>{{ if $zh }}项目作品。{{ else }}Projects.{{ end }}</h2>
+    <p>{{ if $zh }}把学习过程变成可以持续维护、公开访问和反复验证的作品。{{ else }}Turning the learning process into work that can be maintained, shared, and tested over time.{{ end }}</p>
   </header>
   <a class="ls-project-card" href="{{ "projects/sikang-website/" | relLangURL }}">
     <div class="ls-project-visual">
-      {{ with $brand }}{{ $projectIcon := .Resize "512x512" }}<img src="{{ $projectIcon.RelPermalink }}" alt="Sikang Lab 兔子图标" loading="lazy">{{ end }}
+      {{ with $brand }}{{ $projectIcon := .Resize "512x512" }}<img src="{{ $projectIcon.RelPermalink }}" alt="{{ if $zh }}Sikang Lab 兔子图标{{ else }}Sikang Lab rabbit icon{{ end }}" loading="lazy">{{ end }}
     </div>
     <div class="ls-project-copy">
-      <span>PERSONAL WEBSITE</span>
+      <span>{{ if $zh }}个人网站{{ else }}PERSONAL WEBSITE{{ end }}</span>
       <h3>Sikang Lab</h3>
-      <p>基于 Hugo 与 GitHub Pages 搭建的个人技术实践站，记录 AI Agent、后端开发、自动化工具与工程思考。</p>
+      <p>{{ if $zh }}基于 Hugo 与 GitHub Pages 搭建的个人技术实践站，记录 AI Agent、后端开发、自动化工具与工程思考。{{ else }}A personal engineering site built with Hugo and GitHub Pages, covering AI Agents, backend development, automation, and software practice.{{ end }}</p>
       <div><b>Hugo</b><b>GitHub Actions</b><b>Pagefind</b></div>
     </div>
   </a>
@@ -77,15 +83,15 @@
 <section id="writing" class="ls-section ls-writing wrap">
   <header class="ls-section-heading">
     <p class="ls-kicker">THOUGHTS & SHARING</p>
-    <h2>Writing.</h2>
-    <p>把一个问题讲清楚，再把解决过程沉淀成下一次可以直接使用的参考。</p>
+    <h2>{{ if $zh }}写作。{{ else }}Writing.{{ end }}</h2>
+    <p>{{ if $zh }}把一个问题讲清楚，再把解决过程沉淀成下一次可以直接使用的参考。{{ else }}Explain a problem clearly, then turn the solution into a reference that can be reused next time.{{ end }}</p>
   </header>
   <div class="card-grid ls-writing-grid">
     {{ with site.GetPage "/stack/agent-xiaolinnote" }}{{ partial "article-card.html" . }}{{ end }}
     {{ with site.GetPage "/stack/llm-master" }}{{ partial "article-card.html" . }}{{ end }}
     {{ with site.GetPage "/stack/skillsmp" }}{{ partial "article-card.html" . }}{{ end }}
   </div>
-  <a class="ls-more-link" href="{{ "blog/" | relLangURL }}">查看全部文章 →</a>
+  <a class="ls-more-link" href="{{ "blog/" | relLangURL }}">{{ i18n "all_articles" }}</a>
 </section>
 
 <section id="contact" class="ls-section ls-contact-section">
@@ -93,30 +99,30 @@
   <div class="ls-contact-scene wrap">
     <div class="ls-contact-card">
       <p class="ls-kicker">GET IN TOUCH</p>
-      <h2>Contact.</h2>
+      <h2>{{ if $zh }}联系我。{{ else }}Contact.{{ end }}</h2>
       <form class="ls-contact-form" data-contact-form data-contact-email="guosikang115@163.com">
-        <label for="contact-name">Your Name</label>
-        <input id="contact-name" name="name" type="text" placeholder="What's your good name?" autocomplete="name" required>
+        <label for="contact-name">{{ if $zh }}你的名字{{ else }}Your Name{{ end }}</label>
+        <input id="contact-name" name="name" type="text" placeholder="{{ if $zh }}怎么称呼你？{{ else }}What's your good name?{{ end }}" autocomplete="name" required>
 
-        <label for="contact-email">Your Email</label>
-        <input id="contact-email" name="email" type="email" placeholder="What's your email address?" autocomplete="email" required>
+        <label for="contact-email">{{ if $zh }}你的邮箱{{ else }}Your Email{{ end }}</label>
+        <input id="contact-email" name="email" type="email" placeholder="{{ if $zh }}你的邮箱地址是什么？{{ else }}What's your email address?{{ end }}" autocomplete="email" required>
 
-        <label for="contact-message">Your Message</label>
-        <textarea id="contact-message" name="message" rows="5" placeholder="What do you want to say?" required></textarea>
+        <label for="contact-message">{{ if $zh }}留言内容{{ else }}Your Message{{ end }}</label>
+        <textarea id="contact-message" name="message" rows="5" placeholder="{{ if $zh }}想对我说些什么？{{ else }}What do you want to say?{{ end }}" required></textarea>
 
-        <button type="submit">Send Message <span>↗</span></button>
+        <button type="submit">{{ if $zh }}发送留言{{ else }}Send Message{{ end }} <span>↗</span></button>
       </form>
-      <div class="ls-contact-shortcuts" aria-label="其它联系方式">
+      <div class="ls-contact-shortcuts" aria-label="{{ if $zh }}其它联系方式{{ else }}Other ways to connect{{ end }}">
         <a href="https://github.com/itgsklab" target="_blank" rel="noopener">GitHub</a>
         <a href="https://x.com/TheOrange991105" target="_blank" rel="noopener">X</a>
-        <a href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener">小红书</a>
+        <a href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener">{{ if $zh }}小红书{{ else }}Xiaohongshu{{ end }}</a>
       </div>
     </div>
     <div class="ls-orbit-stage ls-contact-orbit" data-orbit-stage data-model-url="{{ "models/planet/scene.gltf" | relURL }}">
-      <canvas data-orbit-globe role="img" aria-label="正面缓慢旋转的数字地球与环绕球体的动态彩色环带">你的浏览器暂不支持 Canvas 动画。</canvas>
-      <span class="ls-orbit-loader" aria-live="polite">LOADING PLANET</span>
+      <canvas data-orbit-globe role="img" aria-label="{{ if $zh }}正面缓慢旋转的数字地球与环绕球体的动态彩色环带{{ else }}A slowly rotating digital planet surrounded by animated colored rings{{ end }}">{{ if $zh }}你的浏览器暂不支持 Canvas 动画。{{ else }}Your browser does not support Canvas animation.{{ end }}</canvas>
+      <span class="ls-orbit-loader" aria-live="polite">{{ if $zh }}正在加载星球{{ else }}LOADING PLANET{{ end }}</span>
       <a class="ls-orbit-credit" href="https://sketchfab.com/3d-models/stylized-planet-789725db86f547fc9163b00f302c3e70" target="_blank" rel="noopener">3D model: cmzw · CC BY 4.0</a>
-      <span class="ls-orbit-hint" aria-hidden="true">DRAG TO ROTATE</span>
+      <span class="ls-orbit-hint" aria-hidden="true">{{ if $zh }}拖动旋转{{ else }}DRAG TO ROTATE{{ end }}</span>
     </div>
   </div>
 </section>

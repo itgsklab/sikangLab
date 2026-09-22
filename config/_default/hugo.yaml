@@ -12,7 +12,7 @@ baseURL: 'https://itgsklab.github.io/sikangLab/'
 ## LANGUAGE
 ############################
 
-defaultContentLanguage: zh
+defaultContentLanguage: en
 hasCJKLanguage: true
 defaultContentLanguageInSubdir: false
 removePathAccents: true

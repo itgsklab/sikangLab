@@ -1,10 +1,51 @@
-# Languages
-#   Create a section for each of your site's languages.
-#   Documentation: https://docs.hugoblox.com/reference/language/
-
-# 默认语言：简体中文
-zh:
-  locale: zh-Hans
-  title: 'Sikang · Developer Notes'
+en:
+  locale: en-US
+  label: English
+  weight: 1
+  title: 'Sikang Lab · Developer Notes'
   params:
-    description: 'Sikang 的技术积累站 —— 编程笔记、工程实践与项目记录'
+    description: 'Sikang Lab — programming notes, engineering practice, and project journals.'
+  menus:
+    main:
+      - identifier: about
+        name: About
+        url: about/
+        weight: 10
+      - identifier: stack
+        name: Tech Stack
+        url: experience/
+        weight: 20
+      - identifier: projects
+        name: Projects
+        url: projects/
+        weight: 30
+      - identifier: life
+        name: Life
+        url: life/
+        weight: 40
+
+zh:
+  locale: zh-CN
+  label: 中文
+  weight: 2
+  title: 'Sikang Lab · 技术积累'
+  params:
+    description: 'Sikang 的技术积累站 —— 编程笔记、工程实践与项目记录。'
+  menus:
+    main:
+      - identifier: about
+        name: 我
+        url: about/
+        weight: 10
+      - identifier: stack
+        name: 技术栈
+        url: experience/
+        weight: 20
+      - identifier: projects
+        name: 项目
+        url: projects/
+        weight: 30
+      - identifier: life
+        name: 生活
+        url: life/
+        weight: 40

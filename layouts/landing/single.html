@@ -1,4 +1,6 @@
 {{ define "main" }}
+{{ $zh := eq site.Language.Lang "zh" }}
+{{ $base := .File.TranslationBaseName }}
 {{ if and (eq .Section "stack") .Params.article }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}
   <div class="reading-progress" aria-hidden="true"><i></i></div>
@@ -6,38 +8,38 @@
     <div class="reference-layout">
       <div class="reference-main">
         <header class="reference-header">
-          <nav class="reference-breadcrumb" aria-label="面包屑导航">{{ if eq .Params.article_parent "agent" }}<a href="{{ "experience/" | relLangURL }}">技术栈</a><span>/</span><a href="{{ "stack/agent/" | relLangURL }}">Agent</a><span>/</span>{{ else if eq .Params.article_parent "work" }}<a href="{{ "experience/" | relLangURL }}">技术栈</a><span>/</span><a href="{{ "stack/work/" | relLangURL }}">个人沉淀</a><span>/</span>{{ else }}<a href="{{ "blog/" | relLangURL }}">知识</a><span>/</span><a href="{{ "experience/" | relLangURL }}">AI 工具</a><span>/</span>{{ end }}</nav>
+          <nav class="reference-breadcrumb" aria-label="{{ if $zh }}面包屑导航{{ else }}Breadcrumb{{ end }}">{{ if eq .Params.article_parent "agent" }}<a href="{{ "experience/" | relLangURL }}">{{ i18n "tech_stack" }}</a><span>/</span><a href="{{ "stack/agent/" | relLangURL }}">Agent</a><span>/</span>{{ else if eq .Params.article_parent "work" }}<a href="{{ "experience/" | relLangURL }}">{{ i18n "tech_stack" }}</a><span>/</span><a href="{{ "stack/work/" | relLangURL }}">{{ i18n "personal_notes" }}</a><span>/</span>{{ else }}<a href="{{ "blog/" | relLangURL }}">{{ if $zh }}知识{{ else }}Knowledge{{ end }}</a><span>/</span><a href="{{ "experience/" | relLangURL }}">AI {{ if $zh }}工具{{ else }}Tools{{ end }}</a><span>/</span>{{ end }}</nav>
           <h1>{{ .Title }}</h1>
-          <div class="reference-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><b>·</b><span>{{ .ReadingTime }} 分钟</span><b>·</b>{{ partial "article-stats.html" . }}<b>·</b><a href="https://github.com/itgsklab/sikangLab/edit/main/content/{{ .File.Path }}" target="_blank" rel="noopener">编辑内容 ↗</a></div>
+          <div class="reference-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><b>·</b><span>{{ .ReadingTime }} {{ i18n "minutes" }}</span><b>·</b>{{ partial "article-stats.html" . }}<b>·</b><a href="https://github.com/itgsklab/sikangLab/edit/main/content/{{ .File.Path }}" target="_blank" rel="noopener">{{ i18n "edit_content" }}</a></div>
           <div class="reference-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
           <section class="reference-author">
-            {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="郭同学在coding">{{ end }}
-            <div><small>作者</small><strong>郭同学在coding</strong><p>AI Agent · 全栈开发</p><nav aria-label="作者链接"><a href="https://github.com/itgsklab" target="_blank" rel="noopener">GitHub</a><a href="https://x.com/TheOrange991105" target="_blank" rel="noopener">X</a><a href="mailto:guosikang115@163.com">Email</a></nav></div>
+            {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ if $zh }}郭同学在coding{{ else }}Sikang Guo{{ end }}">{{ end }}
+            <div><small>{{ i18n "author" }}</small><strong>{{ if $zh }}郭同学在coding{{ else }}Sikang Guo{{ end }}</strong><p>{{ i18n "author_role" }}</p><nav aria-label="{{ if $zh }}作者链接{{ else }}Author links{{ end }}"><a href="https://github.com/itgsklab" target="_blank" rel="noopener">GitHub</a><a href="https://x.com/TheOrange991105" target="_blank" rel="noopener">X</a><a href="mailto:guosikang115@163.com">Email</a></nav></div>
           </section>
         </header>
-        <aside class="reference-toc reference-toc-mobile"><p class="eyebrow">本文目录</p>{{ .TableOfContents }}</aside>
+        <aside class="reference-toc reference-toc-mobile"><p class="eyebrow">{{ i18n "table_of_contents" }}</p>{{ .TableOfContents }}</aside>
 
         <div class="article-content">{{ .Content }}</div>
         {{ if eq .Params.article_parent "agent" }}
-        <aside class="article-callout"><span>继续探索</span><div><strong>挑一道问题，试着先自己回答</strong><p>从 Agent 或 RAG 专题开始，读完后再用自己的话解释一次。</p></div><a href="https://xiaolinnote.com/ai/" target="_blank" rel="noopener">访问小林面试笔记 ↗</a></aside>
-        {{ else if eq .File.BaseFileName "llm-master" }}
-        <aside class="article-callout"><span>继续探索</span><div><strong>沿着路线动手验证</strong><p>从一个最小 AI 应用开始，再逐步加入检索、工具与评估。</p></div><a href="https://github.com/youngyangyang04/llm-master" target="_blank" rel="noopener">访问 LLM-Master ↗</a></aside>
-        {{ else if eq .File.BaseFileName "xiaolin-resume" }}
-        <aside class="article-callout"><span>开始制作</span><div><strong>先选岗位，再选模板</strong><p>让模板服务于内容，不要用示例经历代替自己的真实经验。</p></div><a href="https://jianli.xiaolinnote.com/templates" target="_blank" rel="noopener">查看简历模板 ↗</a></aside>
+        <aside class="article-callout"><span>{{ if $zh }}继续探索{{ else }}Explore Further{{ end }}</span><div><strong>{{ if $zh }}挑一道问题，试着先自己回答{{ else }}Pick a question and answer it yourself first{{ end }}</strong><p>{{ if $zh }}从 Agent 或 RAG 专题开始，读完后再用自己的话解释一次。{{ else }}Start with an Agent or RAG topic, then explain it again in your own words.{{ end }}</p></div><a href="https://xiaolinnote.com/ai/" target="_blank" rel="noopener">{{ if $zh }}访问小林面试笔记{{ else }}Visit Xiaolin AI Notes{{ end }} ↗</a></aside>
+        {{ else if eq $base "llm-master" }}
+        <aside class="article-callout"><span>{{ if $zh }}继续探索{{ else }}Explore Further{{ end }}</span><div><strong>{{ if $zh }}沿着路线动手验证{{ else }}Validate the roadmap by building{{ end }}</strong><p>{{ if $zh }}从一个最小 AI 应用开始，再逐步加入检索、工具与评估。{{ else }}Start with a minimal AI application, then add retrieval, tools, and evaluation step by step.{{ end }}</p></div><a href="https://github.com/youngyangyang04/llm-master" target="_blank" rel="noopener">{{ if $zh }}访问{{ else }}Visit{{ end }} LLM-Master ↗</a></aside>
+        {{ else if eq $base "xiaolin-resume" }}
+        <aside class="article-callout"><span>{{ if $zh }}开始制作{{ else }}Start Building{{ end }}</span><div><strong>{{ if $zh }}先选岗位，再选模板{{ else }}Choose the role before the template{{ end }}</strong><p>{{ if $zh }}让模板服务于内容，不要用示例经历代替自己的真实经验。{{ else }}Let the template serve your content, and never replace real experience with sample material.{{ end }}</p></div><a href="https://jianli.xiaolinnote.com/templates" target="_blank" rel="noopener">{{ if $zh }}查看简历模板{{ else }}View resume templates{{ end }} ↗</a></aside>
         {{ else }}
-        <aside class="article-callout"><span>继续探索</span><div><strong>把方法变成可复用的 AI 能力</strong><p>从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">访问 SkillsMP ↗</a></aside>
+        <aside class="article-callout"><span>{{ if $zh }}继续探索{{ else }}Explore Further{{ end }}</span><div><strong>{{ if $zh }}把方法变成可复用的 AI 能力{{ else }}Turn a method into a reusable AI capability{{ end }}</strong><p>{{ if $zh }}从公开案例中找灵感，但在安装和使用前先检查来源、脚本与权限。{{ else }}Learn from public examples, but inspect the source, scripts, and permissions before installing anything.{{ end }}</p></div><a href="https://skillsmp.com/zh" target="_blank" rel="noopener">{{ if $zh }}访问{{ else }}Visit{{ end }} SkillsMP ↗</a></aside>
         {{ end }}
 
         <section class="related-reading">
-          <div class="related-heading"><p class="eyebrow">KEEP EXPLORING</p><h2>继续阅读</h2></div>
+          <div class="related-heading"><p class="eyebrow">KEEP EXPLORING</p><h2>{{ i18n "continue_reading" }}</h2></div>
           <div class="related-grid">
-            {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>再认识一个值得探索的 AI 工具与技能目录。</p></a>{{ else if eq .File.BaseFileName "llm-master" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>SkillsMP：给 AI 找技能的网站</strong><p>看看可复用的 Agent Skill 如何组织。</p></a>{{ else if eq .File.BaseFileName "skillsmp" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>读懂模型调用、RAG、Agent 与生产工程。</p></a>{{ else if eq .File.BaseFileName "xiaolin-resume" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>从聊天机器人到 AI 应用</strong><p>继续阅读一篇技术学习路线科普。</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>理解工具调用、上下文编排与 Agent 工程落地。</p></a>{{ end }}
+            {{ if eq .Params.article_parent "agent" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>{{ if $zh }}SkillsMP：给 AI 找技能的网站{{ else }}SkillsMP: Discover Skills for AI{{ end }}</strong><p>{{ if $zh }}再认识一个值得探索的 AI 工具与技能目录。{{ else }}Discover another useful directory for AI tools and reusable skills.{{ end }}</p></a>{{ else if eq $base "llm-master" }}<a href="{{ "stack/work/skillsmp/" | relLangURL }}"><span>AI TOOLS</span><strong>{{ if $zh }}SkillsMP：给 AI 找技能的网站{{ else }}SkillsMP: Discover Skills for AI{{ end }}</strong><p>{{ if $zh }}看看可复用的 Agent Skill 如何组织。{{ else }}See how reusable Agent Skills are organized.{{ end }}</p></a>{{ else if eq $base "skillsmp" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>{{ if $zh }}从聊天机器人到 AI 应用{{ else }}From Chatbots to AI Applications{{ end }}</strong><p>{{ if $zh }}读懂模型调用、RAG、Agent 与生产工程。{{ else }}Understand model APIs, RAG, Agents, and production engineering.{{ end }}</p></a>{{ else if eq $base "xiaolin-resume" }}<a href="{{ "stack/work/llm-master/" | relLangURL }}"><span>AI LEARNING</span><strong>{{ if $zh }}从聊天机器人到 AI 应用{{ else }}From Chatbots to AI Applications{{ end }}</strong><p>{{ if $zh }}继续阅读一篇技术学习路线科普。{{ else }}Continue with a practical technology learning roadmap.{{ end }}</p></a>{{ else }}<a href="{{ "stack/agent/" | relLangURL }}"><span>AI ENGINEERING</span><strong>Agent</strong><p>{{ if $zh }}理解工具调用、上下文编排与 Agent 工程落地。{{ else }}Understand tool use, context orchestration, and Agent engineering.{{ end }}</p></a>{{ end }}
           </div>
         </section>
 
-        <nav class="reading-footer-nav" aria-label="文章导航"><a href="{{ if eq .Params.article_parent "agent" }}{{ "stack/agent/" | relLangURL }}{{ else if eq .Params.article_parent "work" }}{{ "stack/work/" | relLangURL }}{{ else }}{{ "experience/" | relLangURL }}{{ end }}"><small>返回栏目</small><strong>← {{ if eq .Params.article_parent "agent" }}Agent{{ else if eq .Params.article_parent "work" }}个人沉淀{{ else }}技术栈总览{{ end }}</strong></a><a href="{{ "blog/" | relLangURL }}"><small>更多内容</small><strong>全部文章 →</strong></a></nav>
+        <nav class="reading-footer-nav" aria-label="{{ i18n "article_navigation" }}"><a href="{{ if eq .Params.article_parent "agent" }}{{ "stack/agent/" | relLangURL }}{{ else if eq .Params.article_parent "work" }}{{ "stack/work/" | relLangURL }}{{ else }}{{ "experience/" | relLangURL }}{{ end }}"><small>{{ i18n "back_section" }}</small><strong>← {{ if eq .Params.article_parent "agent" }}Agent{{ else if eq .Params.article_parent "work" }}{{ i18n "personal_notes" }}{{ else }}{{ i18n "tech_stack" }}{{ end }}</strong></a><a href="{{ "blog/" | relLangURL }}"><small>{{ i18n "more_content" }}</small><strong>{{ i18n "all_content" }}</strong></a></nav>
       </div>
-      <aside class="reference-toc reference-toc-desktop"><p class="eyebrow">本文目录</p>{{ .TableOfContents }}</aside>
+      <aside class="reference-toc reference-toc-desktop"><p class="eyebrow">{{ i18n "table_of_contents" }}</p>{{ .TableOfContents }}</aside>
     </div>
   </article>
   <script>
@@ -57,62 +59,62 @@
   </script>
 {{ else if eq .Section "stack" }}
   <article class="stack-detail wrap-narrow" aria-label="{{ .Title }}">
-    {{ $articles := where (where site.RegularPages "Section" "stack") "Params.article_parent" .File.BaseFileName }}
+    {{ $articles := where (where site.RegularPages "Section" "stack") "Params.article_parent" $base }}
     {{ if $articles }}
-    <section class="work-article-grid" aria-label="{{ .Title }}文章列表">
+    <section class="work-article-grid" aria-label="{{ .Title }} {{ if $zh }}文章列表{{ else }}article list{{ end }}">
       {{ range $articles.ByDate.Reverse }}
-      <a class="work-article-card" href="{{ .RelPermalink }}"><span class="eyebrow">{{ .Params.eyebrow }}</span><h2>{{ .Title }}</h2><p>{{ .Params.summary }}</p><div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div><span class="work-article-open">阅读文章 →</span></a>
+      <a class="work-article-card" href="{{ .RelPermalink }}"><span class="eyebrow">{{ .Params.eyebrow }}</span><h2>{{ .Title }}</h2><p>{{ .Params.summary }}</p><div class="tech-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div><span class="work-article-open">{{ i18n "read_article" }}</span></a>
       {{ end }}
     </section>
     {{ else }}
     <div class="stack-detail-content article-content">{{ .Content }}</div>
     {{ end }}
   </article>
-{{ else if eq .File.BaseFileName "experience" }}
-  <header class="page-hero wrap page-hero-compact"><p class="eyebrow">TOOLBOX & EXPERIENCE</p><p>沉淀、分享、成长，让自己和他人都能有所收获！</p></header>
+{{ else if eq $base "experience" }}
+  <header class="page-hero wrap page-hero-compact"><p class="eyebrow">TOOLBOX & EXPERIENCE</p><p>{{ if $zh }}沉淀、分享、成长，让自己和他人都能有所收获！{{ else }}Learn, document, share, and grow—so the work can help both me and others.{{ end }}</p></header>
   <section class="tech-sections wrap">
-    <a id="java" class="tech-section" href="{{ "stack/java/" | relLangURL }}"><div class="tech-cover cover-java"><span>01</span></div><div class="tech-body"><p class="eyebrow">BACKEND</p><h2>Java</h2><p>关注 Java 后端开发、面向对象设计、JVM 以及可维护的工程结构。</p><div class="tech-tags"><span>Java</span><span>Spring</span><span>JVM</span></div></div></a>
-    <a id="python" class="tech-section" href="{{ "stack/python/" | relLangURL }}"><div class="tech-cover cover-python"><span>02</span></div><div class="tech-body"><p class="eyebrow">AUTOMATION</p><h2>Python</h2><p>使用 Python 进行工具开发、数据处理、自动化脚本和快速原型验证。</p><div class="tech-tags"><span>Python</span><span>FastAPI</span><span>Automation</span></div></div></a>
-    <a id="agent" class="tech-section" href="{{ "stack/agent/" | relLangURL }}"><div class="tech-cover cover-agent"><span>03</span></div><div class="tech-body"><p class="eyebrow">AI ENGINEERING</p><h2>Agent</h2><p>探索 AI Agent、工具调用、上下文编排以及 AI 辅助开发在工程中的应用。</p><div class="tech-tags"><span>LLM</span><span>RAG</span><span>Tool Use</span></div></div></a>
-    <a id="work" class="tech-section" href="{{ "stack/work/" | relLangURL }}"><div class="tech-cover cover-work"><span>04</span></div><div class="tech-body"><p class="eyebrow">NOTES & LEARNING</p><h2>个人沉淀</h2><p>记录 AI 工具、大模型应用与工程实践的学习笔记和科普文章。</p><div class="tech-tags"><span>大模型</span><span>AI 工具</span><span>学习笔记</span></div></div></a>
+    <a id="java" class="tech-section" href="{{ "stack/java/" | relLangURL }}"><div class="tech-cover cover-java"><span>01</span></div><div class="tech-body"><p class="eyebrow">BACKEND</p><h2>Java</h2><p>{{ if $zh }}关注 Java 后端开发、面向对象设计、JVM 以及可维护的工程结构。{{ else }}Backend development, object-oriented design, the JVM, and maintainable engineering structures.{{ end }}</p><div class="tech-tags"><span>Java</span><span>Spring</span><span>JVM</span></div></div></a>
+    <a id="python" class="tech-section" href="{{ "stack/python/" | relLangURL }}"><div class="tech-cover cover-python"><span>02</span></div><div class="tech-body"><p class="eyebrow">AUTOMATION</p><h2>Python</h2><p>{{ if $zh }}使用 Python 进行工具开发、数据处理、自动化脚本和快速原型验证。{{ else }}Tool development, data processing, automation scripts, and rapid prototypes with Python.{{ end }}</p><div class="tech-tags"><span>Python</span><span>FastAPI</span><span>Automation</span></div></div></a>
+    <a id="agent" class="tech-section" href="{{ "stack/agent/" | relLangURL }}"><div class="tech-cover cover-agent"><span>03</span></div><div class="tech-body"><p class="eyebrow">AI ENGINEERING</p><h2>Agent</h2><p>{{ if $zh }}探索 AI Agent、工具调用、上下文编排以及 AI 辅助开发在工程中的应用。{{ else }}AI Agents, tool use, context orchestration, and AI-assisted development in real engineering work.{{ end }}</p><div class="tech-tags"><span>LLM</span><span>RAG</span><span>Tool Use</span></div></div></a>
+    <a id="work" class="tech-section" href="{{ "stack/work/" | relLangURL }}"><div class="tech-cover cover-work"><span>04</span></div><div class="tech-body"><p class="eyebrow">NOTES & LEARNING</p><h2>{{ if $zh }}个人沉淀{{ else }}Personal Notes{{ end }}</h2><p>{{ if $zh }}记录 AI 工具、大模型应用与工程实践的学习笔记和科普文章。{{ else }}Learning notes and explainers on AI tools, LLM applications, and engineering practice.{{ end }}</p><div class="tech-tags"><span>{{ if $zh }}大模型{{ else }}LLM{{ end }}</span><span>AI {{ if $zh }}工具{{ else }}Tools{{ end }}</span><span>{{ if $zh }}学习笔记{{ else }}Notes{{ end }}</span></div></div></a>
   </section>
-{{ else if eq .File.BaseFileName "thanks" }}
+{{ else if eq $base "thanks" }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}
   <article class="thanks-page wrap-narrow">
-    <header class="thanks-header"><p class="eyebrow">CONTRIBUTORS & THANKS</p><h1>致谢</h1><p>感谢每一位为 Sikang Lab 提供代码、灵感和反馈的人。正是这些持续的贡献，让这个网站不断生长。</p></header>
-    <section class="thanks-section"><div class="thanks-title"><p class="eyebrow">PEOPLE</p><h2>贡献者</h2><span>基于当前 Git 提交记录</span></div>
+    <header class="thanks-header"><p class="eyebrow">CONTRIBUTORS & THANKS</p><h1>{{ if $zh }}致谢{{ else }}Thanks{{ end }}</h1><p>{{ if $zh }}感谢每一位为 Sikang Lab 提供代码、灵感和反馈的人。正是这些持续的贡献，让这个网站不断生长。{{ else }}Thank you to everyone who contributes code, ideas, and feedback to Sikang Lab. Those contributions keep this site growing.{{ end }}</p></header>
+    <section class="thanks-section"><div class="thanks-title"><p class="eyebrow">PEOPLE</p><h2>{{ if $zh }}贡献者{{ else }}Contributors{{ end }}</h2><span>{{ if $zh }}基于当前 Git 提交记录{{ else }}Based on the current Git history{{ end }}</span></div>
       <div class="contributor-grid contributor-grid-single">
-        <a class="contributor-card" href="https://github.com/itgsklab" target="_blank" rel="noopener"><div class="contributor-avatar">{{ with $avatar }}<img src="{{ .RelPermalink }}" alt="itgsklab">{{ end }}</div><div><h3>itgsklab</h3><p>项目维护者 · 全部提交</p></div><span>↗</span></a>
+        <a class="contributor-card" href="https://github.com/itgsklab" target="_blank" rel="noopener"><div class="contributor-avatar">{{ with $avatar }}<img src="{{ .RelPermalink }}" alt="itgsklab">{{ end }}</div><div><h3>itgsklab</h3><p>{{ if $zh }}项目维护者 · 全部提交{{ else }}Project maintainer · All commits{{ end }}</p></div><span>↗</span></a>
       </div>
     </section>
-    <section class="thanks-section"><div class="thanks-title"><p class="eyebrow">BUILT WITH</p><h2>特别感谢</h2><span>让 Sikang Lab 成为可能的开源项目与平台</span></div>
+    <section class="thanks-section"><div class="thanks-title"><p class="eyebrow">BUILT WITH</p><h2>{{ if $zh }}特别感谢{{ else }}Special Thanks{{ end }}</h2><span>{{ if $zh }}让 Sikang Lab 成为可能的开源项目与平台{{ else }}The open-source projects and platforms that make Sikang Lab possible{{ end }}</span></div>
       <div class="thanks-tools">
-        <a href="https://gohugo.io/" target="_blank" rel="noopener"><strong>Hugo</strong><span>静态站点生成器</span></a>
-        <a href="https://pages.github.com/" target="_blank" rel="noopener"><strong>GitHub Pages</strong><span>网站托管与发布</span></a>
-        <a href="https://peakxy.github.io/CodeLab/" target="_blank" rel="noopener"><strong>CodeLab</strong><span>设计与内容结构灵感</span></a>
-        <a href="https://umami.is/" target="_blank" rel="noopener"><strong>Umami</strong><span>隐私友好的访问统计</span></a>
+        <a href="https://gohugo.io/" target="_blank" rel="noopener"><strong>Hugo</strong><span>{{ if $zh }}静态站点生成器{{ else }}Static site generator{{ end }}</span></a>
+        <a href="https://pages.github.com/" target="_blank" rel="noopener"><strong>GitHub Pages</strong><span>{{ if $zh }}网站托管与发布{{ else }}Website hosting and deployment{{ end }}</span></a>
+        <a href="https://peakxy.github.io/CodeLab/" target="_blank" rel="noopener"><strong>CodeLab</strong><span>{{ if $zh }}设计与内容结构灵感{{ else }}Design and content-structure inspiration{{ end }}</span></a>
+        <a href="https://umami.is/" target="_blank" rel="noopener"><strong>Umami</strong><span>{{ if $zh }}隐私友好的访问统计{{ else }}Privacy-friendly analytics{{ end }}</span></a>
       </div>
     </section>
-    <footer class="thanks-note"><p>也感谢每一位阅读、反馈和分享 Sikang Lab 内容的朋友。</p><a href="https://github.com/itgsklab/sikangLab" target="_blank" rel="noopener">参与贡献 →</a></footer>
+    <footer class="thanks-note"><p>{{ if $zh }}也感谢每一位阅读、反馈和分享 Sikang Lab 内容的朋友。{{ else }}And thank you to everyone who reads, comments on, and shares Sikang Lab.{{ end }}</p><a href="https://github.com/itgsklab/sikangLab" target="_blank" rel="noopener">{{ if $zh }}参与贡献{{ else }}Contribute{{ end }} →</a></footer>
   </article>
-{{ else if eq .File.BaseFileName "about" }}
+{{ else if eq $base "about" }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}
   <article class="about-page wrap-narrow">
     <section class="about-author">
-      <div class="about-avatar">{{ with $avatar }}<img src="{{ .RelPermalink }}" alt="郭同学在coding">{{ end }}</div>
-      <div class="about-author-copy"><p class="eyebrow">THE BUILDER</p><h2>郭同学在coding</h2><p class="about-role">AI Agent <b>|</b> 全栈开发</p><p>关注全栈工程与 AI Agent。习惯把项目中遇到的问题、做过的取舍和最终方案整理成可以再次使用的经验。</p>
+      <div class="about-avatar">{{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ if $zh }}郭同学在coding{{ else }}Sikang Guo{{ end }}">{{ end }}</div>
+      <div class="about-author-copy"><p class="eyebrow">THE BUILDER</p><h2>{{ if $zh }}郭同学在coding{{ else }}Sikang Guo{{ end }}</h2><p class="about-role">AI Agent <b>|</b> {{ if $zh }}全栈开发{{ else }}Full-stack Development{{ end }}</p><p>{{ if $zh }}关注全栈工程与 AI Agent。习惯把项目中遇到的问题、做过的取舍和最终方案整理成可以再次使用的经验。{{ else }}I focus on full-stack engineering and AI Agents, turning project problems, trade-offs, and final solutions into experience I can reuse.{{ end }}</p>
         <div class="about-socials"><a href="https://github.com/itgsklab" target="_blank" rel="noopener">GitHub ↗</a><a href="https://x.com/TheOrange991105" target="_blank" rel="noopener">X ↗</a><a href="mailto:guosikang115@163.com">Email ↗</a></div>
       </div>
     </section>
-    <nav class="about-toc" aria-label="本页目录"><span>ON THIS PAGE</span><a href="#about-lab">关于本站</a><a href="#about-me">我的关注</a><a href="#about-building">写在后面</a></nav>
+    <nav class="about-toc" aria-label="{{ if $zh }}本页目录{{ else }}On this page{{ end }}"><span>ON THIS PAGE</span><a href="#about-lab">{{ if $zh }}关于本站{{ else }}About This Site{{ end }}</a><a href="#about-me">{{ if $zh }}我的关注{{ else }}My Focus{{ end }}</a><a href="#about-building">{{ if $zh }}写在后面{{ else }}A Final Note{{ end }}</a></nav>
     <div class="about-prose">
-      <section id="about-lab"><p class="eyebrow">01 / SIKANG LAB</p><h2>关于本站</h2><p>Sikang Lab 是我的个人技术实践站。内容来自日常开发和项目实践，主题包括后端服务、自动化工具、AI Agent、前端实现和工程协作。</p><p>这里不放教育经历、论文或包装过的技能清单。我更愿意记录一个问题为什么出现、方案如何选择、实施过程中踩过哪些坑，以及最后留下了什么可复用的结论。</p><div class="about-topics"><span>Java 后端</span><span>Python 自动化</span><span>AI Agent</span><span>全栈开发</span><span>工程实践</span><span>生活记录</span></div></section>
-      <section id="about-me"><p class="eyebrow">02 / FOCUS</p><h2>我的关注</h2><p>我是郭同学，一名全栈开发者。目前主要关注 Java 与 Python 工程、Web 应用、AI Agent 的实际落地，以及开发流程中的效率问题。</p><p>比起追逐概念，我更在意技术能否稳定地解决问题：代码是否容易维护，工具是否真正节省时间，方案在离开演示环境后是否依然可靠。</p><p>这个网站也是我的工作台。它帮助我梳理思路、检验理解，并为下一次遇到类似问题保留清晰的参考。</p></section>
-      <section id="about-building"><p class="eyebrow">03 / NOTES</p><h2>写在后面</h2><p>本站不会为了更新而更新。文章可以不多，但每篇内容都应该有明确的问题背景、可验证的过程和尽可能准确的结论。旧内容发现问题后也会继续修正。</p><p>如果某篇记录帮到了你，或者你发现其中有遗漏和错误，欢迎通过 GitHub 提交 Issue 或参与修改。技术内容在交流和校正中会变得更有价值。</p><a class="about-contribute" href="https://github.com/itgsklab/sikangLab" target="_blank" rel="noopener">前往 GitHub 参与贡献 →</a></section>
+      <section id="about-lab"><p class="eyebrow">01 / SIKANG LAB</p><h2>{{ if $zh }}关于本站{{ else }}About This Site{{ end }}</h2>{{ if $zh }}<p>Sikang Lab 是我的个人技术实践站。内容来自日常开发和项目实践，主题包括后端服务、自动化工具、AI Agent、前端实现和工程协作。</p><p>这里不放教育经历、论文或包装过的技能清单。我更愿意记录一个问题为什么出现、方案如何选择、实施过程中踩过哪些坑，以及最后留下了什么可复用的结论。</p>{{ else }}<p>Sikang Lab is my personal engineering site. Its content comes from daily development and project work, covering backend services, automation tools, AI Agents, frontend implementation, and engineering collaboration.</p><p>Instead of showcasing credentials or polished skill lists, I document why a problem appeared, how I chose a solution, what went wrong during implementation, and which conclusions are reusable.</p>{{ end }}<div class="about-topics"><span>Java {{ if $zh }}后端{{ else }}Backend{{ end }}</span><span>Python {{ if $zh }}自动化{{ else }}Automation{{ end }}</span><span>AI Agent</span><span>{{ if $zh }}全栈开发{{ else }}Full-stack{{ end }}</span><span>{{ if $zh }}工程实践{{ else }}Engineering{{ end }}</span><span>{{ if $zh }}生活记录{{ else }}Life Notes{{ end }}</span></div></section>
+      <section id="about-me"><p class="eyebrow">02 / FOCUS</p><h2>{{ if $zh }}我的关注{{ else }}My Focus{{ end }}</h2>{{ if $zh }}<p>我是郭同学，一名全栈开发者。目前主要关注 Java 与 Python 工程、Web 应用、AI Agent 的实际落地，以及开发流程中的效率问题。</p><p>比起追逐概念，我更在意技术能否稳定地解决问题：代码是否容易维护，工具是否真正节省时间，方案在离开演示环境后是否依然可靠。</p><p>这个网站也是我的工作台。它帮助我梳理思路、检验理解，并为下一次遇到类似问题保留清晰的参考。</p>{{ else }}<p>I'm Sikang, a full-stack developer focused on Java and Python engineering, web applications, practical AI Agent systems, and more efficient development workflows.</p><p>I care less about chasing concepts than whether technology solves problems reliably: whether code is maintainable, tools save real time, and solutions still work outside a demo.</p><p>This website is also my workbench. It helps me organize ideas, test my understanding, and leave a clear reference for the next similar problem.</p>{{ end }}</section>
+      <section id="about-building"><p class="eyebrow">03 / NOTES</p><h2>{{ if $zh }}写在后面{{ else }}A Final Note{{ end }}</h2>{{ if $zh }}<p>本站不会为了更新而更新。文章可以不多，但每篇内容都应该有明确的问题背景、可验证的过程和尽可能准确的结论。旧内容发现问题后也会继续修正。</p><p>如果某篇记录帮到了你，或者你发现其中有遗漏和错误，欢迎通过 GitHub 提交 Issue 或参与修改。技术内容在交流和校正中会变得更有价值。</p>{{ else }}<p>I do not publish just to keep a schedule. There may be fewer articles, but each should have clear context, a verifiable process, and conclusions that are as accurate as possible. Older content will be corrected when needed.</p><p>If a note helps you—or if you find an omission or error—feel free to open an issue or contribute on GitHub. Technical writing becomes more valuable through discussion and correction.</p>{{ end }}<a class="about-contribute" href="https://github.com/itgsklab/sikangLab" target="_blank" rel="noopener">{{ if $zh }}前往 GitHub 参与贡献{{ else }}Contribute on GitHub{{ end }} →</a></section>
     </div>
   </article>
-{{ else if eq .File.BaseFileName "links" }}
-  <header class="page-hero wrap"><p class="eyebrow">FRIENDS & TOOLS</p><h1>友情链接</h1><p>我经常访问的站点和本站使用的工具。</p></header>
+{{ else if eq $base "links" }}
+  <header class="page-hero wrap"><p class="eyebrow">FRIENDS & TOOLS</p><h1>{{ if $zh }}友情链接{{ else }}Links{{ end }}</h1><p>{{ if $zh }}我经常访问的站点和本站使用的工具。{{ else }}Sites I visit often and tools used to build this website.{{ end }}</p></header>
   <section class="prose-panel wrap-narrow">{{ (index .Params.sections 0).content.text | markdownify }}</section>
 {{ else }}
   <article class="article-page wrap-narrow"><header class="article-header"><h1>{{ .Title }}</h1></header><div class="article-content">{{ .Content }}</div></article>

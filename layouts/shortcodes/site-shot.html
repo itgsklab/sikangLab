@@ -1,5 +1,5 @@
 {{- $src := .Get "src" -}}
-{{- $alt := .Get "alt" | default "网站页面截图" -}}
+{{- $alt := .Get "alt" | default (cond (eq site.Language.Lang "zh") "网站页面截图" "Website screenshot") -}}
 {{- $caption := .Get "caption" -}}
 {{- $href := .Get "href" -}}
 {{- $label := .Get "label" | default "skillsmp.com" -}}
@@ -12,7 +12,7 @@
       <span class="mac-browser-address">{{ $label }}</span>
       <span class="mac-browser-spacer"></span>
     </div>
-    {{- if $href }}<a href="{{ $href }}" target="_blank" rel="noopener" aria-label="打开截图对应页面：{{ $label }}">{{ end -}}
+    {{- if $href }}<a href="{{ $href }}" target="_blank" rel="noopener" aria-label="{{ if eq site.Language.Lang "zh" }}打开截图对应页面：{{ else }}Open the page shown in the screenshot: {{ end }}{{ $label }}">{{ end -}}
       <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async">
     {{- if $href }}</a>{{ end -}}
   </div>

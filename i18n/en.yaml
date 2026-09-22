@@ -1,0 +1,104 @@
+site_description:
+  other: "Sikang Lab — programming notes, engineering practice, and project journals."
+main_navigation:
+  other: "Main navigation"
+open_menu:
+  other: "Open menu"
+tech_stack:
+  other: "Tech Stack"
+personal_notes:
+  other: "Personal Notes"
+more:
+  other: "More"
+learning_resources:
+  other: "Resources"
+thanks:
+  other: "Thanks"
+site_stats:
+  other: "Site Stats"
+back_home:
+  other: "Back to the Sikang Lab homepage"
+open_github:
+  other: "Open the Sikang Lab GitHub repository"
+site_search:
+  other: "Site search"
+toggle_theme:
+  other: "Toggle color mode"
+close_search:
+  other: "Close search"
+search_placeholder:
+  other: "Search articles, technologies, and projects…"
+search_prompt:
+  other: "Enter a keyword to start searching"
+searching:
+  other: "Searching…"
+untitled_page:
+  other: "Untitled page"
+no_results:
+  other: "No results found"
+search_unavailable:
+  other: "Search is temporarily unavailable. Please try again after the next site build."
+language_switcher:
+  other: "Language"
+minutes:
+  other: "min"
+minute_read:
+  other: "min read"
+views:
+  other: "Views"
+likes:
+  other: "Likes"
+like_article:
+  other: "Like this article"
+liked:
+  other: "Liked"
+views_unavailable:
+  other: "View count is temporarily unavailable"
+read_article:
+  other: "Read article →"
+all_articles:
+  other: "View all articles →"
+back_to:
+  other: "← Back to"
+article_navigation:
+  other: "Article navigation"
+table_of_contents:
+  other: "Table of Contents"
+edit_content:
+  other: "Edit content ↗"
+author:
+  other: "Author"
+author_role:
+  other: "AI Agent · Full-stack Development"
+continue_reading:
+  other: "Keep Reading"
+back_section:
+  other: "Back to section"
+more_content:
+  other: "More content"
+all_content:
+  other: "All articles →"
+project_work:
+  other: "Selected Work"
+project_intro:
+  other: "Products, engineering practice, and technical solutions I have built."
+life_title:
+  other: "Life Notes"
+life_intro:
+  other: "Notes on everyday life, books, films, and ideas beyond code."
+daily_life:
+  other: "Everyday Life"
+daily_life_desc:
+  other: "Moments worth keeping from work and daily life."
+reading_films:
+  other: "Books & Films"
+reading_films_desc:
+  other: "Thoughts inspired by books, films, and other works."
+reflections:
+  other: "Reflections"
+reflections_desc:
+  other: "Ideas unrelated to technology, but still worth recording."
+recent_moments:
+  other: "Recent Moments"
+life_coming:
+  other: "Life is happening. New notes will arrive over time."

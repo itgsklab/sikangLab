@@ -1,0 +1,104 @@
+site_description:
+  other: "Sikang 的技术积累站：记录编程知识、工程实践、项目作品与技术文章。"
+main_navigation:
+  other: "主导航"
+open_menu:
+  other: "打开菜单"
+tech_stack:
+  other: "技术栈"
+personal_notes:
+  other: "个人沉淀"
+more:
+  other: "更多"
+learning_resources:
+  other: "学习资料"
+thanks:
+  other: "致谢"
+site_stats:
+  other: "网站统计"
+back_home:
+  other: "返回 Sikang Lab 首页"
+open_github:
+  other: "打开 Sikang Lab GitHub 仓库"
+site_search:
+  other: "站内搜索"
+toggle_theme:
+  other: "切换颜色模式"
+close_search:
+  other: "关闭搜索"
+search_placeholder:
+  other: "搜索文章、技术和项目…"
+search_prompt:
+  other: "输入关键词开始搜索"
+searching:
+  other: "正在搜索…"
+untitled_page:
+  other: "未命名页面"
+no_results:
+  other: "没有找到相关内容"
+search_unavailable:
+  other: "搜索暂时不可用，请完成一次网站构建后重试。"
+language_switcher:
+  other: "语言"
+minutes:
+  other: "分钟"
+minute_read:
+  other: "分钟阅读"
+views:
+  other: "浏览量"
+likes:
+  other: "点赞数"
+like_article:
+  other: "为本文点赞"
+liked:
+  other: "已点赞"
+views_unavailable:
+  other: "浏览量暂时不可用"
+read_article:
+  other: "阅读文章 →"
+all_articles:
+  other: "查看全部文章 →"
+back_to:
+  other: "← 返回"
+article_navigation:
+  other: "文章导航"
+table_of_contents:
+  other: "本文目录"
+edit_content:
+  other: "编辑内容 ↗"
+author:
+  other: "作者"
+author_role:
+  other: "AI Agent · 全栈开发"
+continue_reading:
+  other: "继续阅读"
+back_section:
+  other: "返回栏目"
+more_content:
+  other: "更多内容"
+all_content:
+  other: "全部文章 →"
+project_work:
+  other: "项目作品"
+project_intro:
+  other: "记录做过的产品、工程实践与技术方案。"
+life_title:
+  other: "生活记录"
+life_intro:
+  other: "编程之外，记录日常、阅读、观影和偶尔冒出来的想法。"
+daily_life:
+  other: "日常"
+daily_life_desc:
+  other: "工作与生活中值得留下的片段。"
+reading_films:
+  other: "阅读·观影"
+reading_films_desc:
+  other: "书籍、电影和其他内容带来的思考。"
+reflections:
+  other: "随想"
+reflections_desc:
+  other: "与技术无关，但同样值得记录的想法。"
+recent_moments:
+  other: "最新记录"
+life_coming:
+  other: "生活正在发生，记录会慢慢补上。"

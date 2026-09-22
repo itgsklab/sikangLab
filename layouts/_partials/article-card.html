@@ -3,7 +3,7 @@
     <span class="cover-code">{{ if eq .Section "projects" }}{ build(); ship(); }{{ else }}func learn() → share{{ end }}</span>
   </a>
   <div class="card-body">
-    <div class="card-meta"><span>{{ .Date.Format "2006.01.02" }}</span><span>{{ .ReadingTime }} 分钟</span></div>
+    <div class="card-meta"><span>{{ .Date.Format "2006.01.02" }}</span><span>{{ .ReadingTime }} {{ i18n "minutes" }}</span></div>
     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
     <p>{{ .Summary | plainify | truncate 100 }}</p>
     {{ with .Params.tags }}<div class="card-tags">{{ range first 3 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}

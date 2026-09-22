@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ .Title }} · Sikang Lab</title>
-  <meta name="description" content="{{ .Description | default site.Params.hugoblox.identity.description }}">
+  <meta name="description" content="{{ .Description | default (i18n "site_description") }}">
+  {{ partial "language-head.html" . }}
   {{ partial "site-icon-links.html" . }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,32 +19,10 @@
 <body>
   <div class="site-pattern" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <header class="site-header">
-    <nav class="site-nav wrap" aria-label="主导航">
-      {{ partial "site-brand.html" . }}
-      <button class="menu-button" type="button" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
-      <div class="nav-links">
-        {{ range site.Menus.main }}
-          {{ if eq .Name "技术栈" }}
-          <div class="nav-dropdown">
-            <a href="{{ .URL | relLangURL }}" {{ if $.IsMenuCurrent "main" . }}class="active"{{ end }}>技术栈 <span class="nav-chevron">⌄</span></a>
-            <div class="dropdown-menu">
-              <a href="{{ "stack/java/" | relLangURL }}"><small>01</small><span>Java</span></a>
-              <a href="{{ "stack/python/" | relLangURL }}"><small>02</small><span>Python</span></a>
-              <a href="{{ "stack/agent/" | relLangURL }}"><small>03</small><span>Agent</span></a>
-              <a href="{{ "stack/work/" | relLangURL }}"><small>04</small><span>个人沉淀</span></a>
-            </div>
-          </div>
-          {{ else }}
-          <a href="{{ .URL | relLangURL }}" {{ if $.IsMenuCurrent "main" . }}class="active"{{ end }}>{{ .Name }}</a>
-          {{ end }}
-        {{ end }}
-        {{ partial "more-menu.html" . }}
-        {{ partial "nav-tools.html" . }}
-      </div>
-    </nav>
+    {{ partial "site-nav.html" . }}
   </header>
   <main>{{ block "main" . }}{{ end }}</main>
-  <footer class="site-footer"><div class="wrap footer-inner"><p>© {{ now.Year }} Sikang · Build, learn, share.</p><a href="https://github.com/itgsklab" target="_blank" rel="noopener">GitHub ↗</a></div></footer>
+  <footer class="site-footer">{{ partial "site-footer.html" . }}</footer>
   <script>
     const root=document.documentElement,saved=localStorage.getItem('color-mode');
     if(saved==='light')root.classList.remove('dark');
