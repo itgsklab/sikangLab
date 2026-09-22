@@ -1,0 +1,2 @@
+{{ $sectionNav := resources.Get "js/section-nav.js" | minify | fingerprint }}
+<script src="{{ $sectionNav.RelPermalink }}" defer></script>

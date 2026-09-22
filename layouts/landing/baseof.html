@@ -31,5 +31,6 @@
   </script>
   {{ $articleStats := resources.Get "js/article-stats.js" | minify | fingerprint }}
   <script src="{{ $articleStats.RelPermalink }}" defer></script>
+  {{ partial "section-nav-script.html" . }}
 </body>
 </html>

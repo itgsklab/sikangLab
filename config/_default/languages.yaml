@@ -9,20 +9,24 @@ en:
     main:
       - identifier: about
         name: About
-        url: about/
+        url: '#about'
         weight: 10
       - identifier: stack
         name: Tech Stack
-        url: experience/
+        url: '#stack'
         weight: 20
       - identifier: projects
         name: Projects
-        url: projects/
+        url: '#projects'
         weight: 30
-      - identifier: life
-        name: Life
-        url: life/
+      - identifier: writing
+        name: Writing
+        url: '#writing'
         weight: 40
+      - identifier: contact
+        name: Contact
+        url: '#contact'
+        weight: 50
 
 zh:
   locale: zh-CN
@@ -34,18 +38,22 @@ zh:
   menus:
     main:
       - identifier: about
-        name: 我
-        url: about/
+        name: 关于
+        url: '#about'
         weight: 10
       - identifier: stack
         name: 技术栈
-        url: experience/
+        url: '#stack'
         weight: 20
       - identifier: projects
         name: 项目
-        url: projects/
+        url: '#projects'
         weight: 30
-      - identifier: life
-        name: 生活
-        url: life/
+      - identifier: writing
+        name: 文章
+        url: '#writing'
         weight: 40
+      - identifier: contact
+        name: 联系
+        url: '#contact'
+        weight: 50

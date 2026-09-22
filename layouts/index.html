@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <div class="ls-focus-grid" aria-label="{{ if $zh }}技术方向{{ else }}Technical areas{{ end }}">
+  <div id="stack" class="ls-focus-grid" aria-label="{{ if $zh }}技术方向{{ else }}Technical areas{{ end }}">
     <a href="{{ "stack/java/" | relLangURL }}"><span>01</span><h3>Java</h3><p>{{ if $zh }}后端开发、JVM 与可维护的工程结构。{{ else }}Backend development, the JVM, and maintainable architecture.{{ end }}</p></a>
     <a href="{{ "stack/python/" | relLangURL }}"><span>02</span><h3>Python</h3><p>{{ if $zh }}自动化、数据处理与快速原型验证。{{ else }}Automation, data processing, and rapid prototyping.{{ end }}</p></a>
     <a href="{{ "stack/agent/" | relLangURL }}"><span>03</span><h3>Agent</h3><p>{{ if $zh }}工具调用、上下文编排、RAG 与工程落地。{{ else }}Tool use, context orchestration, RAG, and production practice.{{ end }}</p></a>
