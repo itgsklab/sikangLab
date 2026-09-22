@@ -94,6 +94,34 @@
   <a class="ls-more-link" href="{{ "blog/" | relLangURL }}">{{ i18n "all_articles" }}</a>
 </section>
 
+<section id="life" class="ls-section wrap">
+  <header class="ls-section-heading">
+    <p class="ls-kicker">LIFE OUTSIDE CODE</p>
+    <h2>{{ if $zh }}生活记录。{{ else }}Life Notes.{{ end }}</h2>
+    <p>{{ if $zh }}记录编程之外的日常、阅读、观影和阶段性的想法。{{ else }}Notes on everyday life, reading, films, and ideas beyond code.{{ end }}</p>
+  </header>
+  <div class="ls-focus-grid ls-home-topic-grid" aria-label="{{ if $zh }}生活记录方向{{ else }}Life note topics{{ end }}">
+    <a href="{{ "life/" | relLangURL }}"><span>01</span><h3>{{ if $zh }}日常生活{{ else }}Daily Life{{ end }}</h3><p>{{ if $zh }}保存工作与学习之外值得记住的普通时刻。{{ else }}Small moments worth remembering beyond work and study.{{ end }}</p></a>
+    <a href="{{ "life/" | relLangURL }}"><span>02</span><h3>{{ if $zh }}阅读与观影{{ else }}Reading & Films{{ end }}</h3><p>{{ if $zh }}记录书籍、电影和长内容带来的新视角。{{ else }}Books, films, and long-form work that offer a new perspective.{{ end }}</p></a>
+    <a href="{{ "life/" | relLangURL }}"><span>03</span><h3>{{ if $zh }}随想与复盘{{ else }}Reflections{{ end }}</h3><p>{{ if $zh }}整理阶段性的观察、选择和对生活的理解。{{ else }}Periodic observations, choices, and reflections on life.{{ end }}</p></a>
+  </div>
+  <a class="ls-more-link" href="{{ "life/" | relLangURL }}">{{ if $zh }}查看全部生活记录{{ else }}Explore all life notes{{ end }} →</a>
+</section>
+
+<section id="resources" class="ls-section wrap">
+  <header class="ls-section-heading">
+    <p class="ls-kicker">LEARNING LIBRARY</p>
+    <h2>{{ if $zh }}学习资料。{{ else }}Learning Resources.{{ end }}</h2>
+    <p>{{ if $zh }}整理真正使用过、值得长期回看的文档、课程、书籍和开发工具。{{ else }}A curated library of documentation, courses, books, and tools that are useful enough to revisit.{{ end }}</p>
+  </header>
+  <div class="ls-focus-grid ls-home-topic-grid" aria-label="{{ if $zh }}学习资料方向{{ else }}Learning resource topics{{ end }}">
+    <a href="{{ "resources/" | relLangURL }}"><span>01</span><h3>{{ if $zh }}官方文档{{ else }}Official Docs{{ end }}</h3><p>{{ if $zh }}优先保留权威、准确并且持续维护的技术资料。{{ else }}Authoritative, accurate, and actively maintained technical references.{{ end }}</p></a>
+    <a href="{{ "resources/" | relLangURL }}"><span>02</span><h3>{{ if $zh }}工程实践{{ else }}Engineering Practice{{ end }}</h3><p>{{ if $zh }}涵盖后端、全栈开发、系统设计与效率工具。{{ else }}Backend, full-stack development, system design, and productivity tools.{{ end }}</p></a>
+    <a href="{{ "resources/" | relLangURL }}"><span>03</span><h3>AI & Agent</h3><p>{{ if $zh }}大模型应用、RAG、工具调用与 Agent 工程资料。{{ else }}LLM applications, RAG, tool use, and Agent engineering resources.{{ end }}</p></a>
+  </div>
+  <a class="ls-more-link" href="{{ "resources/" | relLangURL }}">{{ if $zh }}查看全部学习资料{{ else }}Explore all resources{{ end }} →</a>
+</section>
+
 <section id="contact" class="ls-section ls-contact-section">
   <div class="ls-starfield" data-starfield aria-hidden="true"></div>
   <div class="ls-contact-scene wrap">

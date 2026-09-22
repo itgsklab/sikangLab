@@ -3,11 +3,18 @@
   <button class="menu-button" type="button" aria-label="{{ i18n "open_menu" }}" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-links">
     {{ range site.Menus.main }}
+      {{ if ne .Identifier "contact" }}
       <a class="section-nav-link" href="{{ site.Home.RelPermalink }}{{ .URL }}" data-home-section="{{ strings.TrimPrefix "#" .URL }}">{{ .Name }}</a>
+      {{ end }}
     {{ end }}
-    <a class="nav-page-link{{ if eq .RelPermalink ("life/" | relLangURL) }} active{{ end }}" href="{{ "life/" | relLangURL }}">{{ i18n "life_title" }}</a>
-    <a class="nav-page-link{{ if eq .RelPermalink ("resources/" | relLangURL) }} active{{ end }}" href="{{ "resources/" | relLangURL }}">{{ i18n "learning_resources" }}</a>
+    <a class="section-nav-link" href="{{ site.Home.RelPermalink }}#life" data-home-section="life">{{ i18n "life_title" }}</a>
+    <a class="section-nav-link" href="{{ site.Home.RelPermalink }}#resources" data-home-section="resources">{{ i18n "learning_resources" }}</a>
     <a class="nav-page-link nav-external-link" href="https://cloud.umami.is/share/XrptZILB59b04GvS" target="_blank" rel="noopener">{{ i18n "site_stats" }} <span aria-hidden="true">↗</span></a>
+    {{ range site.Menus.main }}
+      {{ if eq .Identifier "contact" }}
+      <a class="section-nav-link" href="{{ site.Home.RelPermalink }}{{ .URL }}" data-home-section="{{ strings.TrimPrefix "#" .URL }}">{{ .Name }}</a>
+      {{ end }}
+    {{ end }}
     {{ partial "nav-tools.html" . }}
   </div>
 </nav>
