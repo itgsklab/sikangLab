@@ -5,7 +5,9 @@
     {{ range site.Menus.main }}
       <a class="section-nav-link" href="{{ site.Home.RelPermalink }}{{ .URL }}" data-home-section="{{ strings.TrimPrefix "#" .URL }}">{{ .Name }}</a>
     {{ end }}
-    {{ partial "more-menu.html" . }}
+    <a class="nav-page-link{{ if eq .RelPermalink ("life/" | relLangURL) }} active{{ end }}" href="{{ "life/" | relLangURL }}">{{ i18n "life_title" }}</a>
+    <a class="nav-page-link{{ if eq .RelPermalink ("resources/" | relLangURL) }} active{{ end }}" href="{{ "resources/" | relLangURL }}">{{ i18n "learning_resources" }}</a>
+    <a class="nav-page-link nav-external-link" href="https://cloud.umami.is/share/XrptZILB59b04GvS" target="_blank" rel="noopener">{{ i18n "site_stats" }} <span aria-hidden="true">↗</span></a>
     {{ partial "nav-tools.html" . }}
   </div>
 </nav>
