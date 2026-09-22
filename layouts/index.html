@@ -23,9 +23,11 @@
     </div>
   </div>
 
-  <div class="ls-portrait-card">
-    {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ if $zh }}郭思康{{ else }}{{ $author.name.display }}{{ end }}" decoding="async">{{ end }}
-    <span>{{ if $zh }}上海 · 中国{{ else }}Shanghai · China{{ end }}</span>
+  <div class="ls-portrait-stage">
+    <div class="ls-portrait-card">
+      {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ if $zh }}郭思康{{ else }}{{ $author.name.display }}{{ end }}" decoding="async">{{ end }}
+      <span>{{ if $zh }}上海 · 中国{{ else }}Shanghai · China{{ end }}</span>
+    </div>
   </div>
 
   <a class="ls-scroll-cue" href="#about" aria-label="{{ if $zh }}向下浏览{{ else }}Scroll down{{ end }}"><i></i></a>
