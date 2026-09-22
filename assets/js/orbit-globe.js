@@ -6,6 +6,7 @@ const canvas = document.querySelector('[data-orbit-globe]');
 const stage = document.querySelector('[data-orbit-stage]');
 
 if (canvas && stage) {
+  const starfield = stage.querySelector('[data-starfield]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
@@ -35,38 +36,31 @@ if (canvas && stage) {
   controls.update();
 
   function createStars() {
-    const count = window.innerWidth < 768 ? 260 : 560;
-    const positions = new Float32Array(count * 3);
+    if (!starfield) return;
+    const count = window.innerWidth < 768 ? 72 : 118;
     let seed = 991105;
     const random = () => {
       seed = (seed * 1664525 + 1013904223) >>> 0;
       return seed / 4294967296;
     };
+    const fragment = document.createDocumentFragment();
 
     for (let index = 0; index < count; index += 1) {
-      const offset = index * 3;
-      positions[offset] = (random() - 0.5) * 22;
-      positions[offset + 1] = (random() - 0.5) * 15;
-      positions[offset + 2] = -4 - random() * 12;
+      const star = document.createElement('i');
+      const sizeRoll = random();
+      const size = sizeRoll > 0.94 ? 3.2 : sizeRoll > 0.72 ? 2.1 : 1.15;
+      star.style.setProperty('--star-x', `${(random() * 100).toFixed(2)}%`);
+      star.style.setProperty('--star-y', `${(random() * 100).toFixed(2)}%`);
+      star.style.setProperty('--star-size', `${size}px`);
+      star.style.setProperty('--star-opacity', (0.34 + random() * 0.58).toFixed(2));
+      star.style.setProperty('--star-duration', `${(2.8 + random() * 4.5).toFixed(2)}s`);
+      star.style.setProperty('--star-delay', `${(-random() * 6).toFixed(2)}s`);
+      fragment.appendChild(star);
     }
-
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const material = new THREE.PointsMaterial({
-      color: 0xf4e8ff,
-      size: window.innerWidth < 768 ? 0.032 : 0.026,
-      sizeAttenuation: true,
-      transparent: true,
-      opacity: 0.82,
-      depthWrite: false
-    });
-    const stars = new THREE.Points(geometry, material);
-    stars.renderOrder = -1;
-    scene.add(stars);
-    return stars;
+    starfield.replaceChildren(fragment);
   }
 
-  const stars = createStars();
+  createStars();
   let frame = 0;
   let visible = true;
   let lastTime = performance.now();
@@ -91,7 +85,6 @@ if (canvas && stage) {
     const delta = Math.min((time - lastTime) / 1000, 0.1);
     lastTime = time;
     controls.update(delta);
-    stars.rotation.y += delta * 0.006;
     renderer.render(scene, camera);
     frame = window.requestAnimationFrame(render);
   }
