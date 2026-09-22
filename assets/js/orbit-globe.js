@@ -49,12 +49,22 @@ if (canvas && stage) {
       const star = document.createElement('i');
       const sizeRoll = random();
       const size = sizeRoll > 0.94 ? 3.2 : sizeRoll > 0.72 ? 2.1 : 1.15;
+      const travelAngle = random() * Math.PI * 2;
+      const travelDistance = 10 + random() * (size > 2.5 ? 30 : 20);
+      const driftX = Math.cos(travelAngle) * travelDistance;
+      const driftY = Math.sin(travelAngle) * travelDistance;
       star.style.setProperty('--star-x', `${(random() * 100).toFixed(2)}%`);
       star.style.setProperty('--star-y', `${(random() * 100).toFixed(2)}%`);
       star.style.setProperty('--star-size', `${size}px`);
       star.style.setProperty('--star-opacity', (0.34 + random() * 0.58).toFixed(2));
-      star.style.setProperty('--star-duration', `${(2.8 + random() * 4.5).toFixed(2)}s`);
-      star.style.setProperty('--star-delay', `${(-random() * 6).toFixed(2)}s`);
+      star.style.setProperty('--star-start-x', `${(-driftX * 0.5).toFixed(2)}px`);
+      star.style.setProperty('--star-start-y', `${(-driftY * 0.5).toFixed(2)}px`);
+      star.style.setProperty('--star-end-x', `${(driftX * 0.5).toFixed(2)}px`);
+      star.style.setProperty('--star-end-y', `${(driftY * 0.5).toFixed(2)}px`);
+      star.style.setProperty('--star-travel-duration', `${(13 + random() * 22).toFixed(2)}s`);
+      star.style.setProperty('--star-travel-delay', `${(-random() * 28).toFixed(2)}s`);
+      star.style.setProperty('--star-twinkle-duration', `${(2.4 + random() * 4.8).toFixed(2)}s`);
+      star.style.setProperty('--star-twinkle-delay', `${(-random() * 7).toFixed(2)}s`);
       fragment.appendChild(star);
     }
     starfield.replaceChildren(fragment);

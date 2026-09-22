@@ -143,16 +143,17 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-orbit-stage.is-dragging{cursor:grabbing}
 .ls-orbit-stage::before{position:absolute;z-index:2;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(5,7,17,.03),transparent 42%,rgba(5,7,17,.28));box-shadow:inset 0 0 85px rgba(5,7,17,.62);content:"";pointer-events:none}
 .ls-starfield{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-.ls-starfield i{position:absolute;top:var(--star-y);left:var(--star-x);width:var(--star-size);height:var(--star-size);border-radius:35%;background:#f8e8f3;box-shadow:0 0 calc(var(--star-size) * 2.4) rgba(247,220,238,.38);opacity:var(--star-opacity);animation:ls-star-twinkle var(--star-duration) ease-in-out var(--star-delay) infinite alternate}
+.ls-starfield i{position:absolute;top:var(--star-y);left:var(--star-x);width:var(--star-size);height:var(--star-size);border-radius:35%;background:#f8e8f3;box-shadow:0 0 calc(var(--star-size) * 2.4) rgba(247,220,238,.38);opacity:var(--star-opacity);will-change:translate,transform,filter;animation:ls-star-drift var(--star-travel-duration) ease-in-out var(--star-travel-delay) infinite alternate,ls-star-twinkle var(--star-twinkle-duration) ease-in-out var(--star-twinkle-delay) infinite alternate}
 .ls-orbit-stage canvas{position:relative;z-index:1;display:block;width:100%;height:100%;touch-action:none}
 .ls-orbit-loader{position:absolute;z-index:3;top:50%;left:50%;color:rgba(255,255,255,.58);font:600 9px "JetBrains Mono",monospace;letter-spacing:.18em;transform:translate(-50%,-50%);transition:opacity .35s;animation:ls-loader-pulse 1.4s ease-in-out infinite;pointer-events:none}
-.ls-orbit-stage.is-ready .ls-orbit-loader{opacity:0}
+.ls-orbit-stage.is-ready .ls-orbit-loader{visibility:hidden;opacity:0;animation:none}
 .ls-orbit-stage.has-model-error .ls-orbit-loader{font-size:0;animation:none}
 .ls-orbit-stage.has-model-error .ls-orbit-loader::after{content:"MODEL UNAVAILABLE";font-size:9px}
 .ls-orbit-credit{position:absolute;z-index:3;bottom:22px;left:25px;color:rgba(255,255,255,.34);font:500 8px "JetBrains Mono",monospace;letter-spacing:.04em;transition:color .2s}
 .ls-orbit-credit:hover{color:rgba(255,255,255,.72)}
 .ls-orbit-hint{position:absolute;z-index:3;right:25px;bottom:22px;color:rgba(255,255,255,.46);font:500 9px "JetBrains Mono",monospace;letter-spacing:.15em;pointer-events:none}
 @keyframes ls-loader-pulse{50%{opacity:.3}}
+@keyframes ls-star-drift{0%{translate:var(--star-start-x) var(--star-start-y)}100%{translate:var(--star-end-x) var(--star-end-y)}}
 @keyframes ls-star-twinkle{0%{filter:brightness(.58);transform:scale(.72)}100%{filter:brightness(1.08);transform:scale(1.08)}}
 
 .eyebrow{color:var(--ls-purple-soft)}
