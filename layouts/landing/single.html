@@ -78,25 +78,6 @@
     <a id="agent" class="tech-section" href="{{ "stack/agent/" | relLangURL }}"><div class="tech-cover cover-agent"><span>03</span></div><div class="tech-body"><p class="eyebrow">AI ENGINEERING</p><h2>Agent</h2><p>{{ if $zh }}探索 AI Agent、工具调用、上下文编排以及 AI 辅助开发在工程中的应用。{{ else }}AI Agents, tool use, context orchestration, and AI-assisted development in real engineering work.{{ end }}</p><div class="tech-tags"><span>LLM</span><span>RAG</span><span>Tool Use</span></div></div></a>
     <a id="work" class="tech-section" href="{{ "stack/work/" | relLangURL }}"><div class="tech-cover cover-work"><span>04</span></div><div class="tech-body"><p class="eyebrow">NOTES & LEARNING</p><h2>{{ if $zh }}个人沉淀{{ else }}Personal Notes{{ end }}</h2><p>{{ if $zh }}记录 AI 工具、大模型应用与工程实践的学习笔记和科普文章。{{ else }}Learning notes and explainers on AI tools, LLM applications, and engineering practice.{{ end }}</p><div class="tech-tags"><span>{{ if $zh }}大模型{{ else }}LLM{{ end }}</span><span>AI {{ if $zh }}工具{{ else }}Tools{{ end }}</span><span>{{ if $zh }}学习笔记{{ else }}Notes{{ end }}</span></div></div></a>
   </section>
-{{ else if eq $base "thanks" }}
-  {{ $avatar := resources.Get "media/authors/me.jpg" }}
-  <article class="thanks-page wrap-narrow">
-    <header class="thanks-header"><p class="eyebrow">CONTRIBUTORS & THANKS</p><h1>{{ if $zh }}致谢{{ else }}Thanks{{ end }}</h1><p>{{ if $zh }}感谢每一位为 Sikang Lab 提供代码、灵感和反馈的人。正是这些持续的贡献，让这个网站不断生长。{{ else }}Thank you to everyone who contributes code, ideas, and feedback to Sikang Lab. Those contributions keep this site growing.{{ end }}</p></header>
-    <section class="thanks-section"><div class="thanks-title"><p class="eyebrow">PEOPLE</p><h2>{{ if $zh }}贡献者{{ else }}Contributors{{ end }}</h2><span>{{ if $zh }}基于当前 Git 提交记录{{ else }}Based on the current Git history{{ end }}</span></div>
-      <div class="contributor-grid contributor-grid-single">
-        <a class="contributor-card" href="https://github.com/itgsklab" target="_blank" rel="noopener"><div class="contributor-avatar">{{ with $avatar }}<img src="{{ .RelPermalink }}" alt="itgsklab">{{ end }}</div><div><h3>itgsklab</h3><p>{{ if $zh }}项目维护者 · 全部提交{{ else }}Project maintainer · All commits{{ end }}</p></div><span>↗</span></a>
-      </div>
-    </section>
-    <section class="thanks-section"><div class="thanks-title"><p class="eyebrow">BUILT WITH</p><h2>{{ if $zh }}特别感谢{{ else }}Special Thanks{{ end }}</h2><span>{{ if $zh }}让 Sikang Lab 成为可能的开源项目与平台{{ else }}The open-source projects and platforms that make Sikang Lab possible{{ end }}</span></div>
-      <div class="thanks-tools">
-        <a href="https://gohugo.io/" target="_blank" rel="noopener"><strong>Hugo</strong><span>{{ if $zh }}静态站点生成器{{ else }}Static site generator{{ end }}</span></a>
-        <a href="https://pages.github.com/" target="_blank" rel="noopener"><strong>GitHub Pages</strong><span>{{ if $zh }}网站托管与发布{{ else }}Website hosting and deployment{{ end }}</span></a>
-        <a href="https://peakxy.github.io/CodeLab/" target="_blank" rel="noopener"><strong>CodeLab</strong><span>{{ if $zh }}设计与内容结构灵感{{ else }}Design and content-structure inspiration{{ end }}</span></a>
-        <a href="https://umami.is/" target="_blank" rel="noopener"><strong>Umami</strong><span>{{ if $zh }}隐私友好的访问统计{{ else }}Privacy-friendly analytics{{ end }}</span></a>
-      </div>
-    </section>
-    <footer class="thanks-note"><p>{{ if $zh }}也感谢每一位阅读、反馈和分享 Sikang Lab 内容的朋友。{{ else }}And thank you to everyone who reads, comments on, and shares Sikang Lab.{{ end }}</p><a href="https://github.com/itgsklab/sikangLab" target="_blank" rel="noopener">{{ if $zh }}参与贡献{{ else }}Contribute{{ end }} →</a></footer>
-  </article>
 {{ else if eq $base "about" }}
   {{ $avatar := resources.Get "media/authors/me.jpg" }}
   <article class="about-page wrap-narrow">

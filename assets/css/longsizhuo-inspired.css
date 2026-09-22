@@ -165,8 +165,8 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .eyebrow{color:var(--ls-purple-soft)}
 .page-hero{padding-top:92px;padding-bottom:58px}
 .page-hero .eyebrow{margin-bottom:13px}
-.page-hero h1,.stack-detail-header h1,.about-header h1,.thanks-header h1{font-size:clamp(54px,8vw,86px);font-weight:900;line-height:1;letter-spacing:-.065em}
-.page-hero p:last-child,.stack-detail-header>p:not(.eyebrow):not(.stack-index),.about-header>p:last-child,.thanks-header>p:last-child{color:var(--muted)}
+.page-hero h1,.stack-detail-header h1,.about-header h1{font-size:clamp(54px,8vw,86px);font-weight:900;line-height:1;letter-spacing:-.065em}
+.page-hero p:last-child,.stack-detail-header>p:not(.eyebrow):not(.stack-index),.about-header>p:last-child{color:var(--muted)}
 .content-section{padding-block:68px 105px}
 .content-card,.tech-section,.life-topics article,.empty-state,.skill-panel,.prose-panel,.about-author,.stack-detail-header{border-color:var(--line);background:var(--ls-panel);background-image:none;box-shadow:none;animation:none}
 .content-card:hover,.tech-section:hover{border-color:rgba(139,92,246,.55);box-shadow:var(--ls-shadow)}
@@ -174,7 +174,7 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .cover-code{color:rgba(255,255,255,.6)}
 .card-body p,.tech-section p:not(.eyebrow),.life-topics p{color:var(--muted)}
 .card-tags span,.hero-tags span,.tech-tags span{border-color:var(--line);color:var(--muted)}
-.article-page,.stack-detail,.about-page,.thanks-page{padding-top:76px}
+.article-page,.stack-detail,.about-page{padding-top:76px}
 .article-header{border-color:var(--line)}
 .article-header h1,.reference-header h1{font-size:clamp(44px,6vw,68px);font-weight:900;line-height:1.05;letter-spacing:-.055em}
 .article-meta,.back-link,.reference-meta{color:var(--muted)}
