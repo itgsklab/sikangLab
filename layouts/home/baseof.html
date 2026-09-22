@@ -6,9 +6,10 @@
   <meta name="description" content="{{ site.Params.hugoblox.identity.description }}">
   {{ partial "site-icon-links.html" . }}
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
   {{ partial "analytics.html" . }}
   {{ $style := resources.Get "css/custom.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+  {{ $inspired := resources.Get "css/longsizhuo-inspired.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ $inspired.RelPermalink }}">
 </head>
 <body>
   <div class="site-pattern" aria-hidden="true"><i></i><i></i><i></i><i></i></div>

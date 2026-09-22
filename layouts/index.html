@@ -1,39 +1,106 @@
 {{ define "main" }}
 {{ $author := hugo.Data.authors.me }}
 {{ $avatar := resources.Get "media/authors/me.jpg" }}
-<section class="hero wrap">
-  <div class="hero-profile">
-    <div class="avatar-ring">{{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ $author.name.display }}">{{ end }}</div>
-    <p class="profile-name">郭同学在coding</p>
-    <p class="profile-role">AI Agent <b>|</b> 全栈开发</p>
-    <div class="profile-socials">
-      <a class="social-circle" href="https://github.com/itgsklab" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.2c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.74-1.55-2.58-.3-5.3-1.29-5.3-5.7 0-1.26.45-2.3 1.2-3.1-.12-.3-.52-1.47.11-3.06 0 0 .98-.31 3.16 1.18A11 11 0 0 1 12 6.1a11 11 0 0 1 2.88.39c2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.77.11 3.06.74.81 1.2 1.84 1.2 3.1 0 4.43-2.72 5.4-5.31 5.69.42.36.79 1.07.79 2.16v3.2c0 .31.2.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
-      </a>
-      <a class="social-circle" href="https://x.com/TheOrange991105" target="_blank" rel="noopener" aria-label="X / Twitter">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.39L6.48 22H3.36l7.25-8.29L2.96 2H9.36l4.42 5.84L18.9 2Zm-1.1 17.84h1.73L8.42 4.05H6.57L17.8 19.84Z"/></svg>
-      </a>
-      <a class="social-circle social-xhs" href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener" aria-label="访问郭同学在coding的小红书主页" title="小红书主页">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h8.5A2.5 2.5 0 0 1 18 7v10.5l-3-2-3 2-3-2-3 2V5.5A1 1 0 0 1 7 4.5Z"/><path d="M9 8.5l2 2m0-2-2 2m4.5-2H15m-6 4h6"/></svg>
-      </a>
-      <a class="social-circle" href="mailto:guosikang115@163.com" aria-label="发送邮件至 guosikang115@163.com" title="发送邮件至 guosikang115@163.com">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm9 8.1L20.2 6H3.8l8.2 6.1ZM3 18h18V8.5l-8.4 6.2a1 1 0 0 1-1.2 0L3 8.5V18Z"/></svg>
-      </a>
+{{ $brand := resources.Get "media/site-icon-lab-v2.png" }}
+{{ $articles := where site.RegularPages "Params.article" true }}
+{{ $projects := where site.RegularPages "Section" "projects" }}
+
+<section class="ls-hero wrap" aria-labelledby="home-title">
+  <div class="ls-hero-copy">
+    <p class="ls-kicker">FULL-STACK · AI AGENT</p>
+    <h1 id="home-title">Hi, I'm <span>郭同学</span></h1>
+    <p class="ls-intro">一名关注实际落地的全栈开发者，主要学习与实践 Java、Python、Web 应用和 AI Agent。</p>
+    <div class="ls-contact-lines" aria-label="个人链接">
+      <p><strong>Email:</strong> <a href="mailto:guosikang115@163.com">guosikang115@163.com</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/itgsklab" target="_blank" rel="noopener">github.com/itgsklab</a></p>
+      <p><strong>Blog:</strong> <a href="{{ site.Home.Permalink }}">Sikang Lab</a></p>
+      <p><strong>XHS:</strong> <a href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener">郭同学在coding</a></p>
     </div>
+    <div class="ls-hero-actions">
+      <a class="ls-button ls-button-primary" href="#writing">最近文章</a>
+      <a class="ls-button" href="{{ "about/" | relLangURL }}">关于我</a>
+    </div>
+  </div>
+
+  <div class="ls-portrait-card">
+    {{ with $avatar }}<img src="{{ .RelPermalink }}" alt="{{ $author.name.display }}" decoding="async">{{ end }}
+    <span>Shanghai · China</span>
+  </div>
+
+  <a class="ls-scroll-cue" href="#about" aria-label="向下浏览"><i></i></a>
+</section>
+
+<section id="about" class="ls-section wrap">
+  <header class="ls-section-heading">
+    <p class="ls-kicker">INTRODUCTION</p>
+    <h2>About Me.</h2>
+  </header>
+  <div class="ls-about-layout">
+    <div class="ls-about-copy">
+      <p>我更关注技术能否稳定地解决真实问题：代码是否容易维护，工具是否真正节省时间，方案离开演示环境后是否依然可靠。</p>
+      <p>Sikang Lab 是我的个人工作台。我在这里记录技术原理、项目实践、踩坑过程和可以复用的结论。</p>
+    </div>
+    <div class="ls-stats" aria-label="网站概览">
+      <div><strong>4</strong><span>技术方向</span></div>
+      <div><strong>{{ len $articles }}</strong><span>深度文章</span></div>
+      <div><strong>{{ len $projects }}</strong><span>个人项目</span></div>
+    </div>
+  </div>
+
+  <div class="ls-focus-grid" aria-label="技术方向">
+    <a href="{{ "stack/java/" | relLangURL }}"><span>01</span><h3>Java</h3><p>后端开发、JVM 与可维护的工程结构。</p></a>
+    <a href="{{ "stack/python/" | relLangURL }}"><span>02</span><h3>Python</h3><p>自动化、数据处理与快速原型验证。</p></a>
+    <a href="{{ "stack/agent/" | relLangURL }}"><span>03</span><h3>Agent</h3><p>工具调用、上下文编排、RAG 与工程落地。</p></a>
+    <a href="{{ "stack/work/" | relLangURL }}"><span>04</span><h3>个人沉淀</h3><p>AI 工具、大模型应用与实践笔记。</p></a>
   </div>
 </section>
 
-<section class="content-section wrap">
-  <div class="section-heading">
-    <div><p class="eyebrow">LATEST WRITING</p><h2>最近的文章</h2></div>
-    <a href="{{ "blog/" | relLangURL }}">查看全部 →</a>
-  </div>
-  <div class="card-grid">
+<section id="projects" class="ls-section wrap">
+  <header class="ls-section-heading">
+    <p class="ls-kicker">MY WORK</p>
+    <h2>Projects.</h2>
+    <p>把学习过程变成可以持续维护、公开访问和反复验证的作品。</p>
+  </header>
+  <a class="ls-project-card" href="{{ "projects/sikang-website/" | relLangURL }}">
+    <div class="ls-project-visual">
+      {{ with $brand }}{{ $projectIcon := .Resize "512x512" }}<img src="{{ $projectIcon.RelPermalink }}" alt="Sikang Lab 兔子图标" loading="lazy">{{ end }}
+    </div>
+    <div class="ls-project-copy">
+      <span>PERSONAL WEBSITE</span>
+      <h3>Sikang Lab</h3>
+      <p>基于 Hugo 与 GitHub Pages 搭建的个人技术实践站，记录 AI Agent、后端开发、自动化工具与工程思考。</p>
+      <div><b>Hugo</b><b>GitHub Actions</b><b>Pagefind</b></div>
+    </div>
+  </a>
+</section>
+
+<section id="writing" class="ls-section ls-writing wrap">
+  <header class="ls-section-heading">
+    <p class="ls-kicker">THOUGHTS & SHARING</p>
+    <h2>Writing.</h2>
+    <p>把一个问题讲清楚，再把解决过程沉淀成下一次可以直接使用的参考。</p>
+  </header>
+  <div class="card-grid ls-writing-grid">
     {{ with site.GetPage "/stack/agent-xiaolinnote" }}{{ partial "article-card.html" . }}{{ end }}
     {{ with site.GetPage "/stack/llm-master" }}{{ partial "article-card.html" . }}{{ end }}
     {{ with site.GetPage "/stack/skillsmp" }}{{ partial "article-card.html" . }}{{ end }}
-    {{ $posts := where site.RegularPages "Section" "blog" }}
-    {{ range first 5 $posts.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
+  </div>
+  <a class="ls-more-link" href="{{ "blog/" | relLangURL }}">查看全部文章 →</a>
+</section>
+
+<section id="contact" class="ls-section wrap">
+  <div class="ls-contact-panel">
+    <div>
+      <p class="ls-kicker">GET IN TOUCH</p>
+      <h2>Contact.</h2>
+      <p>如果文章帮到了你，或者你想交流 AI Agent、全栈开发与工程实践，欢迎联系我。</p>
+    </div>
+    <nav aria-label="联系方式">
+      <a href="mailto:guosikang115@163.com">Email <span>↗</span></a>
+      <a href="https://github.com/itgsklab" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+      <a href="https://x.com/TheOrange991105" target="_blank" rel="noopener">X <span>↗</span></a>
+      <a href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener">小红书 <span>↗</span></a>
+    </nav>
   </div>
 </section>
 {{ end }}
