@@ -64,7 +64,7 @@
     });
   </script>
   {{ if .IsHome }}
-    {{ $orbitGlobe := resources.Get "js/orbit-globe.js" | minify | fingerprint }}
+    {{ $orbitGlobe := resources.Get "js/orbit-globe.js" | js.Build (dict "minify" true "target" "es2020") | fingerprint }}
     <script src="{{ $orbitGlobe.RelPermalink }}" defer></script>
   {{ end }}
   {{ $articleStats := resources.Get "js/article-stats.js" | minify | fingerprint }}

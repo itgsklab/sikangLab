@@ -38,5 +38,5 @@
     document.querySelector('.theme-button')?.addEventListener('click',()=>{root.classList.toggle('dark');localStorage.setItem('color-mode',root.classList.contains('dark')?'dark':'light')});
     const menu=document.querySelector('.menu-button');menu?.addEventListener('click',()=>{const open=document.body.classList.toggle('menu-open');menu.setAttribute('aria-expanded',String(open))});
   </script>
-  {{ $orbitGlobe := resources.Get "js/orbit-globe.js" | minify | fingerprint }}<script src="{{ $orbitGlobe.RelPermalink }}" defer></script>
+  {{ $orbitGlobe := resources.Get "js/orbit-globe.js" | js.Build (dict "minify" true "target" "es2020") | fingerprint }}<script src="{{ $orbitGlobe.RelPermalink }}" defer></script>
 </body></html>
