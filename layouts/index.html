@@ -88,8 +88,9 @@
   <a class="ls-more-link" href="{{ "blog/" | relLangURL }}">查看全部文章 →</a>
 </section>
 
-<section id="contact" class="ls-section wrap">
-  <div class="ls-contact-scene">
+<section id="contact" class="ls-section ls-contact-section">
+  <div class="ls-starfield" data-starfield aria-hidden="true"></div>
+  <div class="ls-contact-scene wrap">
     <div class="ls-contact-card">
       <p class="ls-kicker">GET IN TOUCH</p>
       <h2>Contact.</h2>
@@ -112,7 +113,6 @@
       </div>
     </div>
     <div class="ls-orbit-stage ls-contact-orbit" data-orbit-stage data-model-url="{{ "models/planet/scene.gltf" | relURL }}">
-      <div class="ls-starfield" data-starfield aria-hidden="true"></div>
       <canvas data-orbit-globe role="img" aria-label="正面缓慢旋转的数字地球与环绕球体的动态彩色环带">你的浏览器暂不支持 Canvas 动画。</canvas>
       <span class="ls-orbit-loader" aria-live="polite">LOADING PLANET</span>
       <a class="ls-orbit-credit" href="https://sketchfab.com/3d-models/stylized-planet-789725db86f547fc9163b00f302c3e70" target="_blank" rel="noopener">3D model: cmzw · CC BY 4.0</a>

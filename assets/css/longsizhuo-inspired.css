@@ -123,7 +123,9 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-writing-grid .card-tags span{border:0;background:#ec174c;color:#fff}
 .ls-more-link{display:inline-flex;margin-top:24px;color:var(--ls-purple-soft);font-weight:700}
 
-.ls-contact-scene{display:grid;grid-template-columns:minmax(390px,.82fr) minmax(0,1.18fr);gap:22px;align-items:stretch;height:760px}
+.ls-contact-section{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 67% 45%,#0b1028 0,#060918 45%,#03050d 100%);box-shadow:inset 0 70px 90px -80px rgba(139,92,246,.28),inset 0 -70px 90px -80px rgba(139,92,246,.2)}
+.ls-contact-section::before{position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,rgba(3,5,13,.08),transparent 24%,transparent 74%,rgba(3,5,13,.35));content:"";pointer-events:none}
+.ls-contact-scene{position:relative;z-index:2;display:grid;grid-template-columns:minmax(390px,.82fr) minmax(0,1.18fr);gap:22px;align-items:stretch;height:760px}
 .ls-contact-card{position:relative;z-index:2;padding:48px;border:1px solid var(--line);border-radius:20px;background:var(--ls-panel);box-shadow:var(--ls-shadow)}
 .ls-contact-card h2{margin:0;font-size:clamp(52px,6vw,72px);font-weight:900;line-height:1;letter-spacing:-.06em}
 .ls-contact-form{display:grid;gap:13px;margin-top:54px}
@@ -139,9 +141,9 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-contact-shortcuts{display:flex;flex-wrap:wrap;gap:17px;margin-top:24px}
 .ls-contact-shortcuts a{color:var(--muted);font-size:12px;font-weight:650}
 .ls-contact-shortcuts a:hover{color:var(--ls-purple-soft)}
-.ls-orbit-stage{position:relative;isolation:isolate;height:760px;min-height:0;overflow:hidden;border:1px solid rgba(39,35,50,.72);border-radius:20px;background:radial-gradient(circle at 50% 48%,#0b1028 0,#060918 46%,#03050d 100%);box-shadow:var(--ls-shadow);cursor:grab}
+.ls-orbit-stage{position:relative;isolation:isolate;height:760px;min-height:0;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;cursor:grab}
 .ls-orbit-stage.is-dragging{cursor:grabbing}
-.ls-orbit-stage::before{position:absolute;z-index:2;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(5,7,17,.03),transparent 42%,rgba(5,7,17,.28));box-shadow:inset 0 0 85px rgba(5,7,17,.62);content:"";pointer-events:none}
+.ls-orbit-stage::before{display:none}
 .ls-starfield{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
 .ls-starfield i{position:absolute;top:var(--star-y);left:var(--star-x);width:var(--star-size);height:var(--star-size);border-radius:35%;background:#f8e8f3;box-shadow:0 0 calc(var(--star-size) * 2.4) rgba(247,220,238,.38);opacity:var(--star-opacity);will-change:translate,transform,filter,opacity;animation:ls-star-flight var(--star-travel-duration) linear var(--star-travel-delay) infinite,ls-star-twinkle var(--star-twinkle-duration) ease-in-out var(--star-twinkle-delay) infinite alternate}
 .ls-starfield i.is-meteor::after{position:absolute;top:50%;right:45%;width:var(--star-trail-length);height:max(1px,calc(var(--star-size) * .52));border-radius:999px;background:linear-gradient(90deg,transparent,rgba(177,190,255,.18) 28%,rgba(248,220,238,.72));content:"";filter:blur(.2px);transform:translateY(-50%) rotate(var(--star-travel-angle));transform-origin:100% 50%;pointer-events:none}

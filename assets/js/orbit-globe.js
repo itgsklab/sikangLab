@@ -6,7 +6,7 @@ const canvas = document.querySelector('[data-orbit-globe]');
 const stage = document.querySelector('[data-orbit-stage]');
 
 if (canvas && stage) {
-  const starfield = stage.querySelector('[data-starfield]');
+  const starfield = document.querySelector('[data-starfield]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
@@ -37,7 +37,7 @@ if (canvas && stage) {
 
   function createStars() {
     if (!starfield) return;
-    const count = window.innerWidth < 768 ? 72 : 118;
+    const count = window.innerWidth < 768 ? 150 : 320;
     let seed = 991105;
     const random = () => {
       seed = (seed * 1664525 + 1013904223) >>> 0;
@@ -48,7 +48,7 @@ if (canvas && stage) {
     for (let index = 0; index < count; index += 1) {
       const star = document.createElement('i');
       const sizeRoll = random();
-      const meteor = random() < 0.16;
+      const meteor = random() < 0.14;
       const size = meteor ? 1.7 + random() * 1.3 : sizeRoll > 0.94 ? 3.2 : sizeRoll > 0.72 ? 2.1 : 1.15;
       const travelAngle = (18 + random() * 24) * Math.PI / 180;
       const travelDistance = meteor ? 360 + random() * 260 : 100 + random() * 140;
