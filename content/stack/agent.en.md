@@ -17,9 +17,3 @@ Building Agents that can understand tasks, call tools, and complete workflows ar
 - RAG, knowledge bases, and retrieval quality
 - Tool use, workflow orchestration, and multi-agent collaboration
 - Evaluation, observability, and safety boundaries
-
-## Recommended reading
-
-[A visual guide to Xiaolin's AI interview notes →](xiaolinnote/)
-
-This illustrated introduction explores a question-driven learning site through its topic map, Agent Q&A, and RAG examples.

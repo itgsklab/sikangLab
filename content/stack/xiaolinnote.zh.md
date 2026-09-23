@@ -2,8 +2,8 @@
 title: 我最近发现的一个大模型学习网站：小林面试笔记
 type: landing
 article: true
-article_parent: agent
-url: stack/agent/xiaolinnote/
+article_parent: work
+url: stack/work/xiaolinnote/
 eyebrow: AI LEARNING
 summary: 从普通用户的视角，看看怎样借助问题和图解学习大模型、Agent 与 RAG。
 description: 从五大专题、Agent 模拟问答和 RAG 图解认识小林面试笔记，找到适合自己的大模型学习入口。

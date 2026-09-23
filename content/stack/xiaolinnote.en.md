@@ -2,8 +2,8 @@
 title: A Visual Guide to Xiaolin's AI Interview Notes
 type: landing
 article: true
-article_parent: agent
-url: stack/agent/xiaolinnote/
+article_parent: work
+url: stack/work/xiaolinnote/
 eyebrow: AI LEARNING
 summary: A beginner-friendly look at learning LLMs, Agents, and RAG through questions and diagrams.
 description: Explore Xiaolin's AI interview notes through five topic areas, Agent Q&A, and visual RAG explanations.

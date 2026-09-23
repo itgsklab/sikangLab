@@ -109,7 +109,7 @@
     <p>{{ if $zh }}把一个问题讲清楚，再把解决过程沉淀成下一次可以直接使用的参考。{{ else }}Explain a problem clearly, then turn the solution into a reference that can be reused next time.{{ end }}</p>
   </header>
   <div class="card-grid ls-writing-grid">
-    {{ with site.GetPage "/stack/agent-xiaolinnote" }}{{ partial "article-card.html" . }}{{ end }}
+    {{ with site.GetPage "/stack/xiaolinnote" }}{{ partial "article-card.html" . }}{{ end }}
     {{ with site.GetPage "/stack/llm-master" }}{{ partial "article-card.html" . }}{{ end }}
     {{ with site.GetPage "/stack/skillsmp" }}{{ partial "article-card.html" . }}{{ end }}
   </div>
