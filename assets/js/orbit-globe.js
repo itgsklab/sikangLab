@@ -39,7 +39,7 @@ if (canvas && stage) {
     if (!starfield) return;
     const compact = window.innerWidth < 768;
     const count = compact ? 210 : 460;
-    const meteorChance = compact ? 0.24 : 0.28;
+    const meteorChance = 0.35;
     let seed = 991105;
     const random = () => {
       seed = (seed * 1664525 + 1013904223) >>> 0;
