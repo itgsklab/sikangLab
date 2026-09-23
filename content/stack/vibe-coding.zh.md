@@ -2,9 +2,9 @@
 title: 我读完大厂技术团队的 Vibe Coding 实践，发现真正的变化不只是“用嘴写代码”
 type: landing
 article: true
-article_parent: agent
-url: stack/agent/vibe-coding/
-eyebrow: AI ENGINEERING
+article_parent: work
+url: stack/work/vibe-coding/
+eyebrow: AI CODING
 summary: 从 Google、Meta、GitHub、Anthropic、阿里、腾讯与字节团队的实践，看懂 Vibe Coding 是什么，以及它怎样走向工程化。
 description: 一篇基于互联网公司技术团队公开文章的 Vibe Coding 科普，讨论原型、规格、上下文、测试、安全与生产落地。
 tags: [Vibe Coding, AI 编程, Coding Agent, 工程实践]
@@ -16,6 +16,8 @@ authors:
 最近，我集中读了一批关于 Vibe Coding 的文章。资料既有 Google、Meta、GitHub、Anthropic 和 Vercel 的工程博客，也有淘特导购、腾讯云 CloudBase、字节跳动 TRAE 设计团队公开的实践。读完之后，我最大的感受是：大家嘴上都在谈“自然语言写代码”，真正投入工程时，注意力却都转向了同一批老问题——需求是否清楚、上下文是否完整、结果怎样验证、权限如何收住、出了故障谁来负责。
 
 所以，我现在更愿意把 Vibe Coding 看成一种快速探索软件的方式，而不是软件工程的替代品。它降低了把想法变成可运行程序的门槛，但程序越接近真实业务，传统工程能力就越不能省略。
+
+{{< site-shot src="media/vibe-coding-article/vibe-coding-loop.png" alt="从自然语言想法到 AI 生成代码、运行预览、测试反馈，再回到修改需求的 Vibe Coding 循环示意图" caption="我理解的 Vibe Coding 不是一次性生成，而是“描述—生成—运行—验证—再描述”的快速循环。" label="VIBE CODING LOOP" loading="eager" >}}
 
 ## Vibe Coding 到底是什么？
 
@@ -68,6 +70,8 @@ Anthropic 推荐的一个典型流程是先写测试、确认测试失败，再�
 Vercel 在[新版 v0 的介绍](https://vercel.com/blog/introducing-the-new-v0)中也区分了快速生成和生产交付。它指出，企业里的真实工作更多发生在已有代码库中，原型若脱离现有配置、权限和部署环境，最终仍可能需要重写。更值得警惕的是“影子 IT”：员工可以快速生成应用，也可能把凭证、公司数据和有漏洞的代码一起发布出去。
 
 这部分彻底打破了“模型会写代码，软件就完成了”的想象。真正上线的应用仍然要回答：密钥放在哪里？谁能访问数据？Agent 可以执行哪些命令？失败能否恢复？日志能否追踪？成本有没有上限？这些问题不会因为生成界面只用了十分钟就自动消失。
+
+{{< site-shot src="media/vibe-coding-article/production-guardrails.png" alt="AI 原型依次通过规格、代码库上下文、测试、权限沙箱和监控后成为生产应用的工程化示意图" caption="从原型到生产，中间要经过规格、上下文、测试、安全隔离和可观测性等工程护栏。" label="FROM PROTOTYPE TO PRODUCTION" >}}
 
 ## 我现在怎样使用 Vibe Coding？
 

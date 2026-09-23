@@ -6,7 +6,8 @@
   "description": "Academic CV starter template for Hugo Blox with Tailwind CSS v4",
   "scripts": {
     "dev": "hugo server --disableFastRender",
-    "build": "hugo --cleanDestinationDir --minify && pnpm run pagefind",
+    "check:translations": "node scripts/check-translations.mjs",
+    "build": "pnpm run check:translations && hugo --cleanDestinationDir --minify && pnpm run pagefind",
     "pagefind": "pagefind --site public"
   },
   "dependencies": {
