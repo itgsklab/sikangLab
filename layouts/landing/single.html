@@ -20,7 +20,9 @@
         <aside class="reference-toc reference-toc-mobile"><p class="eyebrow">{{ i18n "table_of_contents" }}</p>{{ .TableOfContents }}</aside>
 
         <div class="article-content">{{ .Content }}</div>
-        {{ if eq $base "xiaolinnote" }}
+        {{ if eq $base "vibe-coding" }}
+        <aside class="article-callout"><span>{{ if $zh }}我的结论{{ else }}My Takeaway{{ end }}</span><div><strong>{{ if $zh }}先让想法跑起来，再让工程接住它{{ else }}Prototype fast, then let engineering carry it{{ end }}</strong><p>{{ if $zh }}原型可以追求速度，生产代码必须补齐规格、测试、权限与审查。{{ else }}Prototypes can optimize for speed; production code still needs specs, tests, permissions, and review.{{ end }}</p></div><a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/" target="_blank" rel="noopener">{{ if $zh }}阅读规格驱动实践{{ else }}Read about spec-driven development{{ end }} ↗</a></aside>
+        {{ else if eq $base "xiaolinnote" }}
         <aside class="article-callout"><span>{{ if $zh }}继续探索{{ else }}Explore Further{{ end }}</span><div><strong>{{ if $zh }}挑一道问题，试着先自己回答{{ else }}Pick a question and answer it yourself first{{ end }}</strong><p>{{ if $zh }}从 Agent 或 RAG 专题开始，读完后再用自己的话解释一次。{{ else }}Start with an Agent or RAG topic, then explain it again in your own words.{{ end }}</p></div><a href="https://xiaolinnote.com/ai/" target="_blank" rel="noopener">{{ if $zh }}访问小林面试笔记{{ else }}Visit Xiaolin AI Notes{{ end }} ↗</a></aside>
         {{ else if eq $base "llm-master" }}
         <aside class="article-callout"><span>{{ if $zh }}继续探索{{ else }}Explore Further{{ end }}</span><div><strong>{{ if $zh }}沿着路线动手验证{{ else }}Validate the roadmap by building{{ end }}</strong><p>{{ if $zh }}从一个最小 AI 应用开始，再逐步加入检索、工具与评估。{{ else }}Start with a minimal AI application, then add retrieval, tools, and evaluation step by step.{{ end }}</p></div><a href="https://github.com/youngyangyang04/llm-master" target="_blank" rel="noopener">{{ if $zh }}访问{{ else }}Visit{{ end }} LLM-Master ↗</a></aside>
