@@ -41,6 +41,18 @@
   </header>
   <div class="ls-about-layout">
     <div class="ls-about-copy">
+      {{ with $selfie }}
+      {{ $selfieThumb := .Resize "480x webp q82" }}
+      <div class="ls-about-identity">
+        <figure class="ls-about-portrait">
+          <img src="{{ $selfieThumb.RelPermalink }}" alt="{{ if $zh }}郭思康的个人自拍{{ else }}Portrait of {{ $author.name.display }}{{ end }}" loading="lazy" decoding="async">
+        </figure>
+        <div>
+          <strong>{{ if $zh }}郭思康{{ else }}{{ $author.name.display }}{{ end }}</strong>
+          <span>{{ if $zh }}全栈开发 · AI Agent{{ else }}Full-stack · AI Agent{{ end }}</span>
+        </div>
+      </div>
+      {{ end }}
       {{ if $zh }}
       <p>我更关注技术能否稳定地解决真实问题：代码是否容易维护，工具是否真正节省时间，方案离开演示环境后是否依然可靠。</p>
       <p>Sikang Lab 是我的个人工作台。我在这里记录技术原理、项目实践、踩坑过程和可以复用的结论。</p>
@@ -49,18 +61,10 @@
       <p>Sikang Lab is my personal workbench for documenting technical principles, project practice, lessons learned, and reusable conclusions.</p>
       {{ end }}
     </div>
-    <div class="ls-about-aside">
-      {{ with $selfie }}
-      {{ $selfieThumb := .Resize "480x webp q82" }}
-      <figure class="ls-about-portrait">
-        <img src="{{ $selfieThumb.RelPermalink }}" alt="{{ if $zh }}郭思康的个人自拍{{ else }}Portrait of {{ $author.name.display }}{{ end }}" loading="lazy" decoding="async">
-      </figure>
-      {{ end }}
-      <div class="ls-stats" aria-label="{{ if $zh }}网站概览{{ else }}Site overview{{ end }}">
-        <div><strong>4</strong><span>{{ if $zh }}技术方向{{ else }}Technical Areas{{ end }}</span></div>
-        <div><strong>{{ len $articles }}</strong><span>{{ if $zh }}深度文章{{ else }}In-depth Articles{{ end }}</span></div>
-        <div><strong>{{ len $projects }}</strong><span>{{ if $zh }}个人项目{{ else }}Personal Projects{{ end }}</span></div>
-      </div>
+    <div class="ls-stats" aria-label="{{ if $zh }}网站概览{{ else }}Site overview{{ end }}">
+      <div><strong>4</strong><span>{{ if $zh }}技术方向{{ else }}Technical Areas{{ end }}</span></div>
+      <div><strong>{{ len $articles }}</strong><span>{{ if $zh }}深度文章{{ else }}In-depth Articles{{ end }}</span></div>
+      <div><strong>{{ len $projects }}</strong><span>{{ if $zh }}个人项目{{ else }}Personal Projects{{ end }}</span></div>
     </div>
   </div>
 </section>
