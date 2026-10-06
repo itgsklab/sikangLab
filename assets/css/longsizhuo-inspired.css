@@ -117,8 +117,11 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-focus-grid p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
 
 .ls-project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.ls-project-card{display:flex;min-width:0;overflow:hidden;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--ls-panel);box-shadow:0 16px 48px rgba(0,0,0,.14);transition:transform .25s,border-color .25s,box-shadow .25s}
+.ls-project-card{position:relative;display:flex;min-width:0;overflow:hidden;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--ls-panel);box-shadow:0 16px 48px rgba(0,0,0,.14);transition:transform .25s,border-color .25s,box-shadow .25s}
 .ls-project-card:hover{transform:translateY(-7px);border-color:rgba(139,92,246,.65);box-shadow:var(--ls-shadow)}
+.ls-project-card:focus-within{border-color:var(--ls-purple-soft);box-shadow:0 0 0 3px rgba(139,92,246,.22),var(--ls-shadow)}
+.ls-project-card-hit{position:absolute;z-index:3;inset:0;border-radius:inherit}
+.ls-project-card-hit:focus{outline:0}
 .ls-project-visual{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(32,199,183,.19),transparent 30%),linear-gradient(145deg,#11111a,#211439)}
 .ls-project-visual::after{position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(180deg,transparent,rgba(5,6,12,.28));content:"";pointer-events:none}
 .ls-project-visual img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
@@ -128,13 +131,41 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-project-copy{display:flex;flex:1;flex-direction:column;padding:26px}
 .ls-project-copy>span{color:var(--ls-cyan);font:600 11px "JetBrains Mono",monospace;letter-spacing:.12em}
 .ls-project-copy h3{margin:11px 0;font-size:27px;letter-spacing:-.045em}
-.ls-project-copy h3 a:hover{color:var(--ls-purple-soft)}
 .ls-project-copy p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
 .ls-project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .ls-project-tags b{padding:5px 9px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:10px;font-weight:600}
-.ls-project-copy footer{display:flex;gap:18px;margin-top:auto;padding-top:26px}
-.ls-project-copy footer a{color:var(--ink);font-size:12px;font-weight:750}
-.ls-project-copy footer a:hover{color:var(--ls-purple-soft)}
+.ls-project-open-label{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:25px;color:var(--ink)!important;font-family:Inter,sans-serif!important;font-size:12px!important;font-weight:750!important;letter-spacing:0!important}
+.ls-project-open-label i{font-style:normal;font-size:17px;transition:transform .2s}
+.ls-project-card:hover .ls-project-open-label i{transform:translate(2px,-2px)}
+
+.has-project-modal{overflow:hidden}
+.ls-project-modal{width:min(1440px,calc(100% - 36px));max-width:none;height:calc(100svh - 36px);max-height:none;margin:auto;padding:0;overflow:hidden;border:1px solid rgba(167,139,250,.38);border-radius:22px;background:#130d28;color:#f7f7fb;box-shadow:0 34px 110px rgba(0,0,0,.68)}
+.ls-project-modal::backdrop{background:rgba(2,3,9,.82);backdrop-filter:blur(9px)}
+.ls-project-modal-shell{display:grid;grid-template-rows:auto minmax(0,1fr);height:100%}
+.ls-project-modal-bar{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:82px;padding:14px 24px;border-bottom:1px solid rgba(196,181,253,.3);background:#0c091c}
+.ls-project-modal-bar>strong{font:800 27px/1 Poppins,Inter,sans-serif;letter-spacing:-.04em;text-align:center}
+.ls-project-modal-bar button{min-height:48px;padding:0 20px;border:0;border-radius:10px;font:750 14px Inter,sans-serif;cursor:pointer;transition:transform .2s,filter .2s}
+.ls-project-modal-bar button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.ls-project-modal-return{justify-self:start;background:#b9b3cf;color:#0b0914}
+.ls-project-modal-close{justify-self:end;background:#f01825;color:#fff}
+.ls-project-modal-close b{display:none;font-size:23px}
+.ls-project-modal-content{overflow:auto;padding:42px 34px 36px;overscroll-behavior:contain}
+.ls-project-modal-type{margin:0;color:#a78bfa;font:650 11px "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.ls-project-modal-summary{max-width:980px;margin:12px 0 36px;color:#b9b3c8;font-size:18px;line-height:1.75}
+.ls-project-modal-heading{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.ls-project-modal-heading>span{display:grid;place-items:center;width:28px;height:28px;border:2px solid currentColor;border-radius:50%;font-size:9px}
+.ls-project-modal-heading h3{margin:0;font-size:23px;letter-spacing:-.025em}
+.ls-project-modal-preview{overflow:auto;margin:0;border:1px solid rgba(255,255,255,.34);border-radius:18px;background:#06060a;box-shadow:0 20px 70px rgba(0,0,0,.34)}
+.ls-project-modal-preview img{display:block;width:100%;height:auto;min-height:360px;object-fit:cover;object-position:top}
+.ls-project-modal-preview.is-contain{display:grid;place-items:center;min-height:520px;background:radial-gradient(circle at 50% 45%,rgba(124,58,237,.24),transparent 34%),#070811}
+.ls-project-modal-preview.is-contain img{width:min(48%,520px);min-height:0;filter:drop-shadow(0 24px 46px rgba(0,0,0,.35))}
+.ls-project-modal-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:24px}
+.ls-project-modal-tags span{padding:6px 12px;border:1px solid rgba(196,181,253,.3);border-radius:99px;color:#c4b5fd;font-size:11px}
+.ls-project-modal-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+.ls-project-modal-button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 25px;border-radius:10px;background:#b9b3cf;color:#0b0914;font-weight:800;transition:transform .2s,filter .2s}
+.ls-project-modal-button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.ls-project-modal-button.is-primary{background:#5b5df7;color:#fff}
+.ls-project-modal-button.is-live{background:#2563eb;color:#fff}
 
 .project-detail{padding-block:82px 118px}
 .project-detail-back{display:inline-flex;margin-bottom:46px;color:var(--muted);font-size:13px;font-weight:700}
@@ -277,6 +308,16 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
   .project-detail{padding-block:58px 88px}
   .project-detail-body{grid-template-columns:1fr;gap:38px;margin-top:60px;padding-top:50px}
   .project-detail-meta{position:static}
+  .ls-project-modal{width:100%;height:100svh;border:0;border-radius:0}
+  .ls-project-modal-bar{min-height:68px;padding:10px 16px}
+  .ls-project-modal-bar>strong{font-size:19px}
+  .ls-project-modal-bar button{min-height:42px;padding:0 14px}
+  .ls-project-modal-content{padding:30px 18px 28px}
+  .ls-project-modal-summary{margin-bottom:28px;font-size:16px}
+  .ls-project-modal-preview{border-radius:13px}
+  .ls-project-modal-preview img{min-height:0}
+  .ls-project-modal-preview.is-contain{min-height:330px}
+  .ls-project-modal-preview.is-contain img{width:min(58%,360px)}
   .ls-contact-scene{grid-template-columns:1fr;height:auto}
   .ls-contact-card{padding:36px}
   .ls-orbit-stage{height:590px}
@@ -301,6 +342,15 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
   .project-detail-summary{font-size:16px}
   .project-detail-content{font-size:16px}
   .project-detail-content>p:first-child{font-size:18px}
+  .ls-project-modal-bar{grid-template-columns:auto 1fr auto;gap:9px}
+  .ls-project-modal-bar>strong{overflow:hidden;font-size:16px;text-overflow:ellipsis;white-space:nowrap}
+  .ls-project-modal-bar button{width:42px;padding:0;font-size:0}
+  .ls-project-modal-return{font-size:20px!important}
+  .ls-project-modal-return span{display:none}
+  .ls-project-modal-close span{display:none}
+  .ls-project-modal-close b{display:block}
+  .ls-project-modal-heading h3{font-size:20px}
+  .ls-project-modal-actions{display:grid;grid-template-columns:1fr}
   .ls-contact-card{padding:30px 22px;border-radius:15px}
   .ls-contact-form{margin-top:38px}
   .ls-orbit-stage{height:500px;border-radius:15px}

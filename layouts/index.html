@@ -87,14 +87,15 @@
   <header class="ls-section-heading">
     <p class="ls-kicker">MY WORK</p>
     <h2>{{ if $zh }}项目作品。{{ else }}Projects.{{ end }}</h2>
-    <p>{{ if $zh }}从本地优先的 AI 情报工作台，到可审计的水印处理工具：每个项目都有真实界面、工程说明与公开源码。{{ else }}From a local-first AI intelligence workspace to an auditable watermark-removal tool, each project includes a real interface, engineering notes, and public source code.{{ end }}</p>
+    <p>{{ if $zh }}从本地优先的 AI 情报工作台，到可审计的水印处理工具。点击卡片展开项目介绍、界面预览与源码入口。{{ else }}From a local-first AI intelligence workspace to an auditable watermark-removal tool. Open any card for the story, interface preview, and source code.{{ end }}</p>
   </header>
   <div class="ls-project-grid">
     {{ range $featuredProjects.ByWeight }}
     {{ $project := . }}
     {{ $cover := resources.Get .Params.cover }}
     <article class="ls-project-card">
-      <a class="ls-project-visual{{ if eq .Params.cover_fit "contain" }} is-contain{{ end }}" href="{{ .RelPermalink }}" aria-label="{{ if $zh }}查看 {{ .Title }} 项目详情{{ else }}View {{ .Title }} project details{{ end }}">
+      <a class="ls-project-card-hit" href="{{ .RelPermalink }}" data-project-open="project-modal-{{ .Title | urlize }}" aria-label="{{ if $zh }}展开 {{ .Title }} 项目预览{{ else }}Open {{ .Title }} project preview{{ end }}"></a>
+      <div class="ls-project-visual{{ if eq .Params.cover_fit "contain" }} is-contain{{ end }}">
         {{ with $cover }}
           {{ if eq $project.Params.cover_fit "contain" }}
             {{ $coverImage := .Resize "700x webp q88" }}
@@ -105,20 +106,47 @@
           {{ end }}
         {{ end }}
         <span class="ls-project-index">0{{ .Weight }}</span>
-      </a>
+      </div>
       <div class="ls-project-copy">
         <span>{{ .Params.project_type }}</span>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <h3>{{ .Title }}</h3>
         <p>{{ .Params.summary }}</p>
         <div class="ls-project-tags">{{ range first 4 .Params.tags }}<b>{{ . }}</b>{{ end }}</div>
-        <footer>
-          <a href="{{ .RelPermalink }}">{{ if $zh }}查看项目{{ else }}View project{{ end }} <span aria-hidden="true">↗</span></a>
-          {{ with .Params.repo_url }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>{{ end }}
-        </footer>
+        <span class="ls-project-open-label">{{ if $zh }}点击展开{{ else }}Open project{{ end }} <i aria-hidden="true">↗</i></span>
       </div>
     </article>
     {{ end }}
   </div>
+  {{ range $featuredProjects.ByWeight }}
+  {{ $project := . }}
+  {{ $cover := resources.Get .Params.cover }}
+  <dialog class="ls-project-modal" id="project-modal-{{ .Title | urlize }}" aria-labelledby="project-modal-title-{{ .Title | urlize }}">
+    <div class="ls-project-modal-shell">
+      <header class="ls-project-modal-bar">
+        <button type="button" class="ls-project-modal-return" data-project-close>← <span>{{ if $zh }}返回{{ else }}Return{{ end }}</span></button>
+        <strong id="project-modal-title-{{ .Title | urlize }}">{{ .Title }}</strong>
+        <button type="button" class="ls-project-modal-close" data-project-close><span>{{ if $zh }}关闭{{ else }}Close{{ end }}</span> <b aria-hidden="true">×</b></button>
+      </header>
+      <div class="ls-project-modal-content">
+        <p class="ls-project-modal-type">{{ .Params.project_type }}</p>
+        <p class="ls-project-modal-summary">{{ .Params.summary }}</p>
+        <div class="ls-project-modal-heading">
+          <span aria-hidden="true">◉</span>
+          <h3>{{ if $zh }}界面预览{{ else }}Interface Preview{{ end }}</h3>
+        </div>
+        <figure class="ls-project-modal-preview{{ if eq .Params.cover_fit "contain" }} is-contain{{ end }}">
+          {{ with $cover }}{{ $modalCover := .Resize "1600x webp q90" }}<img src="{{ $modalCover.RelPermalink }}" alt="{{ $project.Params.cover_alt }}" loading="lazy" decoding="async">{{ end }}
+        </figure>
+        <div class="ls-project-modal-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
+        <div class="ls-project-modal-actions">
+          {{ with .Params.repo_url }}<a class="ls-project-modal-button" href="{{ . }}" target="_blank" rel="noopener">GitHub {{ if $zh }}源码{{ else }}Source{{ end }} ↗</a>{{ end }}
+          <a class="ls-project-modal-button is-primary" href="{{ .RelPermalink }}">{{ if $zh }}完整项目介绍{{ else }}Full project story{{ end }} ↗</a>
+          {{ with .Params.site_url }}<a class="ls-project-modal-button is-live" href="{{ . }}" target="_blank" rel="noopener">{{ if $zh }}访问网站{{ else }}Open Live{{ end }} ↗</a>{{ end }}
+        </div>
+      </div>
+    </div>
+  </dialog>
+  {{ end }}
 </section>
 
 <section id="writing" class="ls-section ls-writing wrap">
