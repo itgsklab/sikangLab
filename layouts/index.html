@@ -135,7 +135,7 @@
           <h3>{{ if $zh }}界面预览{{ else }}Interface Preview{{ end }}</h3>
         </div>
         <figure class="ls-project-modal-preview{{ if eq .Params.cover_fit "contain" }} is-contain{{ end }}">
-          {{ with $cover }}{{ $modalCover := .Resize "1600x webp q90" }}<img src="{{ $modalCover.RelPermalink }}" alt="{{ $project.Params.cover_alt }}" loading="lazy" decoding="async">{{ end }}
+          {{ with $cover }}{{ $modalCover := .Resize "1600x webp q90" }}<img src="{{ $modalCover.RelPermalink }}" alt="{{ $project.Params.cover_alt }}" decoding="async">{{ end }}
         </figure>
         <div class="ls-project-modal-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
         <div class="ls-project-modal-actions">
