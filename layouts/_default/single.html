@@ -1,4 +1,7 @@
 {{ define "main" }}
+{{ if eq .Section "projects" }}
+  {{ partial "project-detail.html" . }}
+{{ else }}
 <article class="article-page wrap-narrow">
   <a class="back-link" href="{{ .Parent.RelPermalink }}">{{ i18n "back_to" }} {{ .Parent.Title }}</a>
   <header class="article-header">
@@ -8,4 +11,5 @@
   </header>
   <div class="article-content">{{ .Content }}</div>
 </article>
+{{ end }}
 {{ end }}

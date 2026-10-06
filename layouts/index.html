@@ -2,9 +2,9 @@
 {{ $author := hugo.Data.authors.me }}
 {{ $avatar := resources.Get "media/authors/me.jpg" }}
 {{ $selfie := resources.Get "media/authors/me-selfie.jpg" }}
-{{ $brand := resources.Get "media/site-icon-lab-v2.png" }}
 {{ $articles := where site.RegularPages "Params.article" true }}
 {{ $projects := where site.RegularPages "Section" "projects" }}
+{{ $featuredProjects := where $projects "Params.featured" true }}
 {{ $zh := eq site.Language.Lang "zh" }}
 
 <section class="ls-hero wrap" aria-labelledby="home-title">
@@ -87,19 +87,38 @@
   <header class="ls-section-heading">
     <p class="ls-kicker">MY WORK</p>
     <h2>{{ if $zh }}项目作品。{{ else }}Projects.{{ end }}</h2>
-    <p>{{ if $zh }}把学习过程变成可以持续维护、公开访问和反复验证的作品。{{ else }}Turning the learning process into work that can be maintained, shared, and tested over time.{{ end }}</p>
+    <p>{{ if $zh }}从本地优先的 AI 情报工作台，到可审计的水印处理工具：每个项目都有真实界面、工程说明与公开源码。{{ else }}From a local-first AI intelligence workspace to an auditable watermark-removal tool, each project includes a real interface, engineering notes, and public source code.{{ end }}</p>
   </header>
-  <a class="ls-project-card" href="{{ "projects/sikang-website/" | relLangURL }}">
-    <div class="ls-project-visual">
-      {{ with $brand }}{{ $projectIcon := .Resize "512x512" }}<img src="{{ $projectIcon.RelPermalink }}" alt="{{ if $zh }}Sikang Lab 兔子图标{{ else }}Sikang Lab rabbit icon{{ end }}" loading="lazy">{{ end }}
-    </div>
-    <div class="ls-project-copy">
-      <span>{{ if $zh }}个人网站{{ else }}PERSONAL WEBSITE{{ end }}</span>
-      <h3>Sikang Lab</h3>
-      <p>{{ if $zh }}基于 Hugo 与 GitHub Pages 搭建的个人技术实践站，记录 AI Agent、后端开发、自动化工具与工程思考。{{ else }}A personal engineering site built with Hugo and GitHub Pages, covering AI Agents, backend development, automation, and software practice.{{ end }}</p>
-      <div><b>Hugo</b><b>GitHub Actions</b><b>Pagefind</b></div>
-    </div>
-  </a>
+  <div class="ls-project-grid">
+    {{ range $featuredProjects.ByWeight }}
+    {{ $project := . }}
+    {{ $cover := resources.Get .Params.cover }}
+    <article class="ls-project-card">
+      <a class="ls-project-visual{{ if eq .Params.cover_fit "contain" }} is-contain{{ end }}" href="{{ .RelPermalink }}" aria-label="{{ if $zh }}查看 {{ .Title }} 项目详情{{ else }}View {{ .Title }} project details{{ end }}">
+        {{ with $cover }}
+          {{ if eq $project.Params.cover_fit "contain" }}
+            {{ $coverImage := .Resize "700x webp q88" }}
+            <img src="{{ $coverImage.RelPermalink }}" alt="{{ $project.Params.cover_alt }}" loading="lazy" decoding="async">
+          {{ else }}
+            {{ $coverImage := .Fill "900x620 Center webp q86" }}
+            <img src="{{ $coverImage.RelPermalink }}" alt="{{ $project.Params.cover_alt }}" loading="lazy" decoding="async">
+          {{ end }}
+        {{ end }}
+        <span class="ls-project-index">0{{ .Weight }}</span>
+      </a>
+      <div class="ls-project-copy">
+        <span>{{ .Params.project_type }}</span>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Params.summary }}</p>
+        <div class="ls-project-tags">{{ range first 4 .Params.tags }}<b>{{ . }}</b>{{ end }}</div>
+        <footer>
+          <a href="{{ .RelPermalink }}">{{ if $zh }}查看项目{{ else }}View project{{ end }} <span aria-hidden="true">↗</span></a>
+          {{ with .Params.repo_url }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>{{ end }}
+        </footer>
+      </div>
+    </article>
+    {{ end }}
+  </div>
 </section>
 
 <section id="writing" class="ls-section ls-writing wrap">

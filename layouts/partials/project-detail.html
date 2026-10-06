@@ -1,0 +1,36 @@
+{{ $zh := eq site.Language.Lang "zh" }}
+{{ $cover := resources.Get .Params.cover }}
+<article class="project-detail wrap">
+  <a class="project-detail-back" href="{{ "projects/" | relLangURL }}">← {{ if $zh }}返回全部项目{{ else }}Back to all projects{{ end }}</a>
+  <header class="project-detail-hero">
+    <div class="project-detail-copy">
+      <p class="ls-kicker">{{ .Params.project_type }}</p>
+      <h1>{{ .Title }}</h1>
+      <p class="project-detail-summary">{{ .Params.summary }}</p>
+      <div class="project-detail-actions">
+        {{ with .Params.repo_url }}<a class="ls-button ls-button-primary" href="{{ . }}" target="_blank" rel="noopener">GitHub {{ if $zh }}源码{{ else }}Source{{ end }} ↗</a>{{ end }}
+        {{ with .Params.site_url }}<a class="ls-button" href="{{ . }}" target="_blank" rel="noopener">{{ if $zh }}访问项目{{ else }}Visit project{{ end }} ↗</a>{{ end }}
+      </div>
+    </div>
+    {{ with $cover }}
+    <figure class="project-detail-cover{{ if eq $.Params.cover_fit "contain" }} is-contain{{ end }}">
+      {{ if eq $.Params.cover_fit "contain" }}
+        {{ $detailCover := .Resize "1100x webp q90" }}
+        <img src="{{ $detailCover.RelPermalink }}" alt="{{ $.Params.cover_alt }}">
+      {{ else }}
+        {{ $detailCover := .Fill "1200x750 Center webp q90" }}
+        <img src="{{ $detailCover.RelPermalink }}" alt="{{ $.Params.cover_alt }}">
+      {{ end }}
+    </figure>
+    {{ end }}
+  </header>
+  <div class="project-detail-body">
+    <div class="article-content project-detail-content">{{ .Content }}</div>
+    <aside class="project-detail-meta">
+      <span>TECH STACK</span>
+      <h2>{{ if $zh }}项目技术{{ else }}Project technologies{{ end }}</h2>
+      <div class="ls-project-tags">{{ range .Params.tags }}<b>{{ . }}</b>{{ end }}</div>
+      {{ with .Params.repo_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ if $zh }}在 GitHub 查看{{ else }}View on GitHub{{ end }} ↗</a>{{ end }}
+    </aside>
+  </div>
+</article>

@@ -1,6 +1,11 @@
 <article class="content-card">
   <a class="card-cover" href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
-    <span class="cover-code">{{ if eq .Section "projects" }}{ build(); ship(); }{{ else }}func learn() → share{{ end }}</span>
+    {{ if and (eq .Section "projects") .Params.cover }}
+      {{ $cover := resources.Get .Params.cover }}
+      {{ with $cover }}{{ $cardCover := .Fill "800x480 Center webp q84" }}<img src="{{ $cardCover.RelPermalink }}" alt="{{ $.Params.cover_alt }}" loading="lazy" decoding="async">{{ end }}
+    {{ else }}
+      <span class="cover-code">func learn() → share</span>
+    {{ end }}
   </a>
   <div class="card-body">
     <div class="card-meta"><span>{{ .Date.Format "2006.01.02" }}</span><span>{{ .ReadingTime }} {{ i18n "minutes" }}</span></div>

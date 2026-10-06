@@ -62,6 +62,8 @@
       addEventListener('scroll',update,{passive:true});update();
     })();
   </script>
+{{ else if eq .Section "projects" }}
+  {{ partial "project-detail.html" . }}
 {{ else if eq .Section "stack" }}
   <article class="stack-detail wrap-narrow" aria-label="{{ .Title }}">
     {{ $articles := where (where site.RegularPages "Section" "stack") "Params.article_parent" $base }}
