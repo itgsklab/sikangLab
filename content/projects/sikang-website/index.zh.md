@@ -2,7 +2,7 @@
 title: 'Sikang Website'
 date: 2026-08-18
 weight: 3
-featured: true
+featured: false
 summary: 基于 Hugo 与 GitHub Pages 搭建的个人技术实践站，记录 AI Agent、后端开发与工程思考。
 project_type: 个人网站
 cover: media/site-icon-lab-v2.png

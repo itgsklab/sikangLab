@@ -119,7 +119,7 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-focus-grid h3{margin:42px 0 10px;font-size:25px;letter-spacing:-.04em}
 .ls-focus-grid p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
 
-.ls-project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.ls-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .ls-project-card{position:relative;display:flex;min-width:0;overflow:hidden;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--ls-panel);box-shadow:0 16px 48px rgba(0,0,0,.14);transition:transform .25s,border-color .25s,box-shadow .25s}
 .ls-project-card:hover{transform:translateY(-7px);border-color:rgba(139,92,246,.65);box-shadow:var(--ls-shadow)}
 .ls-project-card:focus-within{border-color:var(--ls-purple-soft);box-shadow:0 0 0 3px rgba(139,92,246,.22),var(--ls-shadow)}

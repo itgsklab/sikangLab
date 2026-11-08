@@ -2,7 +2,7 @@
 title: 'Sikang Website'
 date: 2026-08-18
 weight: 3
-featured: true
+featured: false
 summary: A personal engineering site built with Hugo and GitHub Pages for AI Agents, backend development, and practical software notes.
 project_type: Personal website
 cover: media/site-icon-lab-v2.png
