@@ -19,10 +19,6 @@ en:
         name: Projects
         url: '#projects'
         weight: 30
-      - identifier: writing
-        name: Writing
-        url: '#writing'
-        weight: 40
       - identifier: contact
         name: Contact
         url: '#contact'
@@ -49,10 +45,6 @@ zh:
         name: 项目
         url: '#projects'
         weight: 30
-      - identifier: writing
-        name: 文章
-        url: '#writing'
-        weight: 40
       - identifier: contact
         name: 联系
         url: '#contact'

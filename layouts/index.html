@@ -19,7 +19,7 @@
       <p><strong>XHS:</strong> <a href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener">郭同学在coding</a></p>
     </div>
     <div class="ls-hero-actions">
-      <a class="ls-button ls-button-primary" href="#writing">{{ if $zh }}最近文章{{ else }}Recent Writing{{ end }}</a>
+      <a class="ls-button ls-button-primary" href="{{ "blog/" | relLangURL }}">{{ if $zh }}最近文章{{ else }}Recent Writing{{ end }}</a>
       <a class="ls-button" href="{{ "about/" | relLangURL }}">{{ if $zh }}关于我{{ else }}About Me{{ end }}</a>
     </div>
   </div>
@@ -147,20 +147,6 @@
     </div>
   </dialog>
   {{ end }}
-</section>
-
-<section id="writing" class="ls-section ls-writing wrap">
-  <header class="ls-section-heading">
-    <p class="ls-kicker">THOUGHTS & SHARING</p>
-    <h2>{{ if $zh }}写作{{ else }}Writing{{ end }}</h2>
-    <p>{{ if $zh }}把一个问题讲清楚，再把解决过程沉淀成下一次可以直接使用的参考。{{ else }}Explain a problem clearly, then turn the solution into a reference that can be reused next time.{{ end }}</p>
-  </header>
-  <div class="card-grid ls-writing-grid">
-    {{ with site.GetPage "/stack/xiaolinnote" }}{{ partial "article-card.html" . }}{{ end }}
-    {{ with site.GetPage "/stack/llm-master" }}{{ partial "article-card.html" . }}{{ end }}
-    {{ with site.GetPage "/stack/skillsmp" }}{{ partial "article-card.html" . }}{{ end }}
-  </div>
-  <a class="ls-more-link" href="{{ "blog/" | relLangURL }}">{{ i18n "all_articles" }}</a>
 </section>
 
 <section id="life" class="ls-section wrap">
