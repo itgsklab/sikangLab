@@ -151,16 +151,16 @@
 
 <section id="life" class="ls-section wrap">
   <header class="ls-section-heading">
-    <p class="ls-kicker">LIFE OUTSIDE CODE</p>
-    <h2>{{ if $zh }}生活记录{{ else }}Life Notes{{ end }}</h2>
-    <p>{{ if $zh }}记录编程之外的日常、阅读、观影和阶段性的想法。{{ else }}Notes on everyday life, reading, films, and ideas beyond code.{{ end }}</p>
+    <p class="ls-kicker">PHOTO ALBUM</p>
+    <h2>{{ i18n "life_title" }}</h2>
+    <p>{{ i18n "life_intro" }}</p>
   </header>
-  <div class="ls-focus-grid ls-home-topic-grid" aria-label="{{ if $zh }}生活记录方向{{ else }}Life note topics{{ end }}">
-    <a href="{{ "life/" | relLangURL }}"><span>01</span><h3>{{ if $zh }}日常生活{{ else }}Daily Life{{ end }}</h3><p>{{ if $zh }}保存工作与学习之外值得记住的普通时刻。{{ else }}Small moments worth remembering beyond work and study.{{ end }}</p></a>
-    <a href="{{ "life/" | relLangURL }}"><span>02</span><h3>{{ if $zh }}阅读与观影{{ else }}Reading & Films{{ end }}</h3><p>{{ if $zh }}记录书籍、电影和长内容带来的新视角。{{ else }}Books, films, and long-form work that offer a new perspective.{{ end }}</p></a>
-    <a href="{{ "life/" | relLangURL }}"><span>03</span><h3>{{ if $zh }}随想与复盘{{ else }}Reflections{{ end }}</h3><p>{{ if $zh }}整理阶段性的观察、选择和对生活的理解。{{ else }}Periodic observations, choices, and reflections on life.{{ end }}</p></a>
+  <div class="ls-focus-grid ls-home-topic-grid" aria-label="{{ if $zh }}相册分类{{ else }}Album categories{{ end }}">
+    <a href="{{ "life/" | relLangURL }}"><span>01</span><h3>{{ i18n "daily_life" }}</h3><p>{{ i18n "daily_life_desc" }}</p></a>
+    <a href="{{ "life/" | relLangURL }}"><span>02</span><h3>{{ i18n "reading_films" }}</h3><p>{{ i18n "reading_films_desc" }}</p></a>
+    <a href="{{ "life/" | relLangURL }}"><span>03</span><h3>{{ i18n "reflections" }}</h3><p>{{ i18n "reflections_desc" }}</p></a>
   </div>
-  <a class="ls-more-link" href="{{ "life/" | relLangURL }}">{{ if $zh }}查看全部生活记录{{ else }}Explore all life notes{{ end }} →</a>
+  <a class="ls-more-link" href="{{ "life/" | relLangURL }}">{{ if $zh }}查看全部相册{{ else }}Explore the album{{ end }} →</a>
 </section>
 
 <section id="contact" class="ls-section ls-contact-section">

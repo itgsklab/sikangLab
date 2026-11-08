@@ -79,22 +79,22 @@ project_work:
 project_intro:
   other: "Products, engineering practice, and technical solutions I have built."
 life_title:
-  other: "Life Notes"
+  other: "Album"
 life_intro:
-  other: "Notes on everyday life, books, films, and ideas beyond code."
+  other: "Photos of everyday moments, places I have visited, and memories worth keeping."
 daily_life:
-  other: "Everyday Life"
+  other: "Everyday Moments"
 daily_life_desc:
-  other: "Moments worth keeping from work and daily life."
+  other: "Ordinary moments and details worth keeping."
 reading_films:
-  other: "Books & Films"
+  other: "Cities & Trips"
 reading_films_desc:
-  other: "Thoughts inspired by books, films, and other works."
+  other: "Cities, landscapes, and memories gathered along the way."
 reflections:
-  other: "Reflections"
+  other: "Personal Interests"
 reflections_desc:
-  other: "Ideas unrelated to technology, but still worth recording."
+  other: "Snapshots from exhibitions, books, films, and other interests."
 recent_moments:
-  other: "Recent Moments"
+  other: "Latest Photos"
 life_coming:
-  other: "Life is happening. New notes will arrive over time."
+  other: "New photos will be added to the album over time."

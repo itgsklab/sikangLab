@@ -1,4 +1,4 @@
 ---
-title: '生活 · Life'
-description: '记录编程之外的日常、阅读、观影与随想。'
+title: '相册'
+description: '用照片记录日常片段、走过的地方和值得留住的瞬间。'
 ---

@@ -79,22 +79,22 @@ project_work:
 project_intro:
   other: "记录做过的产品、工程实践与技术方案。"
 life_title:
-  other: "生活记录"
+  other: "相册"
 life_intro:
-  other: "编程之外，记录日常、阅读、观影和偶尔冒出来的想法。"
+  other: "用照片记录日常片段、走过的地方和值得留住的瞬间。"
 daily_life:
-  other: "日常"
+  other: "日常片段"
 daily_life_desc:
-  other: "工作与生活中值得留下的片段。"
+  other: "记录生活中值得留住的光影和普通瞬间。"
 reading_films:
-  other: "阅读·观影"
+  other: "城市与旅行"
 reading_films_desc:
-  other: "书籍、电影和其他内容带来的思考。"
+  other: "收藏走过的城市、风景和旅途见闻。"
 reflections:
-  other: "随想"
+  other: "兴趣随拍"
 reflections_desc:
-  other: "与技术无关，但同样值得记录的想法。"
+  other: "记录展览、阅读、观影和其他兴趣时刻。"
 recent_moments:
-  other: "最新记录"
+  other: "最新照片"
 life_coming:
-  other: "生活正在发生，记录会慢慢补上。"
+  other: "相册会慢慢补上新的照片。"

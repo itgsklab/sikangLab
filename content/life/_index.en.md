@@ -1,4 +1,4 @@
 ---
-title: 'Life'
-description: 'Notes on everyday life, books, films, and ideas beyond code.'
+title: 'Album'
+description: 'Photos of everyday moments, places I have visited, and memories worth keeping.'
 ---
