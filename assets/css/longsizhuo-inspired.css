@@ -136,25 +136,25 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-focus-grid h3{margin:42px 0 10px;font-size:25px;letter-spacing:-.04em}
 .ls-focus-grid p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
 
-.ls-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.ls-project-card{position:relative;display:flex;min-width:0;overflow:hidden;flex-direction:column;border:1px solid var(--line);border-radius:18px;background:var(--ls-panel);box-shadow:0 16px 48px rgba(0,0,0,.14);transition:transform .25s,border-color .25s,box-shadow .25s}
+.ls-project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,360px));justify-content:center;gap:28px}
+.ls-project-card{position:relative;display:flex;min-width:0;overflow:hidden;flex-direction:column;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--ls-panel);box-shadow:0 16px 48px rgba(0,0,0,.14);transition:transform .25s,border-color .25s,box-shadow .25s}
 .ls-project-card:hover{transform:translateY(-7px);border-color:rgba(139,92,246,.65);box-shadow:var(--ls-shadow)}
 .ls-project-card:focus-within{border-color:var(--ls-purple-soft);box-shadow:0 0 0 3px rgba(139,92,246,.22),var(--ls-shadow)}
 .ls-project-card-hit{position:absolute;z-index:3;inset:0;border-radius:inherit}
 .ls-project-card-hit:focus{outline:0}
-.ls-project-visual{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(32,199,183,.19),transparent 30%),linear-gradient(145deg,#11111a,#211439)}
+.ls-project-visual{position:relative;display:block;flex:none;width:100%;height:230px;overflow:hidden;border-radius:16px;background:radial-gradient(circle at 50% 45%,rgba(32,199,183,.19),transparent 30%),linear-gradient(145deg,#11111a,#211439)}
 .ls-project-visual::after{position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(180deg,transparent,rgba(5,6,12,.28));content:"";pointer-events:none}
 .ls-project-visual img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .ls-project-card:hover .ls-project-visual img{transform:scale(1.035)}
 .ls-project-visual.is-contain img{padding:16%;object-fit:contain;filter:drop-shadow(0 22px 38px rgba(0,0,0,.32))}
 .ls-project-index{position:absolute;z-index:1;top:17px;right:17px;display:grid;place-items:center;width:39px;height:39px;border:1px solid rgba(255,255,255,.34);border-radius:50%;background:rgba(5,6,12,.58);color:#fff;font:600 10px "JetBrains Mono",monospace;backdrop-filter:blur(10px)}
-.ls-project-copy{display:flex;flex:1;flex-direction:column;padding:22px 24px 23px}
+.ls-project-copy{display:flex;flex:1;flex-direction:column;padding:20px 0 0}
 .ls-project-copy>span{color:var(--ls-cyan);font:600 11px "JetBrains Mono",monospace;letter-spacing:.12em}
-.ls-project-copy h3{margin:8px 0;font-size:27px;letter-spacing:-.045em}
-.ls-project-copy p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
-.ls-project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.ls-project-tags b{padding:5px 9px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:10px;font-weight:600}
-.ls-project-open-label{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:18px;color:var(--ink)!important;font-family:Inter,sans-serif!important;font-size:12px!important;font-weight:750!important;letter-spacing:0!important}
+.ls-project-copy h3{margin:7px 0 8px;font-size:24px;line-height:1.25;letter-spacing:-.045em}
+.ls-project-copy p{display:-webkit-box;overflow:hidden;margin:0;color:var(--muted);font-size:14px;line-height:1.55;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.ls-project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.ls-project-tags b{padding:4px 8px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:10px;font-weight:600;line-height:1.5}
+.ls-project-open-label{display:none}
 .ls-project-open-label i{font-style:normal;font-size:17px;transition:transform .2s}
 .ls-project-card:hover .ls-project-open-label i{transform:translate(2px,-2px)}
 
@@ -304,7 +304,6 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
   .ls-about-layout{grid-template-columns:1fr;gap:30px}
   .ls-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
   .ls-focus-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ls-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .project-detail-hero{grid-template-columns:1fr;gap:38px}
 }
 
@@ -364,7 +363,9 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
   .ls-focus-grid{grid-template-columns:1fr}
   .ls-focus-grid a{min-height:190px}
   .ls-project-grid{grid-template-columns:1fr}
-  .ls-project-copy{padding:24px}
+  .ls-project-card{padding:16px}
+  .ls-project-visual{height:auto;aspect-ratio:32/23}
+  .ls-project-copy{padding:18px 0 0}
   .project-detail-copy h1{font-size:46px}
   .project-detail-summary{font-size:16px}
   .project-detail-content{font-size:16px}
