@@ -2,6 +2,8 @@
 {{ $author := hugo.Data.authors.me }}
 {{ $avatar := resources.Get "media/authors/me.jpg" }}
 {{ $selfie := resources.Get "media/authors/me-selfie.jpg" }}
+{{ $bioyondLogo := resources.Get "media/company/bioyond.png" }}
+{{ $xiongdaLogo := resources.Get "media/company/xiongda.png" }}
 {{ $articles := where site.RegularPages "Params.article" true }}
 {{ $projects := where site.RegularPages "Section" "projects" }}
 {{ $featuredProjects := where $projects "Params.featured" true }}
@@ -78,7 +80,7 @@
   <div class="ls-work-timeline" aria-label="{{ if $zh }}工作经历时间线{{ else }}Work experience timeline{{ end }}">
     <article class="ls-work-entry is-current">
       <time datetime="2026-11">{{ if $zh }}2026.11 — 至今{{ else }}Nov 2026 — Present{{ end }}</time>
-      <span class="ls-work-marker" aria-hidden="true"><i>01</i></span>
+      <span class="ls-work-marker" aria-hidden="true">{{ with $bioyondLogo }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
       <div class="ls-work-card">
         <span>{{ if $zh }}当前任职公司{{ else }}CURRENT WORKPLACE{{ end }}</span>
         <h3>{{ if $zh }}上海奔曜科技公司{{ else }}Shanghai Benyao Technology{{ end }}</h3>
@@ -87,7 +89,7 @@
     </article>
     <article class="ls-work-entry">
       <time datetime="2026-06">{{ if $zh }}2026.06 — 2026.08{{ else }}Jun 2026 — Aug 2026{{ end }}</time>
-      <span class="ls-work-marker" aria-hidden="true"><i>02</i></span>
+      <span class="ls-work-marker" aria-hidden="true">{{ with $xiongdaLogo }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
       <div class="ls-work-card">
         <span>{{ if $zh }}工作经历{{ else }}WORK EXPERIENCE{{ end }}</span>
         <h3>{{ if $zh }}上海雄达国际物流集团{{ else }}Shanghai Xiongda International Logistics Group{{ end }}</h3>
