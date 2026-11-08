@@ -11,6 +11,10 @@ en:
         name: About
         url: '#about'
         weight: 10
+      - identifier: work
+        name: Work
+        url: '#work'
+        weight: 15
       - identifier: stack
         name: Tech Stack
         url: '#stack'
@@ -37,6 +41,10 @@ zh:
         name: 关于
         url: '#about'
         weight: 10
+      - identifier: work
+        name: 工作
+        url: '#work'
+        weight: 15
       - identifier: stack
         name: 技术栈
         url: '#stack'
