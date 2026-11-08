@@ -1,5 +1,8 @@
+{{ $currentLanguage := site.Language.Lang }}
 <div class="language-switcher" aria-label="{{ i18n "language_switcher" }}">
   {{ range .AllTranslations }}
-    <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}" {{ if eq .Language.Lang site.Language.Lang }}class="active" aria-current="page"{{ end }}>{{ if eq .Language.Lang "zh" }}中{{ else }}EN{{ end }}</a>
+    {{ if ne .Language.Lang $currentLanguage }}
+      <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}" aria-label="{{ if eq .Language.Lang "zh" }}切换至中文{{ else }}Switch to English{{ end }}">{{ if eq .Language.Lang "zh" }}中{{ else }}EN{{ end }}</a>
+    {{ end }}
   {{ end }}
 </div>

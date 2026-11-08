@@ -48,6 +48,9 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .site-brand .brand-avatar{width:35px;height:35px;filter:none}
 .site-brand>b{color:var(--muted);font-family:Inter,sans-serif;font-weight:400}
 .site-brand>small{color:var(--muted);font:600 13px Inter,sans-serif;letter-spacing:0}
+.site-nav>.language-switcher{display:flex;flex:none;align-items:center;margin-left:2px;padding:0;border:1px solid var(--line);border-radius:7px;background:transparent}
+.site-nav>.language-switcher a{display:grid;width:42px;min-width:0;height:38px;padding:0;place-items:center;border-radius:6px;color:var(--muted);font:700 15px/1 Inter,sans-serif;letter-spacing:.02em;transition:background .2s,color .2s,border-color .2s}
+.site-nav>.language-switcher a:hover{background:rgba(124,58,237,.12);color:var(--ink)}
 .nav-links{gap:1px}
 .nav-links>a,.nav-dropdown>a{padding:9px 10px;color:var(--muted);font-size:13px}
 .nav-links>a:hover,.nav-links>a.active,.nav-dropdown>a:hover,.nav-dropdown:focus-within>a{color:var(--ink)}
@@ -327,6 +330,7 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 @media(max-width:560px){
   .site-brand{font-size:16px}
   .site-brand .brand-avatar{width:32px;height:32px}
+  .site-nav>.language-switcher a{width:38px;height:36px;font-size:14px}
   .ls-hero{padding-top:34px}
   .ls-hero h1{font-size:48px}
   .ls-intro{font-size:16px}
