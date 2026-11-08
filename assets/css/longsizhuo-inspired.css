@@ -45,7 +45,6 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .site-header{position:sticky;top:0;z-index:80;border-bottom:1px solid rgba(148,136,169,.14);background:color-mix(in srgb,var(--nav) 88%,transparent);box-shadow:none;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .site-nav{height:68px;gap:22px}
 .site-brand{gap:10px;color:var(--ink);font-size:17px;font-weight:700;letter-spacing:-.025em}
-.site-brand .brand-avatar{width:35px;height:35px;filter:none}
 .site-brand>b{color:var(--muted);font-family:Inter,sans-serif;font-weight:400}
 .site-brand>small{color:var(--muted);font:600 13px Inter,sans-serif;letter-spacing:0}
 .site-nav>.language-switcher{display:flex;flex:none;align-items:center;margin-left:2px;padding:0;border:1px solid var(--line);border-radius:7px;background:transparent}
@@ -354,7 +353,6 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 
 @media(max-width:560px){
   .site-brand{font-size:16px}
-  .site-brand .brand-avatar{width:32px;height:32px}
   .site-nav>.language-switcher a{width:38px;height:36px;font-size:14px}
   .ls-hero{padding-top:34px}
   .ls-hero h1{font-size:48px}
