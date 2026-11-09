@@ -13,7 +13,7 @@
   <div class="ls-hero-copy">
     <p class="ls-kicker">FULL-STACK · AI AGENT</p>
     <h1 id="home-title">Hi, I'm <span>{{ if $zh }}郭同学{{ else }}Sikang{{ end }}</span></h1>
-    <p class="ls-intro">{{ if $zh }}一名关注实际落地的全栈开发者，主要学习与实践 Java、Python、Web 应用和 AI Agent。{{ else }}A full-stack developer focused on practical delivery, working with Java, Python, web applications, and AI Agents.{{ end }}</p>
+    <p class="ls-intro">{{ if $zh }}专注 Java、Python、Web 应用与 AI Agent 的全栈开发者。浏览我的项目、写作与工程实践。{{ else }}A full-stack developer focused on Java, Python, web applications, and AI Agents. Explore my projects, writing, and engineering practice.{{ end }}</p>
     <div class="ls-contact-lines" aria-label="{{ if $zh }}个人链接{{ else }}Personal links{{ end }}">
       <p><strong>Email:</strong> <a href="mailto:guosikang115@163.com">guosikang115@163.com</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/itgsklab" target="_blank" rel="noopener">github.com/itgsklab</a></p>
@@ -40,6 +40,7 @@
   <header class="ls-section-heading" data-reveal="heading">
     <p class="ls-kicker">INTRODUCTION</p>
     <h2>{{ if $zh }}关于我{{ else }}About Me{{ end }}</h2>
+    <p>{{ if $zh }}个人介绍、技术关注与建站初衷的概览。了解我正在实践的技术和持续记录的内容。{{ else }}An overview of who I am, what I focus on, and why I built this site. See what I build, study, and document.{{ end }}</p>
   </header>
   <div class="ls-about-layout" data-reveal="content">
     <div class="ls-about-copy">
@@ -75,7 +76,7 @@
   <header class="ls-section-heading ls-work-heading" data-reveal="heading">
     <p class="ls-kicker">WHAT I HAVE DONE SO FAR</p>
     <h2>{{ if $zh }}工作经历{{ else }}Work Experience{{ end }}</h2>
-    <p>{{ if $zh }}记录我参与过的团队，以及在不同技术与业务环境中的工作阶段。{{ else }}A concise timeline of the teams I have joined and the different working environments I have experienced.{{ end }}</p>
+    <p>{{ if $zh }}实习与工作经历的时间线。查看我参与过的团队、岗位方向与阶段性实践。{{ else }}A timeline of my internships and professional experience. Explore the teams, roles, and practical work from each stage.{{ end }}</p>
   </header>
   <div class="ls-work-timeline" aria-label="{{ if $zh }}工作经历时间线{{ else }}Work experience timeline{{ end }}">
     <article class="ls-work-entry is-current" data-reveal="item">
@@ -111,7 +112,7 @@
   <header class="ls-section-heading" data-reveal="heading">
     <p class="ls-kicker">THOUGHTS & SHARING</p>
     <h2>{{ if $zh }}写作{{ else }}Writing{{ end }}</h2>
-    <p>{{ if $zh }}把一个问题讲清楚，再把解决过程沉淀成下一次可以直接使用的参考。{{ else }}Explain a problem clearly, then turn the solution into a reference that can be reused next time.{{ end }}</p>
+    <p>{{ if $zh }}技术思考、问题复盘与实践经验的合集。点击卡片阅读完整过程与可复用结论。{{ else }}A collection of technical notes, problem reviews, and practical lessons. Open a card for the full process and reusable takeaways.{{ end }}</p>
   </header>
   <div class="card-grid ls-writing-grid" data-reveal="content">
     {{ range first 3 $articles.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
@@ -205,6 +206,7 @@
     <div class="ls-contact-card" data-reveal="item">
       <p class="ls-kicker">GET IN TOUCH</p>
       <h2>{{ if $zh }}联系我{{ else }}Contact{{ end }}</h2>
+      <p class="ls-contact-intro">{{ if $zh }}合作交流、项目讨论与想法分享的入口。填写表单或通过社交平台与我联系。{{ else }}A place for collaboration, project discussions, and exchanging ideas. Use the form or connect with me on social platforms.{{ end }}</p>
       <form class="ls-contact-form" data-contact-form data-contact-email="guosikang115@163.com">
         <label for="contact-name">{{ if $zh }}你的名字{{ else }}Your Name{{ end }}</label>
         <input id="contact-name" name="name" type="text" placeholder="{{ if $zh }}怎么称呼你？{{ else }}What's your good name?{{ end }}" autocomplete="name" required>

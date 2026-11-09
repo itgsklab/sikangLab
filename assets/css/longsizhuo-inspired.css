@@ -242,7 +242,8 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .ls-contact-scene{position:relative;z-index:2;display:grid;grid-template-columns:minmax(390px,.82fr) minmax(0,1.18fr);gap:22px;align-items:stretch;height:760px}
 .ls-contact-card{position:relative;z-index:2;padding:48px;border:1px solid var(--line);border-radius:20px;background:var(--ls-panel);box-shadow:var(--ls-shadow)}
 .ls-contact-card h2{margin:0;font-size:clamp(52px,6vw,72px);font-weight:900;line-height:1;letter-spacing:-.06em}
-.ls-contact-form{display:grid;gap:13px;margin-top:54px}
+.ls-contact-intro{max-width:520px;margin:22px 0 0;color:var(--muted);font-size:16px;line-height:1.75}
+.ls-contact-form{display:grid;gap:13px;margin-top:32px}
 .ls-contact-form label{margin-top:12px;color:var(--ink);font-size:14px;font-weight:700}
 .ls-contact-form input,.ls-contact-form textarea{width:100%;border:1px solid color-mix(in srgb,var(--line) 72%,transparent);border-radius:9px;outline:0;background:color-mix(in srgb,var(--ls-panel-strong) 65%,#05050d);color:var(--ink);font:500 14px Inter,sans-serif;transition:border-color .2s,box-shadow .2s,background .2s}
 .ls-contact-form input{height:58px;padding:0 18px}

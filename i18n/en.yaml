@@ -77,11 +77,11 @@ all_content:
 project_work:
   other: "Selected Work"
 project_intro:
-  other: "Products, engineering practice, and technical solutions I have built."
+  other: "A collection of personal projects, engineering experiments, and open-source work. Open a card for details, interface previews, and source code."
 life_title:
   other: "Album"
 life_intro:
-  other: "Photos of everyday moments, places I have visited, and memories worth keeping."
+  other: "A visual collection of everyday moments, city trips, and personal interests. Choose a category to explore the full album."
 daily_life:
   other: "Everyday Moments"
 daily_life_desc:

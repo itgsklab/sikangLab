@@ -77,11 +77,11 @@ all_content:
 project_work:
   other: "项目作品"
 project_intro:
-  other: "记录做过的产品、工程实践与技术方案。"
+  other: "个人项目、工程实践与开源作品的合集。点击卡片查看项目详情、界面预览与源码。"
 life_title:
   other: "相册"
 life_intro:
-  other: "用照片记录日常片段、走过的地方和值得留住的瞬间。"
+  other: "日常片段、城市旅行与兴趣随拍的影像合集。点击分类浏览完整相册。"
 daily_life:
   other: "日常片段"
 daily_life_desc:

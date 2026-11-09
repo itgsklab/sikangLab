@@ -1,4 +1,4 @@
 ---
 title: 'Album'
-description: 'Photos of everyday moments, places I have visited, and memories worth keeping.'
+description: 'A visual collection of everyday moments, city trips, and personal interests. Choose a category to explore the full album.'
 ---

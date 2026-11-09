@@ -1,5 +1,6 @@
 ---
 title: '项目 · Projects'
+description: '个人项目、工程实践与开源作品的合集。点击卡片查看项目详情、界面预览与源码。'
 date: 2026-08-18
 type: landing
 
@@ -8,7 +9,7 @@ sections:
   - block: collection
     content:
       title: 项目作品
-      text: 我做过的一些项目，欢迎查看源码与体验链接。
+      text: 个人项目、工程实践与开源作品的合集。点击卡片查看项目详情、界面预览与源码。
       filters:
         folders:
           - projects
