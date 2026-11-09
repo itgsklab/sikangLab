@@ -1,0 +1,16 @@
+{{ if gt (len .pages) 0 }}
+<section id="{{ .id }}" class="writing-group" data-reveal="content">
+  <header class="writing-group-header">
+    <span class="writing-group-number" aria-hidden="true">{{ .index }}</span>
+    <div>
+      <p class="eyebrow">{{ .eyebrow }}</p>
+      <h2>{{ .title }}</h2>
+      <p>{{ .description }}</p>
+    </div>
+    <strong>{{ len .pages }} {{ if .zh }}篇文章{{ else }}{{ if eq (len .pages) 1 }}article{{ else }}articles{{ end }}{{ end }}</strong>
+  </header>
+  <div class="card-grid writing-group-grid">
+    {{ range .pages.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
+  </div>
+</section>
+{{ end }}

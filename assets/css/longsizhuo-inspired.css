@@ -288,6 +288,16 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
 .cover-code{color:rgba(255,255,255,.6)}
 .card-body p,.tech-section p:not(.eyebrow),.life-topics p{color:var(--muted)}
 .card-tags span,.hero-tags span,.tech-tags span{border-color:var(--line);color:var(--muted)}
+.writing-archive{display:grid;gap:34px;padding-bottom:105px}
+.writing-group{scroll-margin-top:105px;padding:34px;border:1px solid var(--line);border-radius:18px;background:var(--ls-panel)}
+.writing-group-header{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:24px}
+.writing-group-number{display:grid;place-items:center;width:54px;height:54px;border:1px solid rgba(139,92,246,.48);border-radius:15px;background:rgba(139,92,246,.12);color:var(--ls-purple-soft);font:700 13px/1 "JetBrains Mono",monospace}
+.writing-group-header .eyebrow{margin:2px 0 7px}
+.writing-group-header h2{margin:0;font-size:clamp(30px,4vw,46px);font-weight:900;line-height:1;letter-spacing:-.05em}
+.writing-group-header div>p:last-child{max-width:680px;margin:13px 0 0;color:var(--muted);font-size:15px;line-height:1.7}
+.writing-group-header>strong{padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;white-space:nowrap}
+.writing-group-grid{margin-top:28px}
+.writing-group-grid .content-card{background:var(--ls-panel-strong)}
 .article-page,.stack-detail,.about-page{padding-top:76px}
 .article-header{border-color:var(--line)}
 .article-header h1,.reference-header h1{font-size:clamp(44px,6vw,68px);font-weight:900;line-height:1.05;letter-spacing:-.055em}
@@ -425,6 +435,12 @@ h1,h2,h3,.site-brand{font-family:Poppins,Inter,sans-serif}
   .ls-orbit-stage{height:500px;border-radius:15px}
   .ls-orbit-hint{right:20px;bottom:20px}
   .card-grid{grid-template-columns:1fr}
+  .writing-archive{gap:24px;padding-bottom:76px}
+  .writing-group{padding:23px 18px;border-radius:15px}
+  .writing-group-header{grid-template-columns:auto 1fr;gap:14px}
+  .writing-group-header>strong{grid-column:2;justify-self:start}
+  .writing-group-number{width:46px;height:46px;border-radius:12px}
+  .writing-group-grid{margin-top:22px}
   .has-scroll-reveal [data-reveal]{--ls-reveal-y:58px;--ls-reveal-duration:.9s;filter:blur(7px)}
   .has-scroll-reveal [data-reveal="heading"]{--ls-reveal-y:-34px;--ls-reveal-duration:.96s}
   .has-scroll-reveal [data-reveal="content"]{--ls-reveal-y:46px;--ls-reveal-duration:.86s}

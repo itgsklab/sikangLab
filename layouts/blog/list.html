@@ -1,0 +1,33 @@
+{{ define "main" }}
+{{ $zh := eq site.Language.Lang "zh" }}
+{{ $articles := where site.RegularPages "Params.article" true }}
+{{ $agentArticles := where $articles "Params.article_parent" "agent" }}
+{{ $workArticles := where $articles "Params.article_parent" "work" }}
+
+<header class="page-hero wrap writing-archive-hero">
+  <p class="eyebrow">WRITING ARCHIVE</p>
+  <h1>{{ if $zh }}全部文章{{ else }}All Writing{{ end }}</h1>
+  <p>{{ if $zh }}技术文章按原技术栈栏目分组整理。选择一个方向，查看该栏目下的全部文章。{{ else }}Technical writing organized by the original technology sections. Choose a direction to browse every article in that group.{{ end }}</p>
+</header>
+
+<div class="writing-archive wrap">
+  {{ partial "writing-group.html" (dict
+    "pages" $agentArticles
+    "id" "agent-writing"
+    "index" "01"
+    "eyebrow" "AI ENGINEERING"
+    "title" "Agent"
+    "description" (cond $zh "AI Agent、记忆、上下文编排与 RAG 的工程记录。" "Engineering notes on AI Agents, memory, context orchestration, and RAG.")
+    "zh" $zh
+  ) }}
+  {{ partial "writing-group.html" (dict
+    "pages" $workArticles
+    "id" "personal-notes"
+    "index" "02"
+    "eyebrow" "NOTES & LEARNING"
+    "title" (cond $zh "个人沉淀" "Personal Notes")
+    "description" (cond $zh "AI 编程、开发工具与学习资源的实践笔记。" "Practical notes on AI coding, developer tools, and learning resources.")
+    "zh" $zh
+  ) }}
+</div>
+{{ end }}
