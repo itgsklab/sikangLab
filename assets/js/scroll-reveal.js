@@ -8,7 +8,7 @@
 
   const showImmediately = () => {
     items.forEach((item) => {
-      item.removeAttribute('data-reveal');
+      item.classList.add('is-revealed', 'is-reveal-complete');
       item.style.removeProperty('--ls-reveal-delay');
     });
     root.classList.remove('has-scroll-reveal');
@@ -25,27 +25,30 @@
     let itemIndex = 0;
     section.querySelectorAll('[data-reveal]').forEach((item) => {
       const type = item.dataset.reveal;
-      const delay = type === 'heading' ? 0 : type === 'content' ? 80 : itemIndex++ * 100;
-      item.style.setProperty('--ls-reveal-delay', `${Math.min(delay, 400)}ms`);
+      const delay = type === 'heading'
+        ? 0
+        : type === 'content'
+          ? 110
+          : 150 + itemIndex++ * 135;
+      item.style.setProperty('--ls-reveal-delay', `${Math.min(delay, 555)}ms`);
     });
   });
 
   const complete = (item) => {
-    if (!item.hasAttribute('data-reveal')) return;
-    item.removeAttribute('data-reveal');
-    item.classList.remove('is-revealed');
-    item.style.removeProperty('--ls-reveal-delay');
+    if (!item.classList.contains('is-revealed')) return;
+    item.classList.add('is-reveal-complete');
   };
 
   const reveal = (item) => {
+    if (item.classList.contains('is-revealed')) return;
     item.classList.add('is-revealed');
-    const onTransitionEnd = (event) => {
-      if (event.propertyName !== 'transform') return;
-      item.removeEventListener('transitionend', onTransitionEnd);
+    const onAnimationEnd = (event) => {
+      if (event.target !== item) return;
+      item.removeEventListener('animationend', onAnimationEnd);
       complete(item);
     };
-    item.addEventListener('transitionend', onTransitionEnd);
-    window.setTimeout(() => complete(item), 1500);
+    item.addEventListener('animationend', onAnimationEnd);
+    window.setTimeout(() => complete(item), 2100);
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -55,8 +58,8 @@
       reveal(entry.target);
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.1,
+    rootMargin: '0px 0px -8% 0px',
   });
 
   items.forEach((item) => observer.observe(item));
