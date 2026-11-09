@@ -80,12 +80,11 @@
   </header>
   <div class="ls-work-timeline" aria-label="{{ if $zh }}工作经历时间线{{ else }}Work experience timeline{{ end }}">
     <article class="ls-work-entry is-current" data-reveal="item">
-      <time datetime="2026-11">{{ if $zh }}2026年11月 - 至今{{ else }}Nov 2026 - Present{{ end }}</time>
+      <time datetime="2026-12">{{ if $zh }}2026年12月 - 至今{{ else }}Dec 2026 - Present{{ end }}</time>
       <span class="ls-work-marker" aria-hidden="true">{{ with $bioyondLogo }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
-      <div class="ls-work-card">
-        <span>{{ if $zh }}当前任职公司{{ else }}CURRENT WORKPLACE{{ end }}</span>
-        <h3>{{ if $zh }}上海奔曜科技有限公司{{ else }}Bioyond Robotics (Shanghai){{ end }}</h3>
-        <p>{{ if $zh }}奔曜科技 · Bioyond Robotics{{ else }}Shanghai Benyao Technology Co., Ltd.{{ end }}</p>
+      <div class="ls-work-card ls-work-card--role-first">
+        <h3 class="ls-work-role">{{ if $zh }}软件开发工程师{{ else }}Software Development Engineer{{ end }}</h3>
+        <p class="ls-work-company">{{ if $zh }}上海奔曜科技有限公司{{ else }}Bioyond Robotics (Shanghai){{ end }}</p>
       </div>
     </article>
     <article class="ls-work-entry" data-reveal="item">
