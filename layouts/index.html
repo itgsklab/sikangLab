@@ -90,9 +90,9 @@
     <article class="ls-work-entry" data-reveal="item">
       <time datetime="2026-06">{{ if $zh }}2026.06 — 2026.08{{ else }}Jun 2026 — Aug 2026{{ end }}</time>
       <span class="ls-work-marker" aria-hidden="true">{{ with $xiongdaLogo }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
-      <div class="ls-work-card">
-        <span>{{ if $zh }}后端开发实习生{{ else }}BACKEND DEVELOPMENT INTERN{{ end }}</span>
-        <h3>{{ if $zh }}上海雄达国际物流集团{{ else }}Shanghai Xiongda International Logistics Group{{ end }}</h3>
+      <div class="ls-work-card ls-work-card--role-first">
+        <h3 class="ls-work-role">{{ if $zh }}后端开发实习生{{ else }}Backend Development Intern{{ end }}</h3>
+        <p class="ls-work-company">{{ if $zh }}上海雄达国际物流集团{{ else }}Shanghai Xiongda International Logistics Group{{ end }}</p>
         <ul class="ls-work-details">
           {{ if $zh }}
           <li>独立完成 Non-Amazon 物流报价系统，沉淀渠道匹配与费用计算规则，帮助销售快速生成多渠道报价，减少人工核算和重复查表。</li>
