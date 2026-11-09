@@ -37,11 +37,11 @@
 </section>
 
 <section id="about" class="ls-section wrap">
-  <header class="ls-section-heading">
+  <header class="ls-section-heading" data-reveal="heading">
     <p class="ls-kicker">INTRODUCTION</p>
     <h2>{{ if $zh }}关于我{{ else }}About Me{{ end }}</h2>
   </header>
-  <div class="ls-about-layout">
+  <div class="ls-about-layout" data-reveal="content">
     <div class="ls-about-copy">
       {{ with $selfie }}
       {{ $selfieThumb := .Resize "480x webp q82" }}
@@ -72,13 +72,13 @@
 </section>
 
 <section id="work" class="ls-section wrap">
-  <header class="ls-section-heading ls-work-heading">
+  <header class="ls-section-heading ls-work-heading" data-reveal="heading">
     <p class="ls-kicker">WHAT I HAVE DONE SO FAR</p>
     <h2>{{ if $zh }}工作经历{{ else }}Work Experience{{ end }}</h2>
     <p>{{ if $zh }}记录我参与过的团队，以及在不同技术与业务环境中的工作阶段。{{ else }}A concise timeline of the teams I have joined and the different working environments I have experienced.{{ end }}</p>
   </header>
   <div class="ls-work-timeline" aria-label="{{ if $zh }}工作经历时间线{{ else }}Work experience timeline{{ end }}">
-    <article class="ls-work-entry is-current">
+    <article class="ls-work-entry is-current" data-reveal="item">
       <time datetime="2026-11">{{ if $zh }}2026.11 — 至今{{ else }}Nov 2026 — Present{{ end }}</time>
       <span class="ls-work-marker" aria-hidden="true">{{ with $bioyondLogo }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
       <div class="ls-work-card">
@@ -87,7 +87,7 @@
         <p>{{ if $zh }}2026 年 11 月至今{{ else }}上海奔曜科技公司{{ end }}</p>
       </div>
     </article>
-    <article class="ls-work-entry">
+    <article class="ls-work-entry" data-reveal="item">
       <time datetime="2026-06">{{ if $zh }}2026.06 — 2026.08{{ else }}Jun 2026 — Aug 2026{{ end }}</time>
       <span class="ls-work-marker" aria-hidden="true">{{ with $xiongdaLogo }}<img src="{{ .RelPermalink }}" alt="">{{ end }}</span>
       <div class="ls-work-card">
@@ -100,21 +100,21 @@
 </section>
 
 <section id="stack" class="ls-section wrap">
-  <header class="ls-section-heading">
+  <header class="ls-section-heading" data-reveal="heading">
     <p class="ls-kicker">TECHNICAL FOCUS</p>
     <h2>{{ if $zh }}技术栈{{ else }}Tech Stack{{ end }}</h2>
     <p>{{ if $zh }}围绕后端开发、自动化、AI Agent 与个人技术沉淀持续学习和实践。{{ else }}Ongoing learning and practice across backend development, automation, AI Agents, and personal technical notes.{{ end }}</p>
   </header>
   <div class="ls-focus-grid ls-stack-grid" aria-label="{{ if $zh }}技术方向{{ else }}Technical areas{{ end }}">
-    <a href="{{ "stack/java/" | relLangURL }}"><span>01</span><h3>Java</h3><p>{{ if $zh }}后端开发、JVM 与可维护的工程结构。{{ else }}Backend development, the JVM, and maintainable architecture.{{ end }}</p></a>
-    <a href="{{ "stack/python/" | relLangURL }}"><span>02</span><h3>Python</h3><p>{{ if $zh }}自动化、数据处理与快速原型验证。{{ else }}Automation, data processing, and rapid prototyping.{{ end }}</p></a>
-    <a href="{{ "stack/agent/" | relLangURL }}"><span>03</span><h3>Agent</h3><p>{{ if $zh }}工具调用、上下文编排、RAG 与工程落地。{{ else }}Tool use, context orchestration, RAG, and production practice.{{ end }}</p></a>
-    <a href="{{ "stack/work/" | relLangURL }}"><span>04</span><h3>{{ if $zh }}个人沉淀{{ else }}Personal Notes{{ end }}</h3><p>{{ if $zh }}AI 工具、大模型应用与实践笔记。{{ else }}AI tools, LLM applications, and practical notes.{{ end }}</p></a>
+    <a href="{{ "stack/java/" | relLangURL }}" data-reveal="item"><span>01</span><h3>Java</h3><p>{{ if $zh }}后端开发、JVM 与可维护的工程结构。{{ else }}Backend development, the JVM, and maintainable architecture.{{ end }}</p></a>
+    <a href="{{ "stack/python/" | relLangURL }}" data-reveal="item"><span>02</span><h3>Python</h3><p>{{ if $zh }}自动化、数据处理与快速原型验证。{{ else }}Automation, data processing, and rapid prototyping.{{ end }}</p></a>
+    <a href="{{ "stack/agent/" | relLangURL }}" data-reveal="item"><span>03</span><h3>Agent</h3><p>{{ if $zh }}工具调用、上下文编排、RAG 与工程落地。{{ else }}Tool use, context orchestration, RAG, and production practice.{{ end }}</p></a>
+    <a href="{{ "stack/work/" | relLangURL }}" data-reveal="item"><span>04</span><h3>{{ if $zh }}个人沉淀{{ else }}Personal Notes{{ end }}</h3><p>{{ if $zh }}AI 工具、大模型应用与实践笔记。{{ else }}AI tools, LLM applications, and practical notes.{{ end }}</p></a>
   </div>
 </section>
 
 <section id="projects" class="ls-section wrap">
-  <header class="ls-section-heading">
+  <header class="ls-section-heading" data-reveal="heading">
     <p class="ls-kicker">MY WORK</p>
     <h2>{{ if $zh }}项目作品{{ else }}Projects{{ end }}</h2>
     <p>{{ if $zh }}从本地优先的 AI 情报工作台，到可审计的水印处理工具。点击卡片展开项目介绍、界面预览与源码入口。{{ else }}From a local-first AI intelligence workspace to an auditable watermark-removal tool. Open any card for the story, interface preview, and source code.{{ end }}</p>
@@ -123,7 +123,7 @@
     {{ range $featuredProjects.ByWeight }}
     {{ $project := . }}
     {{ $cover := resources.Get .Params.cover }}
-    <article class="ls-project-card">
+    <article class="ls-project-card" data-reveal="item">
       <a class="ls-project-card-hit" href="{{ .RelPermalink }}" data-project-open="project-modal-{{ .Title | urlize }}" aria-label="{{ if $zh }}展开 {{ .Title }} 项目预览{{ else }}Open {{ .Title }} project preview{{ end }}"></a>
       <div class="ls-project-visual{{ if eq .Params.cover_fit "contain" }} is-contain{{ end }}">
         {{ with $cover }}
@@ -180,23 +180,23 @@
 </section>
 
 <section id="life" class="ls-section wrap">
-  <header class="ls-section-heading">
+  <header class="ls-section-heading" data-reveal="heading">
     <p class="ls-kicker">PHOTO ALBUM</p>
     <h2>{{ i18n "life_title" }}</h2>
     <p>{{ i18n "life_intro" }}</p>
   </header>
   <div class="ls-focus-grid ls-home-topic-grid" aria-label="{{ if $zh }}相册分类{{ else }}Album categories{{ end }}">
-    <a href="{{ "life/" | relLangURL }}"><span>01</span><h3>{{ i18n "daily_life" }}</h3><p>{{ i18n "daily_life_desc" }}</p></a>
-    <a href="{{ "life/" | relLangURL }}"><span>02</span><h3>{{ i18n "reading_films" }}</h3><p>{{ i18n "reading_films_desc" }}</p></a>
-    <a href="{{ "life/" | relLangURL }}"><span>03</span><h3>{{ i18n "reflections" }}</h3><p>{{ i18n "reflections_desc" }}</p></a>
+    <a href="{{ "life/" | relLangURL }}" data-reveal="item"><span>01</span><h3>{{ i18n "daily_life" }}</h3><p>{{ i18n "daily_life_desc" }}</p></a>
+    <a href="{{ "life/" | relLangURL }}" data-reveal="item"><span>02</span><h3>{{ i18n "reading_films" }}</h3><p>{{ i18n "reading_films_desc" }}</p></a>
+    <a href="{{ "life/" | relLangURL }}" data-reveal="item"><span>03</span><h3>{{ i18n "reflections" }}</h3><p>{{ i18n "reflections_desc" }}</p></a>
   </div>
-  <a class="ls-more-link" href="{{ "life/" | relLangURL }}">{{ if $zh }}查看全部相册{{ else }}Explore the album{{ end }} →</a>
+  <a class="ls-more-link" href="{{ "life/" | relLangURL }}" data-reveal="content">{{ if $zh }}查看全部相册{{ else }}Explore the album{{ end }} →</a>
 </section>
 
 <section id="contact" class="ls-section ls-contact-section">
   <div class="ls-starfield" data-starfield aria-hidden="true"></div>
   <div class="ls-contact-scene wrap">
-    <div class="ls-contact-card">
+    <div class="ls-contact-card" data-reveal="item">
       <p class="ls-kicker">GET IN TOUCH</p>
       <h2>{{ if $zh }}联系我{{ else }}Contact{{ end }}</h2>
       <form class="ls-contact-form" data-contact-form data-contact-email="guosikang115@163.com">
@@ -217,7 +217,7 @@
         <a href="https://xhslink.cn/o/8FbJHk34M95" target="_blank" rel="noopener">{{ if $zh }}小红书{{ else }}Xiaohongshu{{ end }}</a>
       </div>
     </div>
-    <div class="ls-orbit-stage ls-contact-orbit" data-orbit-stage data-model-url="{{ "models/planet/scene.gltf" | relURL }}">
+    <div class="ls-orbit-stage ls-contact-orbit" data-reveal="item" data-orbit-stage data-model-url="{{ "models/planet/scene.gltf" | relURL }}">
       <canvas data-orbit-globe role="img" aria-label="{{ if $zh }}正面缓慢旋转的数字地球与环绕球体的动态彩色环带{{ else }}A slowly rotating digital planet surrounded by animated colored rings{{ end }}">{{ if $zh }}你的浏览器暂不支持 Canvas 动画。{{ else }}Your browser does not support Canvas animation.{{ end }}</canvas>
       <span class="ls-orbit-loader" aria-live="polite">{{ if $zh }}正在加载星球{{ else }}LOADING PLANET{{ end }}</span>
       <a class="ls-orbit-credit" href="https://sketchfab.com/3d-models/stylized-planet-789725db86f547fc9163b00f302c3e70" target="_blank" rel="noopener">3D model: cmzw · CC BY 4.0</a>

@@ -24,5 +24,6 @@
   </script>
   {{ $orbitGlobe := resources.Get "js/orbit-globe.js" | js.Build (dict "minify" true "target" "es2020") | fingerprint }}<script src="{{ $orbitGlobe.RelPermalink }}" defer></script>
   {{ $projectModal := resources.Get "js/project-modal.js" | minify | fingerprint }}<script src="{{ $projectModal.RelPermalink }}" defer></script>
+  {{ $scrollReveal := resources.Get "js/scroll-reveal.js" | minify | fingerprint }}<script src="{{ $scrollReveal.RelPermalink }}" defer></script>
   {{ partial "section-nav-script.html" . }}
 </body></html>
