@@ -115,7 +115,7 @@
     <p>{{ if $zh }}技术思考、问题复盘与实践经验的合集。点击卡片阅读完整过程与可复用结论。{{ else }}A collection of technical notes, problem reviews, and practical lessons. Open a card for the full process and reusable takeaways.{{ end }}</p>
   </header>
   <div class="card-grid ls-writing-grid" data-reveal="content">
-    {{ range first 3 $articles.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
+    {{ range $articles.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
   </div>
   <a class="ls-more-link" href="{{ "blog/" | relLangURL }}" data-reveal="content">{{ i18n "all_articles" }}</a>
 </section>
