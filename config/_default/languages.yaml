@@ -15,9 +15,9 @@ en:
         name: Work
         url: '#work'
         weight: 15
-      - identifier: stack
-        name: Tech Stack
-        url: '#stack'
+      - identifier: writing
+        name: Writing
+        url: '#writing'
         weight: 20
       - identifier: projects
         name: Projects
@@ -45,9 +45,9 @@ zh:
         name: 工作
         url: '#work'
         weight: 15
-      - identifier: stack
-        name: 技术栈
-        url: '#stack'
+      - identifier: writing
+        name: 写作
+        url: '#writing'
         weight: 20
       - identifier: projects
         name: 项目

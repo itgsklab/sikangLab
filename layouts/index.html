@@ -107,18 +107,16 @@
   </div>
 </section>
 
-<section id="stack" class="ls-section wrap">
+<section id="writing" class="ls-section ls-writing wrap">
   <header class="ls-section-heading" data-reveal="heading">
-    <p class="ls-kicker">TECHNICAL FOCUS</p>
-    <h2>{{ if $zh }}技术栈{{ else }}Tech Stack{{ end }}</h2>
-    <p>{{ if $zh }}围绕后端开发、自动化、AI Agent 与个人技术沉淀持续学习和实践。{{ else }}Ongoing learning and practice across backend development, automation, AI Agents, and personal technical notes.{{ end }}</p>
+    <p class="ls-kicker">THOUGHTS & SHARING</p>
+    <h2>{{ if $zh }}写作{{ else }}Writing{{ end }}</h2>
+    <p>{{ if $zh }}把一个问题讲清楚，再把解决过程沉淀成下一次可以直接使用的参考。{{ else }}Explain a problem clearly, then turn the solution into a reference that can be reused next time.{{ end }}</p>
   </header>
-  <div class="ls-focus-grid ls-stack-grid" aria-label="{{ if $zh }}技术方向{{ else }}Technical areas{{ end }}">
-    <a href="{{ "stack/java/" | relLangURL }}" data-reveal="item"><span>01</span><h3>Java</h3><p>{{ if $zh }}后端开发、JVM 与可维护的工程结构。{{ else }}Backend development, the JVM, and maintainable architecture.{{ end }}</p></a>
-    <a href="{{ "stack/python/" | relLangURL }}" data-reveal="item"><span>02</span><h3>Python</h3><p>{{ if $zh }}自动化、数据处理与快速原型验证。{{ else }}Automation, data processing, and rapid prototyping.{{ end }}</p></a>
-    <a href="{{ "stack/agent/" | relLangURL }}" data-reveal="item"><span>03</span><h3>Agent</h3><p>{{ if $zh }}工具调用、上下文编排、RAG 与工程落地。{{ else }}Tool use, context orchestration, RAG, and production practice.{{ end }}</p></a>
-    <a href="{{ "stack/work/" | relLangURL }}" data-reveal="item"><span>04</span><h3>{{ if $zh }}个人沉淀{{ else }}Personal Notes{{ end }}</h3><p>{{ if $zh }}AI 工具、大模型应用与实践笔记。{{ else }}AI tools, LLM applications, and practical notes.{{ end }}</p></a>
+  <div class="card-grid ls-writing-grid" data-reveal="content">
+    {{ range first 3 $articles.ByDate.Reverse }}{{ partial "article-card.html" . }}{{ end }}
   </div>
+  <a class="ls-more-link" href="{{ "blog/" | relLangURL }}" data-reveal="content">{{ i18n "all_articles" }}</a>
 </section>
 
 <section id="projects" class="ls-section wrap">
